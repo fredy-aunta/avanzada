@@ -11,6 +11,7 @@ import DB.EntrenadorDB;
 import DB.RutinaDB;
 import Negocio.Cliente;
 import Negocio.Entrenador;
+import Negocio.Rutina;
 import java.util.ArrayList;
 
 /**
@@ -20,10 +21,11 @@ import java.util.ArrayList;
 public class Main {
     
     public static void main(String[] args) {
-        ArrayList<Cliente> clientes = new ArrayList<>();
-        Cliente cliente = null;
+        ArrayList<Rutina> rutinas = new ArrayList<>();
+        Rutina rutina = null;
         RutinaDB rutinaDB = new RutinaDB();
+        rutina = rutinaDB.selectById(2);
 //        rutinaDB.insert("test1", Integer.);
-//        System.out.println(cliente);
+        System.out.println(rutina);
     }
 }

@@ -4,10 +4,11 @@
  * and open the template in the editor.
  */
 
-package proyecto2corte;
+package Services;
 
 import Negocio.Ejercicio;
 import java.util.Enumeration;
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Vector;
 

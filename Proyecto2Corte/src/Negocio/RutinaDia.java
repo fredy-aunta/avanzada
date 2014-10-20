@@ -4,10 +4,9 @@
  * and open the template in the editor.
  */
 
-package proyecto2corte;
+package Negocio;
 
-import Negocio.Ejercicio;
-import java.util.ArrayList;
+import Services.Ejercicios;
 
 /**
  *
@@ -15,7 +14,7 @@ import java.util.ArrayList;
  */
 public class RutinaDia {
     private int diaRutina;
-    ArrayList<Ejercicio> ejerciciosDia = new ArrayList<>();
+    Ejercicios ejerciciosDia = new Ejercicios();
 
     public RutinaDia() {
     }
@@ -32,12 +31,12 @@ public class RutinaDia {
         this.diaRutina = diaRutina;
     }
 
-    public ArrayList<Ejercicio> getEjerciciosDia() {
+    public Ejercicios getEjerciciosDia() {
         return ejerciciosDia;
     }
 
-    public void setEjerciciosDia(ArrayList<Ejercicio> ejerciciosDia) {
+    public void setEjerciciosDia(Ejercicios ejerciciosDia) {
         this.ejerciciosDia = ejerciciosDia;
     }
-    
+
 }

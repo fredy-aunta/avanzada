@@ -21,8 +21,8 @@ public class DBManager {
     private static String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     private static String JDBC_URL = "jdbc:mysql://localhost:3306/";
     private static String JDBC_DB = "avanzada_2";
-    private static String JDBC_USER = "root";
-    private static String JDBC_PASSWORD = "";
+    private static String JDBC_USER = "avanzada_user";
+    private static String JDBC_PASSWORD = "123456";
     private static Driver driver = null;
     
     public static synchronized Connection getConnection() throws SQLException{

@@ -6,6 +6,8 @@
 
 package Negocio;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author sebastian
@@ -15,6 +17,7 @@ public class Rutina {
     private String nombreRutina;
     private int tiempoRutina;
     private Entrenador entrenador;
+    private ArrayList<Rutina> rutinas = new ArrayList<>();
 
     public Rutina() {
     }
@@ -55,6 +58,11 @@ public class Rutina {
 
     public void setEntrenador(Entrenador entrenador) {
         this.entrenador = entrenador;
+    }
+
+    @Override
+    public String toString() {
+        return nombreRutina;
     }
     
     
