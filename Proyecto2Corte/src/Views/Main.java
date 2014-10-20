@@ -23,7 +23,7 @@ public class Main {
         ArrayList<Cliente> clientes = new ArrayList<>();
         Cliente cliente = null;
         RutinaDB rutinaDB = new RutinaDB();
-        rutinaDB.insert("test1", Integer.);
+//        rutinaDB.insert("test1", Integer.);
 //        System.out.println(cliente);
     }
 }
