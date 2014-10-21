@@ -17,7 +17,7 @@ public class Rutina {
     private String nombreRutina;
     private int tiempoRutina;
     private Entrenador entrenador;
-    private ArrayList<Rutina> rutinas = new ArrayList<>();
+    private ArrayList<RutinaDia> rutinasDia = new ArrayList<>();
 
     public Rutina() {
     }
@@ -58,6 +58,14 @@ public class Rutina {
 
     public void setEntrenador(Entrenador entrenador) {
         this.entrenador = entrenador;
+    }
+
+    public ArrayList<RutinaDia> getRutinasDia() {
+        return rutinasDia;
+    }
+
+    public void setRutinasDia(ArrayList<RutinaDia> rutinasDia) {
+        this.rutinasDia = rutinasDia;
     }
 
     @Override
