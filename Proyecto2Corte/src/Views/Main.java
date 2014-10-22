@@ -21,11 +21,13 @@ import java.util.ArrayList;
 public class Main {
     
     public static void main(String[] args) {
-        ArrayList<Rutina> rutinas = new ArrayList<>();
-        Rutina rutina = null;
-        RutinaDB rutinaDB = new RutinaDB();
-        rutina = rutinaDB.selectById(2);
+//        ArrayList<Rutina> rutinas = new ArrayList<>();
+//        Rutina rutina = null;
+//        RutinaDB rutinaDB = new RutinaDB();
+//        rutina = rutinaDB.selectById(2);
 //        rutinaDB.insert("test1", Integer.);
-        System.out.println(rutina);
+//        System.out.println(rutina);
+        ClienteDB b = new ClienteDB();
+        b.insert("nombre_test_2", 2, 60, "1994-03-03", "M");
     }
 }

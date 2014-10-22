@@ -22,18 +22,23 @@ import Negocio.Rutina;
  */
 public class ClienteDB {
     private final String SQL_INSERT = "INSERT INTO cliente (nombre_cliente, altura_cliente, masa_cliente, dob_cliente, genero_cliente) VALUES (?,?,?,?,?)";
+    private final String SQL_INSERT_ID = "SELECT @@identity AS id";
+    private final String SQL_INSERT_USER = "INSERT INTO auth_user (user_id, password, role_id) VALUES (?,?,?)";
     private final String SQL_UPDATE = "UPDATE cliente SET nombre_cliente = ?, altura_cliente = ?, masa_cliente = ?, dob_cliente = ?, genero_cliente  = ? WHERE cliente_id = ?;";
+    private final String SQL_UPDATE_USER_ID = "UPDATE cliente SET user_id = ? WHERE cliente_id = ?;";
     private final String SQL_DELETE = "DELETE FROM cliente WHERE cliente_id = ?";
     private final String SQL_SELECT = "SELECT * FROM cliente LEFT JOIN rutina ON rutina.rutina_id = cliente.rutina_id ORDER BY cliente_id";
     private final String SQL_SELECT_ID = "SELECT * FROM cliente LEFT JOIN rutina ON rutina.rutina_id = cliente.rutina_id WHERE cliente_id = ?";
-
+    private final String PASSWORD_DEFAULT = "0000"; 
     public ClienteDB() {
     }
 
     public int insert(String nombre, float altura, float masa, String dob, String genero){
         Connection connection = null;
         PreparedStatement statement = null;
+        ResultSet rs = null;
         int rows = 0;
+        int id = 0;
         try {
             connection = DBManager.getConnection();
             statement = connection.prepareStatement(SQL_INSERT);
@@ -46,9 +51,68 @@ public class ClienteDB {
             System.out.println("Ejecutando query: " + SQL_INSERT);
             rows = statement.executeUpdate();
             System.out.println("Registros Afectados :" + rows);
+            /**
+             * Obtiene el id del cliente que se acabo de insertar
+             */
+            statement = connection.prepareStatement(SQL_INSERT_ID);
+            rs = statement.executeQuery();
+            rs.next();
+            id = rs.getInt(1);
+            
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }finally{
+            DBManager.close(statement);
+            DBManager.close(connection);
+        }
+        
+        this.insertUser(id, PASSWORD_DEFAULT);
+        this.UpdateUserId(id);
+        
+        return rows;
+    }
+    
+    private int insertUser(int id, String password){
+        Connection connection = null;
+        PreparedStatement statement = null;
+        int rows = 0;
+        try {
+            connection = DBManager.getConnection();
+            statement = connection.prepareStatement(SQL_INSERT_USER);
+            int index = 1;
+            statement.setInt(index++, id);
+            statement.setString(index++, password);
+            statement.setInt(index++, 3);
+            System.out.println("Ejecutando query: " + SQL_INSERT_USER);
+            rows = statement.executeUpdate();
+            System.out.println("Registros Afectados :" + rows);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }finally{
+            DBManager.close(statement);
+            DBManager.close(connection);
+        }
+        return rows;
+    }
+    
+    private int UpdateUserId(int id){
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        int rows = 0;
+        try {
+            connection = DBManager.getConnection();
+            statement = connection.prepareStatement(SQL_UPDATE_USER_ID);
+            int index = 1;
+            statement.setInt(index++, id);
+            statement.setInt(index++, id);
+            System.out.println("Ejecutando query: " + SQL_UPDATE_USER_ID);
+            rows = statement.executeUpdate();
+            System.out.println("Registros Afectados :" + rows);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }finally{
+            DBManager.close(rs);
             DBManager.close(statement);
             DBManager.close(connection);
         }

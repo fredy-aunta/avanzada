@@ -1,10 +1,10 @@
-CREATE DATABASE  IF NOT EXISTS `avanzada_2` /*!40100 DEFAULT CHARACTER SET utf8 */;
+CREATE DATABASE  IF NOT EXISTS `avanzada_2` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `avanzada_2`;
--- MySQL dump 10.13  Distrib 5.6.11, for Win32 (x86)
+-- MySQL dump 10.13  Distrib 5.6.17, for Win32 (x86)
 --
 -- Host: 127.0.0.1    Database: avanzada_2
 -- ------------------------------------------------------
--- Server version	5.6.19
+-- Server version	5.6.20
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -18,6 +18,57 @@ USE `avanzada_2`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `auth_role`
+--
+
+DROP TABLE IF EXISTS `auth_role`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_role` (
+  `role_id` int(11) NOT NULL,
+  `role_name` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`role_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_role`
+--
+
+LOCK TABLES `auth_role` WRITE;
+/*!40000 ALTER TABLE `auth_role` DISABLE KEYS */;
+INSERT INTO `auth_role` VALUES (1,'admin'),(2,'entrenador'),(3,'cliente');
+/*!40000 ALTER TABLE `auth_role` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_user`
+--
+
+DROP TABLE IF EXISTS `auth_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_user` (
+  `user_id` int(11) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `role_id` int(11) NOT NULL,
+  PRIMARY KEY (`user_id`),
+  KEY `role_id_fk_idx` (`role_id`),
+  CONSTRAINT `role_id_fk` FOREIGN KEY (`role_id`) REFERENCES `auth_role` (`role_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_user`
+--
+
+LOCK TABLES `auth_user` WRITE;
+/*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
+INSERT INTO `auth_user` VALUES (0,'0000',3),(9,'0000',3),(10,'0000',3),(11,'0000',3),(12,'0000',3);
+/*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `cliente`
 --
 
@@ -26,6 +77,7 @@ DROP TABLE IF EXISTS `cliente`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cliente` (
   `cliente_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL DEFAULT '0',
   `nombre_cliente` varchar(128) NOT NULL,
   `altura_cliente` float NOT NULL,
   `masa_cliente` float NOT NULL,
@@ -34,7 +86,7 @@ CREATE TABLE `cliente` (
   `rutina_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`cliente_id`),
   UNIQUE KEY `rutina_id_UNIQUE` (`rutina_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +95,7 @@ CREATE TABLE `cliente` (
 
 LOCK TABLES `cliente` WRITE;
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-INSERT INTO `cliente` VALUES (2,'test',1.4,54,'2002-10-22','F',NULL);
+INSERT INTO `cliente` VALUES (2,0,'test',1.4,54,'2002-10-22','F',NULL),(3,0,'nombre_1',2,60,'1994-03-03','M',NULL),(4,0,'nombre_2',2,60,'1994-03-03','M',NULL),(5,0,'nombre_3',2,60,'1994-03-03','M',NULL),(6,0,'nombre_4',2,60,'1994-03-03','M',NULL),(7,0,'nombre_5',2,60,'1994-03-03','M',NULL),(8,0,'nombre_6',2,60,'1994-03-03','M',NULL),(9,0,'nombre_6',2,60,'1994-03-03','M',NULL),(10,0,'nombre_test',2,60,'1994-03-03','M',NULL),(11,0,'nombre_test_1',2,60,'1994-03-03','M',NULL),(12,12,'nombre_test_2',2,60,'1994-03-03','M',NULL);
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -59,7 +111,7 @@ CREATE TABLE `ejercicio` (
   `nombre_ejercicio` varchar(64) NOT NULL,
   `tipo_ejercicio` varchar(64) NOT NULL,
   PRIMARY KEY (`ejercicio_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,7 +120,7 @@ CREATE TABLE `ejercicio` (
 
 LOCK TABLES `ejercicio` WRITE;
 /*!40000 ALTER TABLE `ejercicio` DISABLE KEYS */;
-INSERT INTO `ejercicio` VALUES (1,'aa','bb');
+INSERT INTO `ejercicio` VALUES (1,'aa','bb'),(2,'test_ejercicio','test_tipo');
 /*!40000 ALTER TABLE `ejercicio` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -160,4 +212,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-10-21 14:47:27
+-- Dump completed on 2014-10-22  0:59:40
