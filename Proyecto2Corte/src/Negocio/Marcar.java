@@ -4,13 +4,13 @@
  * and open the template in the editor.
  */
 
-package proyecto2corte;
+package Negocio;
 
 /**
  *
  * @author sebastian
  */
-public class Adelgazar implements Objetivo{
+public class Marcar implements Objetivo {
 
     @Override
     public void getObjetivo() {

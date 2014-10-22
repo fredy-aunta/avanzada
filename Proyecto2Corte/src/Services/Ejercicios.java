@@ -49,4 +49,8 @@ public class Ejercicios implements Iterator{
     public void remove (){
         
     };
+    
+    public void add(Ejercicio ejercicio){
+        data.add(ejercicio);
+    }
 }

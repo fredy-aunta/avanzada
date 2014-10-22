@@ -147,6 +147,7 @@ CREATE TABLE `rutina_dia_ejercicio` (
 
 LOCK TABLES `rutina_dia_ejercicio` WRITE;
 /*!40000 ALTER TABLE `rutina_dia_ejercicio` DISABLE KEYS */;
+INSERT INTO `rutina_dia_ejercicio` VALUES (2,1,1),(2,2,1),(2,3,1),(2,4,1);
 /*!40000 ALTER TABLE `rutina_dia_ejercicio` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -159,4 +160,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-10-20 16:38:09
+-- Dump completed on 2014-10-21 14:47:27

@@ -20,6 +20,12 @@ public class Ejercicio {
     public Ejercicio() {
     }
 
+    public Ejercicio(int idEjercicio, String nombreEjercicio, String tipoEjercicio) {
+        this.idEjercicio = idEjercicio;
+        this.nombreEjercicio = nombreEjercicio;
+        this.tipoEjercicio = tipoEjercicio;
+    }
+
     public Ejercicio(int idEjercicio, String nombreEjercicio, int repeticionesEjercicio, int serieEjercicio, String tipoEjercicio) {
         this.idEjercicio = idEjercicio;
         this.nombreEjercicio = nombreEjercicio;
@@ -27,6 +33,8 @@ public class Ejercicio {
         this.serieEjercicio = serieEjercicio;
         this.tipoEjercicio = tipoEjercicio;
     }
+    
+    
 
     public int getIdEjercicio() {
         return idEjercicio;
