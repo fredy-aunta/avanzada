@@ -13,8 +13,8 @@ package Negocio;
 public class Adelgazar implements Objetivo{
 
     @Override
-    public void getObjetivo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String getObjetivo() {
+        return "Adelgazar";
     }
     
 }

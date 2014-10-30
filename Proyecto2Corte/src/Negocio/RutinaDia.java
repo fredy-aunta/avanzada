@@ -39,4 +39,5 @@ public class RutinaDia {
         this.ejerciciosDia = ejerciciosDia;
     }
 
+    
 }

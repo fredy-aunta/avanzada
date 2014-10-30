@@ -5,24 +5,47 @@
  */
 
 package Views;
-import DB.ClienteDB;
-import DB.EntrenadorDB;
-import DB.RutinaDB;
-import Negocio.Cliente;
-import Negocio.Entrenador;
-import Negocio.Rutina;
+import Controllers.*;
+import Negocio.Objetivo;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 /**
  *
  * @author sebastian
  */
 public class Principal extends javax.swing.JFrame {
-
+    UserCtrl userCtrl = new UserCtrl();
+    EjercicioCtrl ejercicioCtrl=new EjercicioCtrl();
+    EntrenadorCtrl entrenadorCtrl = new EntrenadorCtrl();
+    ClienteCtrl clienteCtrl =new ClienteCtrl();
+    ObjetivoCtrl objetivoCtrl = new ObjetivoCtrl();
+    
     /**
      * Creates new form Principal
      */
     public Principal() {
         initComponents();
+        entrenadorCtrl.cargarEntrenadores();
+        lstEntrenadoresCrear.setListData(entrenadorCtrl.getEntrenadores().toArray());
+        lstEntrenadoresAdm.setListData(entrenadorCtrl.getEntrenadores().toArray());
+        lstClientesCrear.setListData(clienteCtrl.consultarClientes().toArray());
+        lstClientesConsultarAdm.setListData(clienteCtrl.consultarClientes().toArray());
+        lstEjercicios.setListData(ejercicioCtrl.consultar().toArray());
+        lstEjerciciosAddRut.setListData(ejercicioCtrl.consultar().toArray());
+        lstEjerciciosConsul.setListData(ejercicioCtrl.consultar().toArray());
+        cmbDiaCliente.addItem("Seleccione");
+        for (int i = 1; i <= 7; i++) {
+            cmbDiaCliente.addItem(i);
+            cmbDiaAdd.addItem(i);
+        }
+        cmbObjetivoCrearCliente.addItem("Seleccione");
+        objetivoCtrl.cargarObjetivos();
+        for (Objetivo objetivo : objetivoCtrl.getObjetivos()) {
+            cmbObjetivoCrearCliente.addItem(objetivo.getObjetivo());
+        }
+        cmbGeneroCliente.addItem("Selecione");
+        cmbGeneroCliente.addItem("Masculino");
+        cmbGeneroCliente.addItem("Femenino");
         PanelAdministrador.setVisible(false);
         PanelEntrenador.setVisible(false);
         PanelPrincipal.setVisible(true);
@@ -37,6 +60,16 @@ public class Principal extends javax.swing.JFrame {
         PanelConsultarRutinas.setVisible(false);
         PanelConsultarEntrenadores.setVisible(false);
         PanelIniEntrenador.setVisible(false);
+        PanelRutinas.setVisible(false);
+        PanelPrincipalCliente.setVisible(false);
+        
+        PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
     }
     
 
@@ -50,11 +83,87 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
+        PanelCambiarClaveEntr = new javax.swing.JPanel();
+        jLabel67 = new javax.swing.JLabel();
+        jLabel68 = new javax.swing.JLabel();
+        txtNomEntrClave = new javax.swing.JTextField();
+        jLabel69 = new javax.swing.JLabel();
+        txtPasswordEntr = new javax.swing.JTextField();
+        btnCambiar = new javax.swing.JButton();
+        PanelCambiarClaveCliente = new javax.swing.JPanel();
+        jLabel63 = new javax.swing.JLabel();
+        jLabel64 = new javax.swing.JLabel();
+        jLabel65 = new javax.swing.JLabel();
+        txtNomClienteClave = new javax.swing.JTextField();
+        txtPasswordClienteClave = new javax.swing.JTextField();
+        btnCambiarClaveCliente = new javax.swing.JButton();
+        PanelCrearEjer = new javax.swing.JPanel();
+        jLabel58 = new javax.swing.JLabel();
+        btnVolverAddEjer = new javax.swing.JButton();
+        jLabel59 = new javax.swing.JLabel();
+        jLabel60 = new javax.swing.JLabel();
+        jLabel61 = new javax.swing.JLabel();
+        jLabel62 = new javax.swing.JLabel();
+        txtTipoEjercicio = new javax.swing.JTextField();
+        txtRepeticiones = new javax.swing.JTextField();
+        txtNombreEjercicio = new javax.swing.JTextField();
+        txtSerierEjer = new javax.swing.JTextField();
+        btnAddEjercicio = new javax.swing.JButton();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        lstEjercicios = new javax.swing.JList();
+        PanelConsultarEjer = new javax.swing.JPanel();
+        jLabel57 = new javax.swing.JLabel();
+        btnVolverEjer = new javax.swing.JButton();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        lstEjerciciosConsul = new javax.swing.JList();
+        PanelEjercicio = new javax.swing.JPanel();
+        jLabel54 = new javax.swing.JLabel();
+        btnConsultarEjer = new javax.swing.JButton();
+        btnAddEjer = new javax.swing.JButton();
+        jLabel55 = new javax.swing.JLabel();
+        jLabel56 = new javax.swing.JLabel();
+        btnVolverEjercicio = new javax.swing.JButton();
+        PanelAddRutinas = new javax.swing.JPanel();
+        jLabel50 = new javax.swing.JLabel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        lstEjerciciosAddRut = new javax.swing.JList();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        lstEjerciciosDiaRut = new javax.swing.JList();
+        cmbDiaAdd = new javax.swing.JComboBox();
+        btnAddEjerRutina = new javax.swing.JButton();
+        btnAddRutina = new javax.swing.JButton();
+        jLabel51 = new javax.swing.JLabel();
+        jLabel52 = new javax.swing.JLabel();
+        jLabel53 = new javax.swing.JLabel();
+        btnVolverAddRutEntr = new javax.swing.JButton();
+        PanelConsultarRutinasEntr = new javax.swing.JPanel();
+        jLabel49 = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        lstConsultarRutinasEntr = new javax.swing.JList();
+        btnVolverConsultarRutEnt = new javax.swing.JButton();
+        PanelPrincipalCliente = new javax.swing.JPanel();
+        jLabel44 = new javax.swing.JLabel();
+        btnConsultarCliente = new javax.swing.JButton();
+        btnCambiarContr = new javax.swing.JButton();
+        jLabel45 = new javax.swing.JLabel();
+        jLabel46 = new javax.swing.JLabel();
+        btnSalirClient = new javax.swing.JButton();
+        PanelRutinas = new javax.swing.JPanel();
+        jLabel41 = new javax.swing.JLabel();
+        btnConsultarRutinasEntre = new javax.swing.JButton();
+        btnAddRutinasEntre = new javax.swing.JButton();
+        jLabel42 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        btnVolverRutinasEntre = new javax.swing.JButton();
         PanelIniEntrenador = new javax.swing.JPanel();
         jLabel40 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btnEjerciciosEntrenador = new javax.swing.JButton();
         btnSalirEntrenador = new javax.swing.JButton();
+        btnRutinaEntrenador = new javax.swing.JButton();
+        jLabel47 = new javax.swing.JLabel();
+        jLabel48 = new javax.swing.JLabel();
+        btnCambiarClaveEntr = new javax.swing.JButton();
+        jLabel66 = new javax.swing.JLabel();
         PanelConsultarEntrenadores = new javax.swing.JPanel();
         jLabel39 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
@@ -64,7 +173,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel38 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         lstRutinasAdm = new javax.swing.JList();
-        jButton3 = new javax.swing.JButton();
+        btnVolverVonsultarRutinas = new javax.swing.JButton();
         PanelConsultarClientes = new javax.swing.JPanel();
         jLabel37 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -79,31 +188,30 @@ public class Principal extends javax.swing.JFrame {
         jLabel36 = new javax.swing.JLabel();
         PanelCrearCliente = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         txtNombreClienteDeAdd = new javax.swing.JTextField();
-        txtIdClienteDeAdd = new javax.swing.JTextField();
-        txtEdadClienteAdd = new javax.swing.JTextField();
+        txtDiaNacimiento = new javax.swing.JTextField();
         txtMasaClienteAdd = new javax.swing.JTextField();
         txtAlturaClienteAdd = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         lstClientesCrear = new javax.swing.JList();
         btnAddCliente = new javax.swing.JButton();
-        rbMasculino = new javax.swing.JRadioButton();
-        rbFemenino = new javax.swing.JRadioButton();
         btnVolverCrearCliente = new javax.swing.JButton();
         jLabel35 = new javax.swing.JLabel();
         cmbObjetivoCrearCliente = new javax.swing.JComboBox();
+        cmbGeneroCliente = new javax.swing.JComboBox();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        txtAnoNacimiento = new javax.swing.JTextField();
+        txtMesNacimiento = new javax.swing.JTextField();
         PanelCrearEntrenador = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         txtNombreEntrenadorCrear = new javax.swing.JTextField();
-        txtIdEntrenadorcrear = new javax.swing.JTextField();
         btnCrearEntrenador = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         lstEntrenadoresCrear = new javax.swing.JList();
@@ -120,8 +228,8 @@ public class Principal extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txtNomUsuarioCliente = new javax.swing.JTextField();
-        txtContrasenaCliente = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnLoginUsuario = new javax.swing.JButton();
+        passCliente = new javax.swing.JPasswordField();
         PanelConsultarDeAdm = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         btnConsultarClientes = new javax.swing.JButton();
@@ -136,15 +244,15 @@ public class Principal extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         txtNombreUsuarioEntr = new javax.swing.JTextField();
-        txtContrasenaEntr = new javax.swing.JTextField();
         btnLoginEntrenador = new javax.swing.JButton();
+        passEntrenador = new javax.swing.JPasswordField();
         PanelAdministrador = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtNomUsuarioAdm = new javax.swing.JTextField();
-        txtContrasenaAdm = new javax.swing.JTextField();
-        txtLoginAdm = new javax.swing.JButton();
+        btnLoginAdm = new javax.swing.JButton();
+        passAdm = new javax.swing.JPasswordField();
         PanelInicioAdm = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         btnAddDeAdm = new javax.swing.JButton();
@@ -166,14 +274,653 @@ public class Principal extends javax.swing.JFrame {
         jLayeredPane1.setMaximumSize(new java.awt.Dimension(40000, 40000));
         jLayeredPane1.setPreferredSize(new java.awt.Dimension(794, 500));
 
+        PanelCambiarClaveEntr.setBackground(new java.awt.Color(102, 102, 255));
+
+        jLabel67.setFont(new java.awt.Font("Snap ITC", 0, 36)); // NOI18N
+        jLabel67.setText("Cambiar Clave");
+
+        jLabel68.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        jLabel68.setText("Nombre Usuario:");
+
+        jLabel69.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        jLabel69.setText("Password:");
+
+        btnCambiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/unidad-de-disco-icono-3963-48.png"))); // NOI18N
+
+        javax.swing.GroupLayout PanelCambiarClaveEntrLayout = new javax.swing.GroupLayout(PanelCambiarClaveEntr);
+        PanelCambiarClaveEntr.setLayout(PanelCambiarClaveEntrLayout);
+        PanelCambiarClaveEntrLayout.setHorizontalGroup(
+            PanelCambiarClaveEntrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelCambiarClaveEntrLayout.createSequentialGroup()
+                .addGroup(PanelCambiarClaveEntrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelCambiarClaveEntrLayout.createSequentialGroup()
+                        .addGap(246, 246, 246)
+                        .addComponent(jLabel67))
+                    .addGroup(PanelCambiarClaveEntrLayout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addGroup(PanelCambiarClaveEntrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel68)
+                            .addComponent(jLabel69))
+                        .addGap(18, 18, 18)
+                        .addGroup(PanelCambiarClaveEntrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtNomEntrClave)
+                            .addComponent(txtPasswordEntr, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))))
+                .addContainerGap(254, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCambiarClaveEntrLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnCambiar, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(364, 364, 364))
+        );
+        PanelCambiarClaveEntrLayout.setVerticalGroup(
+            PanelCambiarClaveEntrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelCambiarClaveEntrLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel67)
+                .addGap(90, 90, 90)
+                .addGroup(PanelCambiarClaveEntrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel68)
+                    .addComponent(txtNomEntrClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addGroup(PanelCambiarClaveEntrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel69)
+                    .addComponent(txtPasswordEntr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(65, 65, 65)
+                .addComponent(btnCambiar)
+                .addContainerGap(156, Short.MAX_VALUE))
+        );
+
+        PanelCambiarClaveCliente.setBackground(new java.awt.Color(51, 102, 255));
+
+        jLabel63.setFont(new java.awt.Font("Snap ITC", 0, 36)); // NOI18N
+        jLabel63.setText("Cambiar Clave");
+
+        jLabel64.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        jLabel64.setText("Nombre Usuario:");
+
+        jLabel65.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        jLabel65.setText("Password:");
+
+        btnCambiarClaveCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/unidad-de-disco-icono-3963-48.png"))); // NOI18N
+
+        javax.swing.GroupLayout PanelCambiarClaveClienteLayout = new javax.swing.GroupLayout(PanelCambiarClaveCliente);
+        PanelCambiarClaveCliente.setLayout(PanelCambiarClaveClienteLayout);
+        PanelCambiarClaveClienteLayout.setHorizontalGroup(
+            PanelCambiarClaveClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelCambiarClaveClienteLayout.createSequentialGroup()
+                .addGroup(PanelCambiarClaveClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelCambiarClaveClienteLayout.createSequentialGroup()
+                        .addGap(249, 249, 249)
+                        .addComponent(jLabel63))
+                    .addGroup(PanelCambiarClaveClienteLayout.createSequentialGroup()
+                        .addGap(95, 95, 95)
+                        .addGroup(PanelCambiarClaveClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel64)
+                            .addComponent(jLabel65))
+                        .addGap(18, 18, 18)
+                        .addGroup(PanelCambiarClaveClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtNomClienteClave)
+                            .addComponent(txtPasswordClienteClave, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)))
+                    .addGroup(PanelCambiarClaveClienteLayout.createSequentialGroup()
+                        .addGap(323, 323, 323)
+                        .addComponent(btnCambiarClaveCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(251, Short.MAX_VALUE))
+        );
+        PanelCambiarClaveClienteLayout.setVerticalGroup(
+            PanelCambiarClaveClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelCambiarClaveClienteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel63)
+                .addGap(70, 70, 70)
+                .addGroup(PanelCambiarClaveClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel64)
+                    .addComponent(txtNomClienteClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(66, 66, 66)
+                .addGroup(PanelCambiarClaveClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel65)
+                    .addComponent(txtPasswordClienteClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(54, 54, 54)
+                .addComponent(btnCambiarClaveCliente)
+                .addContainerGap(164, Short.MAX_VALUE))
+        );
+
+        PanelCrearEjer.setBackground(new java.awt.Color(102, 153, 255));
+
+        jLabel58.setFont(new java.awt.Font("Snap ITC", 0, 36)); // NOI18N
+        jLabel58.setText("Crear Ejercicio");
+
+        btnVolverAddEjer.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        btnVolverAddEjer.setText("Volver");
+        btnVolverAddEjer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverAddEjerActionPerformed(evt);
+            }
+        });
+
+        jLabel59.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        jLabel59.setText("Nombre:");
+
+        jLabel60.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        jLabel60.setText("Tipo Ejercicio:");
+
+        jLabel61.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        jLabel61.setText("Repeticiones:");
+
+        jLabel62.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        jLabel62.setText("Serie Ejercicio");
+
+        btnAddEjercicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/unidad-de-disco-icono-3963-48.png"))); // NOI18N
+        btnAddEjercicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddEjercicioActionPerformed(evt);
+            }
+        });
+
+        jScrollPane11.setViewportView(lstEjercicios);
+
+        javax.swing.GroupLayout PanelCrearEjerLayout = new javax.swing.GroupLayout(PanelCrearEjer);
+        PanelCrearEjer.setLayout(PanelCrearEjerLayout);
+        PanelCrearEjerLayout.setHorizontalGroup(
+            PanelCrearEjerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelCrearEjerLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(PanelCrearEjerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCrearEjerLayout.createSequentialGroup()
+                        .addComponent(jLabel58)
+                        .addGap(231, 231, 231))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCrearEjerLayout.createSequentialGroup()
+                        .addComponent(btnVolverAddEjer)
+                        .addGap(46, 46, 46))))
+            .addGroup(PanelCrearEjerLayout.createSequentialGroup()
+                .addGroup(PanelCrearEjerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelCrearEjerLayout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addGroup(PanelCrearEjerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel60)
+                            .addComponent(jLabel61)
+                            .addComponent(jLabel59)
+                            .addComponent(jLabel62))
+                        .addGap(18, 18, 18)
+                        .addGroup(PanelCrearEjerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtTipoEjercicio)
+                            .addComponent(txtRepeticiones)
+                            .addComponent(txtNombreEjercicio)
+                            .addComponent(txtSerierEjer, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)))
+                    .addGroup(PanelCrearEjerLayout.createSequentialGroup()
+                        .addGap(232, 232, 232)
+                        .addComponent(btnAddEjercicio, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(66, 66, 66)
+                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 68, Short.MAX_VALUE))
+        );
+        PanelCrearEjerLayout.setVerticalGroup(
+            PanelCrearEjerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelCrearEjerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel58)
+                .addGap(71, 71, 71)
+                .addGroup(PanelCrearEjerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelCrearEjerLayout.createSequentialGroup()
+                        .addGroup(PanelCrearEjerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel59)
+                            .addComponent(txtNombreEjercicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(PanelCrearEjerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel60)
+                            .addComponent(txtTipoEjercicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(PanelCrearEjerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel61)
+                            .addComponent(txtRepeticiones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(PanelCrearEjerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel62)
+                            .addComponent(txtSerierEjer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(47, 47, 47)
+                        .addComponent(btnAddEjercicio))
+                    .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addComponent(btnVolverAddEjer)
+                .addContainerGap())
+        );
+
+        PanelConsultarEjer.setBackground(new java.awt.Color(102, 153, 255));
+
+        jLabel57.setFont(new java.awt.Font("Snap ITC", 0, 36)); // NOI18N
+        jLabel57.setText("Consultar Ejercicio");
+
+        btnVolverEjer.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        btnVolverEjer.setText("Volver");
+        btnVolverEjer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverEjerActionPerformed(evt);
+            }
+        });
+
+        jScrollPane10.setViewportView(lstEjerciciosConsul);
+
+        javax.swing.GroupLayout PanelConsultarEjerLayout = new javax.swing.GroupLayout(PanelConsultarEjer);
+        PanelConsultarEjer.setLayout(PanelConsultarEjerLayout);
+        PanelConsultarEjerLayout.setHorizontalGroup(
+            PanelConsultarEjerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelConsultarEjerLayout.createSequentialGroup()
+                .addGap(195, 195, 195)
+                .addComponent(jLabel57)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelConsultarEjerLayout.createSequentialGroup()
+                .addContainerGap(135, Short.MAX_VALUE)
+                .addGroup(PanelConsultarEjerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelConsultarEjerLayout.createSequentialGroup()
+                        .addComponent(btnVolverEjer)
+                        .addGap(57, 57, 57))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelConsultarEjerLayout.createSequentialGroup()
+                        .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(97, 97, 97))))
+        );
+        PanelConsultarEjerLayout.setVerticalGroup(
+            PanelConsultarEjerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelConsultarEjerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel57)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(72, 72, 72)
+                .addComponent(btnVolverEjer)
+                .addContainerGap())
+        );
+
+        PanelEjercicio.setBackground(new java.awt.Color(51, 102, 255));
+
+        jLabel54.setFont(new java.awt.Font("Snap ITC", 0, 36)); // NOI18N
+        jLabel54.setText("Ejercicio");
+
+        btnConsultarEjer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/consultar.jpg"))); // NOI18N
+        btnConsultarEjer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarEjerActionPerformed(evt);
+            }
+        });
+
+        btnAddEjer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/Add.jpg"))); // NOI18N
+        btnAddEjer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddEjerActionPerformed(evt);
+            }
+        });
+
+        jLabel55.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        jLabel55.setText("Add Ejercicio");
+
+        jLabel56.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        jLabel56.setText("Consultar Ejercicio");
+
+        btnVolverEjercicio.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        btnVolverEjercicio.setText("Volver");
+        btnVolverEjercicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverEjercicioActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PanelEjercicioLayout = new javax.swing.GroupLayout(PanelEjercicio);
+        PanelEjercicio.setLayout(PanelEjercicioLayout);
+        PanelEjercicioLayout.setHorizontalGroup(
+            PanelEjercicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelEjercicioLayout.createSequentialGroup()
+                .addGap(293, 293, 293)
+                .addComponent(jLabel54)
+                .addContainerGap(317, Short.MAX_VALUE))
+            .addGroup(PanelEjercicioLayout.createSequentialGroup()
+                .addGap(92, 92, 92)
+                .addGroup(PanelEjercicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel56)
+                    .addComponent(btnConsultarEjer, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(PanelEjercicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelEjercicioLayout.createSequentialGroup()
+                        .addComponent(btnAddEjer, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(131, 131, 131))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelEjercicioLayout.createSequentialGroup()
+                        .addComponent(jLabel55)
+                        .addGap(150, 150, 150))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelEjercicioLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnVolverEjercicio)
+                .addGap(102, 102, 102))
+        );
+        PanelEjercicioLayout.setVerticalGroup(
+            PanelEjercicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelEjercicioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PanelEjercicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(PanelEjercicioLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel56)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnConsultarEjer, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelEjercicioLayout.createSequentialGroup()
+                        .addComponent(jLabel54)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                        .addComponent(jLabel55)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnAddEjer)))
+                .addGap(101, 101, 101)
+                .addComponent(btnVolverEjercicio)
+                .addGap(58, 58, 58))
+        );
+
+        PanelAddRutinas.setBackground(new java.awt.Color(102, 102, 255));
+
+        jLabel50.setFont(new java.awt.Font("Snap ITC", 0, 36)); // NOI18N
+        jLabel50.setText("Add Rutinas");
+
+        jScrollPane8.setViewportView(lstEjerciciosAddRut);
+
+        jScrollPane9.setViewportView(lstEjerciciosDiaRut);
+
+        btnAddEjerRutina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/Add.jpg"))); // NOI18N
+
+        btnAddRutina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/unidad-de-disco-icono-3963-48.png"))); // NOI18N
+
+        jLabel51.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        jLabel51.setText("Add Ejercicio");
+
+        jLabel52.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        jLabel52.setText("Add Rutina");
+
+        jLabel53.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        jLabel53.setText("Dia");
+
+        btnVolverAddRutEntr.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        btnVolverAddRutEntr.setText("Volver");
+        btnVolverAddRutEntr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverAddRutEntrActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PanelAddRutinasLayout = new javax.swing.GroupLayout(PanelAddRutinas);
+        PanelAddRutinas.setLayout(PanelAddRutinasLayout);
+        PanelAddRutinasLayout.setHorizontalGroup(
+            PanelAddRutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelAddRutinasLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(PanelAddRutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelAddRutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(PanelAddRutinasLayout.createSequentialGroup()
+                            .addGap(75, 75, 75)
+                            .addComponent(cmbDiaAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelAddRutinasLayout.createSequentialGroup()
+                            .addGap(89, 89, 89)
+                            .addComponent(btnAddEjerRutina, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(PanelAddRutinasLayout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(jLabel51))
+                    .addGroup(PanelAddRutinasLayout.createSequentialGroup()
+                        .addGap(122, 122, 122)
+                        .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(85, 85, 85))
+            .addGroup(PanelAddRutinasLayout.createSequentialGroup()
+                .addGap(259, 259, 259)
+                .addComponent(jLabel50)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelAddRutinasLayout.createSequentialGroup()
+                .addGroup(PanelAddRutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(PanelAddRutinasLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel52))
+                    .addGroup(PanelAddRutinasLayout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(btnVolverAddRutEntr)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAddRutina, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(165, 165, 165))
+        );
+        PanelAddRutinasLayout.setVerticalGroup(
+            PanelAddRutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelAddRutinasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel50)
+                .addGap(71, 71, 71)
+                .addGroup(PanelAddRutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(PanelAddRutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                        .addComponent(jScrollPane9))
+                    .addGroup(PanelAddRutinasLayout.createSequentialGroup()
+                        .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbDiaAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel51)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAddEjerRutina, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGroup(PanelAddRutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelAddRutinasLayout.createSequentialGroup()
+                        .addComponent(jLabel52)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAddRutina))
+                    .addComponent(btnVolverAddRutEntr, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(34, 34, 34))
+        );
+
+        PanelConsultarRutinasEntr.setBackground(new java.awt.Color(51, 51, 255));
+
+        jLabel49.setFont(new java.awt.Font("Snap ITC", 0, 36)); // NOI18N
+        jLabel49.setText("Consultar Rutinas");
+
+        jScrollPane7.setViewportView(lstConsultarRutinasEntr);
+
+        btnVolverConsultarRutEnt.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        btnVolverConsultarRutEnt.setText("Volver");
+        btnVolverConsultarRutEnt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverConsultarRutEntActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PanelConsultarRutinasEntrLayout = new javax.swing.GroupLayout(PanelConsultarRutinasEntr);
+        PanelConsultarRutinasEntr.setLayout(PanelConsultarRutinasEntrLayout);
+        PanelConsultarRutinasEntrLayout.setHorizontalGroup(
+            PanelConsultarRutinasEntrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelConsultarRutinasEntrLayout.createSequentialGroup()
+                .addGroup(PanelConsultarRutinasEntrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelConsultarRutinasEntrLayout.createSequentialGroup()
+                        .addGap(227, 227, 227)
+                        .addComponent(jLabel49))
+                    .addGroup(PanelConsultarRutinasEntrLayout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 693, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(45, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelConsultarRutinasEntrLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnVolverConsultarRutEnt)
+                .addGap(99, 99, 99))
+        );
+        PanelConsultarRutinasEntrLayout.setVerticalGroup(
+            PanelConsultarRutinasEntrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelConsultarRutinasEntrLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel49)
+                .addGap(48, 48, 48)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(btnVolverConsultarRutEnt)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        PanelPrincipalCliente.setBackground(new java.awt.Color(51, 102, 255));
+
+        jLabel44.setFont(new java.awt.Font("Snap ITC", 0, 36)); // NOI18N
+        jLabel44.setText("Cliente");
+
+        btnConsultarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/consultar.jpg"))); // NOI18N
+        btnConsultarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarClienteActionPerformed(evt);
+            }
+        });
+
+        btnCambiarContr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/contra.jpg"))); // NOI18N
+        btnCambiarContr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCambiarContrActionPerformed(evt);
+            }
+        });
+
+        jLabel45.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        jLabel45.setText("Consultar Rutina");
+
+        jLabel46.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        jLabel46.setText("Cambiar Contraseña");
+
+        btnSalirClient.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        btnSalirClient.setText("Salir");
+        btnSalirClient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirClientActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PanelPrincipalClienteLayout = new javax.swing.GroupLayout(PanelPrincipalCliente);
+        PanelPrincipalCliente.setLayout(PanelPrincipalClienteLayout);
+        PanelPrincipalClienteLayout.setHorizontalGroup(
+            PanelPrincipalClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelPrincipalClienteLayout.createSequentialGroup()
+                .addGap(315, 315, 315)
+                .addComponent(jLabel44)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelPrincipalClienteLayout.createSequentialGroup()
+                .addGroup(PanelPrincipalClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(PanelPrincipalClienteLayout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addComponent(jLabel45)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel46))
+                    .addGroup(PanelPrincipalClienteLayout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(btnConsultarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 312, Short.MAX_VALUE)
+                        .addComponent(btnCambiarContr, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(137, 137, 137))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelPrincipalClienteLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSalirClient)
+                .addGap(119, 119, 119))
+        );
+        PanelPrincipalClienteLayout.setVerticalGroup(
+            PanelPrincipalClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelPrincipalClienteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PanelPrincipalClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(PanelPrincipalClienteLayout.createSequentialGroup()
+                        .addComponent(jLabel45)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnConsultarCliente))
+                    .addGroup(PanelPrincipalClienteLayout.createSequentialGroup()
+                        .addComponent(jLabel44)
+                        .addGap(80, 80, 80)
+                        .addComponent(jLabel46)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCambiarContr, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                .addComponent(btnSalirClient)
+                .addGap(89, 89, 89))
+        );
+
+        PanelRutinas.setBackground(new java.awt.Color(102, 102, 255));
+
+        jLabel41.setFont(new java.awt.Font("Snap ITC", 0, 36)); // NOI18N
+        jLabel41.setText("Rutinas ");
+
+        btnConsultarRutinasEntre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/consultar.jpg"))); // NOI18N
+        btnConsultarRutinasEntre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarRutinasEntreActionPerformed(evt);
+            }
+        });
+
+        btnAddRutinasEntre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/Add.jpg"))); // NOI18N
+        btnAddRutinasEntre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddRutinasEntreActionPerformed(evt);
+            }
+        });
+
+        jLabel42.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        jLabel42.setText("Consultar Rutinas");
+
+        jLabel43.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        jLabel43.setText("Agregar Rutinas");
+
+        btnVolverRutinasEntre.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        btnVolverRutinasEntre.setText("Volver");
+        btnVolverRutinasEntre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverRutinasEntreActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PanelRutinasLayout = new javax.swing.GroupLayout(PanelRutinas);
+        PanelRutinas.setLayout(PanelRutinasLayout);
+        PanelRutinasLayout.setHorizontalGroup(
+            PanelRutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelRutinasLayout.createSequentialGroup()
+                .addGap(285, 285, 285)
+                .addComponent(jLabel41)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(PanelRutinasLayout.createSequentialGroup()
+                .addGap(96, 96, 96)
+                .addGroup(PanelRutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelRutinasLayout.createSequentialGroup()
+                        .addComponent(btnConsultarRutinasEntre, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 290, Short.MAX_VALUE)
+                        .addComponent(btnAddRutinasEntre, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(143, 143, 143))
+                    .addGroup(PanelRutinasLayout.createSequentialGroup()
+                        .addComponent(jLabel42)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel43)
+                        .addGap(175, 175, 175))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelRutinasLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnVolverRutinasEntre)
+                .addGap(102, 102, 102))
+        );
+        PanelRutinasLayout.setVerticalGroup(
+            PanelRutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelRutinasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel41)
+                .addGap(93, 93, 93)
+                .addGroup(PanelRutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel42)
+                    .addComponent(jLabel43))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(PanelRutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelRutinasLayout.createSequentialGroup()
+                        .addComponent(btnConsultarRutinasEntre)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
+                        .addComponent(btnVolverRutinasEntre)
+                        .addGap(65, 65, 65))
+                    .addGroup(PanelRutinasLayout.createSequentialGroup()
+                        .addComponent(btnAddRutinasEntre)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+
         PanelIniEntrenador.setBackground(new java.awt.Color(102, 102, 255));
 
         jLabel40.setFont(new java.awt.Font("Snap ITC", 0, 36)); // NOI18N
         jLabel40.setText("Entrenador");
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/rut.jpg"))); // NOI18N
-
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/ej.jpg"))); // NOI18N
+        btnEjerciciosEntrenador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/ej.jpg"))); // NOI18N
+        btnEjerciciosEntrenador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEjerciciosEntrenadorActionPerformed(evt);
+            }
+        });
 
         btnSalirEntrenador.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         btnSalirEntrenador.setText("Salir");
@@ -183,37 +930,78 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        btnRutinaEntrenador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/rut.jpg"))); // NOI18N
+        btnRutinaEntrenador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRutinaEntrenadorActionPerformed(evt);
+            }
+        });
+
+        jLabel47.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        jLabel47.setText("Rutina");
+
+        jLabel48.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        jLabel48.setText("Ejercicio");
+
+        btnCambiarClaveEntr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/contra.jpg"))); // NOI18N
+        btnCambiarClaveEntr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCambiarClaveEntrActionPerformed(evt);
+            }
+        });
+
+        jLabel66.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        jLabel66.setText("Cambiar Clave");
+
         javax.swing.GroupLayout PanelIniEntrenadorLayout = new javax.swing.GroupLayout(PanelIniEntrenador);
         PanelIniEntrenador.setLayout(PanelIniEntrenadorLayout);
         PanelIniEntrenadorLayout.setHorizontalGroup(
             PanelIniEntrenadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelIniEntrenadorLayout.createSequentialGroup()
-                .addGap(260, 260, 260)
-                .addComponent(jLabel40)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(PanelIniEntrenadorLayout.createSequentialGroup()
-                .addGap(129, 129, 129)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 256, Short.MAX_VALUE)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(147, 147, 147))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelIniEntrenadorLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSalirEntrenador)
                 .addGap(102, 102, 102))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelIniEntrenadorLayout.createSequentialGroup()
+                .addGroup(PanelIniEntrenadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelIniEntrenadorLayout.createSequentialGroup()
+                        .addGap(135, 135, 135)
+                        .addComponent(jLabel47)
+                        .addGap(150, 150, 150)
+                        .addComponent(jLabel66))
+                    .addGroup(PanelIniEntrenadorLayout.createSequentialGroup()
+                        .addGap(260, 260, 260)
+                        .addComponent(jLabel40))
+                    .addGroup(PanelIniEntrenadorLayout.createSequentialGroup()
+                        .addGap(95, 95, 95)
+                        .addComponent(btnRutinaEntrenador, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(76, 76, 76)
+                        .addComponent(btnCambiarClaveEntr, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addGroup(PanelIniEntrenadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnEjerciciosEntrenador, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelIniEntrenadorLayout.createSequentialGroup()
+                        .addComponent(jLabel48)
+                        .addGap(44, 44, 44)))
+                .addGap(104, 104, 104))
         );
         PanelIniEntrenadorLayout.setVerticalGroup(
             PanelIniEntrenadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelIniEntrenadorLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel40)
-                .addGap(108, 108, 108)
-                .addGroup(PanelIniEntrenadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
+                .addGap(93, 93, 93)
+                .addGroup(PanelIniEntrenadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel47)
+                    .addComponent(jLabel48)
+                    .addComponent(jLabel66))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(PanelIniEntrenadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnCambiarClaveEntr, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnEjerciciosEntrenador, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+                    .addComponent(btnRutinaEntrenador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
                 .addComponent(btnSalirEntrenador)
-                .addGap(67, 67, 67))
+                .addGap(72, 72, 72))
         );
 
         PanelConsultarEntrenadores.setBackground(new java.awt.Color(102, 102, 255));
@@ -256,7 +1044,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jLabel39)
                 .addGap(48, 48, 48)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addComponent(btnVolverConsultarEntr)
                 .addContainerGap())
         );
@@ -268,11 +1056,11 @@ public class Principal extends javax.swing.JFrame {
 
         jScrollPane5.setViewportView(lstRutinasAdm);
 
-        jButton3.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
-        jButton3.setText("Volver");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnVolverVonsultarRutinas.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        btnVolverVonsultarRutinas.setText("Volver");
+        btnVolverVonsultarRutinas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnVolverVonsultarRutinasActionPerformed(evt);
             }
         });
 
@@ -291,7 +1079,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(48, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelConsultarRutinasLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(btnVolverVonsultarRutinas)
                 .addGap(62, 62, 62))
         );
         PanelConsultarRutinasLayout.setVerticalGroup(
@@ -302,7 +1090,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(48, 48, 48)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(btnVolverVonsultarRutinas)
                 .addContainerGap())
         );
 
@@ -347,7 +1135,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addComponent(btnVolverConsultarClientes)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         PanelIniCliente.setBackground(new java.awt.Color(102, 102, 255));
@@ -358,7 +1146,7 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane3.setViewportView(lstEjerciciosDiaCliente);
 
         btnSalirCliente.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
-        btnSalirCliente.setText("Salir");
+        btnSalirCliente.setText("Volver");
         btnSalirCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirClienteActionPerformed(evt);
@@ -407,7 +1195,7 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(jLabel36)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmbDiaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(btnSalirCliente)
                 .addContainerGap())
         );
@@ -417,9 +1205,6 @@ public class Principal extends javax.swing.JFrame {
         jLabel27.setFont(new java.awt.Font("Snap ITC", 0, 36)); // NOI18N
         jLabel27.setText("Crear Cliente");
 
-        jLabel28.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
-        jLabel28.setText("Id:");
-
         jLabel29.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         jLabel29.setText("Nombre:");
 
@@ -427,7 +1212,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel30.setText("Genero:");
 
         jLabel31.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
-        jLabel31.setText("Edad:");
+        jLabel31.setText("Dia Nacimiento:");
 
         jLabel32.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         jLabel32.setText("Altura:");
@@ -437,18 +1222,12 @@ public class Principal extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(lstClientesCrear);
 
-        btnAddCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/unidad-de-disco-icono-3963-48.png"))); // NOI18N
+        btnAddCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/unidad-de-disco-icono-3963-48.png"))); // NOI18N
         btnAddCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddClienteActionPerformed(evt);
             }
         });
-
-        rbMasculino.setBackground(new java.awt.Color(102, 102, 255));
-        rbMasculino.setText("Masculino");
-
-        rbFemenino.setBackground(new java.awt.Color(102, 102, 255));
-        rbFemenino.setText("Femenino");
 
         btnVolverCrearCliente.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         btnVolverCrearCliente.setText("Volver");
@@ -461,28 +1240,33 @@ public class Principal extends javax.swing.JFrame {
         jLabel35.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         jLabel35.setText("Objetivo:");
 
+        jLabel25.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        jLabel25.setText("Mes Nacimiento:");
+
+        jLabel28.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        jLabel28.setText("Año Nacimiento:");
+
         javax.swing.GroupLayout PanelCrearClienteLayout = new javax.swing.GroupLayout(PanelCrearCliente);
         PanelCrearCliente.setLayout(PanelCrearClienteLayout);
         PanelCrearClienteLayout.setHorizontalGroup(
             PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelCrearClienteLayout.createSequentialGroup()
-                .addGroup(PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(PanelCrearClienteLayout.createSequentialGroup()
-                        .addGap(58, 58, 58)
+                        .addContainerGap(41, Short.MAX_VALUE)
                         .addGroup(PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel28)
+                            .addComponent(jLabel25)
                             .addComponent(jLabel31)
+                            .addComponent(jLabel30)
                             .addComponent(jLabel35)
-                            .addGroup(PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel30)
-                                .addGroup(PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel33)
-                                    .addComponent(jLabel32))))
-                        .addGap(10, 10, 10))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCrearClienteLayout.createSequentialGroup()
-                        .addContainerGap()
+                            .addComponent(jLabel28)
+                            .addComponent(jLabel33)
+                            .addComponent(jLabel32))
+                        .addGap(14, 14, 14))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelCrearClienteLayout.createSequentialGroup()
+                        .addGap(48, 48, 48)
                         .addComponent(jLabel29)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelCrearClienteLayout.createSequentialGroup()
                         .addGap(105, 105, 105)
@@ -497,62 +1281,63 @@ public class Principal extends javax.swing.JFrame {
                                 .addComponent(btnVolverCrearCliente))
                             .addGroup(PanelCrearClienteLayout.createSequentialGroup()
                                 .addGroup(PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(PanelCrearClienteLayout.createSequentialGroup()
-                                        .addComponent(rbMasculino)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                                        .addComponent(rbFemenino)
-                                        .addGap(61, 61, 61))
                                     .addGroup(PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtAlturaClienteAdd)
+                                        .addComponent(cmbGeneroCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(txtNombreClienteDeAdd)
-                                        .addComponent(txtIdClienteDeAdd)
-                                        .addComponent(txtEdadClienteAdd)
+                                        .addComponent(cmbObjetivoCrearCliente, 0, 165, Short.MAX_VALUE)
+                                        .addComponent(txtDiaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
                                         .addComponent(txtMasaClienteAdd)
-                                        .addComponent(txtAlturaClienteAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE))
-                                    .addComponent(cmbObjetivoCrearCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                                        .addComponent(txtMesNacimiento, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addGroup(PanelCrearClienteLayout.createSequentialGroup()
+                                        .addGap(4, 4, 4)
+                                        .addComponent(txtAnoNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(77, 77, 77))))
         );
         PanelCrearClienteLayout.setVerticalGroup(
             PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelCrearClienteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelCrearClienteLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel27)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelCrearClienteLayout.createSequentialGroup()
-                        .addGap(81, 81, 81)
+                        .addGap(1, 1, 1)
                         .addGroup(PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel28)
-                            .addComponent(txtIdClienteDeAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel29)
+                            .addComponent(txtNombreClienteDeAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtNombreClienteDeAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel29))
-                        .addGap(18, 18, 18)
-                        .addGroup(PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel35)
+                            .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cmbObjetivoCrearCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(13, 13, 13)
+                        .addGap(18, 18, 18)
                         .addGroup(PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel30)
-                            .addComponent(rbMasculino)
-                            .addComponent(rbFemenino))
-                        .addGap(31, 31, 31)
+                            .addComponent(cmbGeneroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel30))
+                        .addGap(18, 18, 18)
                         .addGroup(PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtEdadClienteAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDiaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel31))
                         .addGap(18, 18, 18)
                         .addGroup(PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtAlturaClienteAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel32))
+                            .addComponent(jLabel25)
+                            .addComponent(txtMesNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtMasaClienteAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel33))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                            .addComponent(jLabel28)
+                            .addComponent(txtAnoNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26)
+                        .addGroup(PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel33)
+                            .addComponent(txtMasaClienteAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel32)
+                            .addComponent(txtAlturaClienteAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnAddCliente)
                     .addComponent(btnVolverCrearCliente))
@@ -564,12 +1349,15 @@ public class Principal extends javax.swing.JFrame {
         jLabel24.setFont(new java.awt.Font("Snap ITC", 0, 36)); // NOI18N
         jLabel24.setText("Crear Entrenador");
 
-        jLabel25.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
-        jLabel25.setText("Id:");
-
+        jLabel26.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         jLabel26.setText("Nombre:");
 
-        btnCrearEntrenador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/unidad-de-disco-icono-3963-48.png"))); // NOI18N
+        btnCrearEntrenador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/unidad-de-disco-icono-3963-48.png"))); // NOI18N
+        btnCrearEntrenador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearEntrenadorActionPerformed(evt);
+            }
+        });
 
         jScrollPane1.setViewportView(lstEntrenadoresCrear);
 
@@ -594,17 +1382,14 @@ public class Principal extends javax.swing.JFrame {
                         .addGroup(PanelCrearEntrenadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PanelCrearEntrenadorLayout.createSequentialGroup()
                                 .addGap(176, 176, 176)
-                                .addComponent(btnCrearEntrenador, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(PanelCrearEntrenadorLayout.createSequentialGroup()
-                                .addGap(69, 69, 69)
-                                .addGroup(PanelCrearEntrenadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel26)
-                                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(PanelCrearEntrenadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtNombreEntrenadorCrear)
-                                    .addComponent(txtIdEntrenadorcrear, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE))))
-                        .addGap(69, 69, 69)
+                                .addComponent(btnCrearEntrenador, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(148, 148, 148))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCrearEntrenadorLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel26)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtNombreEntrenadorCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(53, 53, 53)))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(120, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCrearEntrenadorLayout.createSequentialGroup()
@@ -619,22 +1404,21 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(PanelCrearEntrenadorLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel24)
-                        .addGap(29, 29, 29)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(PanelCrearEntrenadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanelCrearEntrenadorLayout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(PanelCrearEntrenadorLayout.createSequentialGroup()
+                                .addGap(97, 97, 97)
+                                .addGroup(PanelCrearEntrenadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtNombreEntrenadorCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel26)))))
                     .addGroup(PanelCrearEntrenadorLayout.createSequentialGroup()
-                        .addGap(117, 117, 117)
-                        .addGroup(PanelCrearEntrenadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel25)
-                            .addComponent(txtIdEntrenadorcrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(35, 35, 35)
-                        .addGroup(PanelCrearEntrenadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel26)
-                            .addComponent(txtNombreEntrenadorCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(35, 35, 35)
+                        .addGap(227, 227, 227)
                         .addComponent(btnCrearEntrenador)))
                 .addGap(18, 18, 18)
                 .addComponent(btnVolverDeAddEntrenador)
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
 
         PanelAddDeAdm.setBackground(new java.awt.Color(102, 102, 255));
@@ -642,14 +1426,14 @@ public class Principal extends javax.swing.JFrame {
         jLabel17.setFont(new java.awt.Font("Snap ITC", 0, 36)); // NOI18N
         jLabel17.setText("Crear");
 
-        btnAddEntrenador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/CrearEntrenador.png"))); // NOI18N
+        btnAddEntrenador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/CrearEntrenador.png"))); // NOI18N
         btnAddEntrenador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddEntrenadorActionPerformed(evt);
             }
         });
 
-        btnCrearCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/crearUsuario.png"))); // NOI18N
+        btnCrearCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/crearUsuario.png"))); // NOI18N
         btnCrearCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCrearClienteActionPerformed(evt);
@@ -700,7 +1484,7 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(PanelAddDeAdmLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jLabel17)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
                 .addGroup(PanelAddDeAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
                     .addComponent(jLabel19))
@@ -724,10 +1508,10 @@ public class Principal extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         jLabel6.setText("Contraseña:");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/login.jpg"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnLoginUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/login.jpg"))); // NOI18N
+        btnLoginUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnLoginUsuarioActionPerformed(evt);
             }
         });
 
@@ -741,7 +1525,7 @@ public class Principal extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel6)
                         .addGap(18, 18, 18)
-                        .addComponent(txtContrasenaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(passCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(PanelUsuarioLayout.createSequentialGroup()
                             .addGap(274, 274, 274)
@@ -754,7 +1538,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(285, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelUsuarioLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnLoginUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(328, 328, 328))
         );
         PanelUsuarioLayout.setVerticalGroup(
@@ -768,11 +1552,11 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(txtNomUsuarioCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addGroup(PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtContrasenaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                    .addComponent(jLabel6)
+                    .addComponent(passCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(185, Short.MAX_VALUE))
+                .addComponent(btnLoginUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(192, Short.MAX_VALUE))
         );
 
         PanelConsultarDeAdm.setBackground(new java.awt.Color(102, 102, 255));
@@ -780,21 +1564,21 @@ public class Principal extends javax.swing.JFrame {
         jLabel20.setFont(new java.awt.Font("Snap ITC", 0, 36)); // NOI18N
         jLabel20.setText("Consultar");
 
-        btnConsultarClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/usu.png"))); // NOI18N
+        btnConsultarClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/usu.png"))); // NOI18N
         btnConsultarClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConsultarClientesActionPerformed(evt);
             }
         });
 
-        btnConsultarRutina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/ejer.jpg"))); // NOI18N
+        btnConsultarRutina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/ejer.jpg"))); // NOI18N
         btnConsultarRutina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConsultarRutinaActionPerformed(evt);
             }
         });
 
-        btnConsultarEntrenador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/CrearEntrenador.png"))); // NOI18N
+        btnConsultarEntrenador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/CrearEntrenador.png"))); // NOI18N
         btnConsultarEntrenador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConsultarEntrenadorActionPerformed(evt);
@@ -858,10 +1642,10 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jLabel21)
                     .addComponent(jLabel22))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PanelConsultarDeAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnConsultarClientes)
-                    .addComponent(btnConsultarRutina, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                .addGroup(PanelConsultarDeAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnConsultarClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnConsultarRutina, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
                 .addComponent(jLabel23)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnConsultarEntrenador, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -881,7 +1665,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Tempus Sans ITC", 1, 14)); // NOI18N
         jLabel9.setText("Contraseña:");
 
-        btnLoginEntrenador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/login.jpg"))); // NOI18N
+        btnLoginEntrenador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/login.jpg"))); // NOI18N
         btnLoginEntrenador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginEntrenadorActionPerformed(evt);
@@ -905,7 +1689,7 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(PanelEntrenadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtNombreUsuarioEntr, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
-                            .addComponent(txtContrasenaEntr))))
+                            .addComponent(passEntrenador))))
                 .addGap(240, 240, 240))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelEntrenadorLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -924,10 +1708,10 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(46, 46, 46)
                 .addGroup(PanelEntrenadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(txtContrasenaEntr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(passEntrenador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47)
                 .addComponent(btnLoginEntrenador, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(174, Short.MAX_VALUE))
+                .addContainerGap(181, Short.MAX_VALUE))
         );
 
         PanelAdministrador.setBackground(new java.awt.Color(102, 102, 255));
@@ -941,10 +1725,10 @@ public class Principal extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         jLabel3.setText("Contraseña:");
 
-        txtLoginAdm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/login.jpg"))); // NOI18N
-        txtLoginAdm.addActionListener(new java.awt.event.ActionListener() {
+        btnLoginAdm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/login.jpg"))); // NOI18N
+        btnLoginAdm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLoginAdmActionPerformed(evt);
+                btnLoginAdmActionPerformed(evt);
             }
         });
 
@@ -964,17 +1748,17 @@ public class Principal extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addGap(18, 18, 18)
                         .addGroup(PanelAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNomUsuarioAdm)
-                            .addComponent(txtContrasenaAdm, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)))
+                            .addComponent(txtNomUsuarioAdm, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
+                            .addComponent(passAdm)))
                     .addGroup(PanelAdministradorLayout.createSequentialGroup()
                         .addGap(331, 331, 331)
-                        .addComponent(txtLoginAdm, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnLoginAdm, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(291, Short.MAX_VALUE))
         );
         PanelAdministradorLayout.setVerticalGroup(
             PanelAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelAdministradorLayout.createSequentialGroup()
-                .addContainerGap(95, Short.MAX_VALUE)
+                .addContainerGap(102, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(65, 65, 65)
                 .addGroup(PanelAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -983,9 +1767,9 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addGroup(PanelAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtContrasenaAdm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(passAdm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
-                .addComponent(txtLoginAdm, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnLoginAdm, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(140, 140, 140))
         );
 
@@ -994,14 +1778,14 @@ public class Principal extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Snap ITC", 0, 36)); // NOI18N
         jLabel10.setText("Administrador");
 
-        btnAddDeAdm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/Add.jpg"))); // NOI18N
+        btnAddDeAdm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/Add.jpg"))); // NOI18N
         btnAddDeAdm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddDeAdmActionPerformed(evt);
             }
         });
 
-        bntConsultarDeAdm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/consultar.jpg"))); // NOI18N
+        bntConsultarDeAdm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/consultar.jpg"))); // NOI18N
         bntConsultarDeAdm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bntConsultarDeAdmActionPerformed(evt);
@@ -1062,26 +1846,26 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(btnAddDeAdm))
                 .addGap(46, 46, 46)
                 .addComponent(btnSalirAdministrador)
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
 
         PanelPrincipal.setBackground(new java.awt.Color(102, 102, 255));
 
-        btnIngresarAdm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/Adm.png"))); // NOI18N
+        btnIngresarAdm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/Adm.png"))); // NOI18N
         btnIngresarAdm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIngresarAdmActionPerformed(evt);
             }
         });
 
-        btnIngresarUsu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/usu.png"))); // NOI18N
+        btnIngresarUsu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/usu.png"))); // NOI18N
         btnIngresarUsu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIngresarUsuActionPerformed(evt);
             }
         });
 
-        btnIngresarEntr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/entr.jpg"))); // NOI18N
+        btnIngresarEntr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/entr.jpg"))); // NOI18N
         btnIngresarEntr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIngresarEntrActionPerformed(evt);
@@ -1143,7 +1927,7 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(btnIngresarUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnIngresarAdm, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnIngresarEntr, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addContainerGap(153, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
@@ -1177,10 +1961,30 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(PanelConsultarEntrenadores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(PanelIniEntrenador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(PanelRutinas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(PanelPrincipalCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(PanelConsultarRutinasEntr, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(PanelAddRutinas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(PanelEjercicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(PanelConsultarEjer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(PanelCrearEjer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(PanelCambiarClaveCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(PanelCambiarClaveEntr, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                .addComponent(PanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(PanelAdministrador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1207,7 +2011,34 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(PanelConsultarEntrenadores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(PanelIniEntrenador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(PanelRutinas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(PanelPrincipalCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(PanelConsultarRutinasEntr, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(PanelAddRutinas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(PanelEjercicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(PanelConsultarEjer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(PanelCrearEjer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(PanelCambiarClaveCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(PanelCambiarClaveEntr, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+        jLayeredPane1.setLayer(PanelCambiarClaveEntr, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(PanelCambiarClaveCliente, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(PanelCrearEjer, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(PanelConsultarEjer, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(PanelEjercicio, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(PanelAddRutinas, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(PanelConsultarRutinasEntr, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(PanelPrincipalCliente, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(PanelRutinas, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(PanelIniEntrenador, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(PanelConsultarEntrenadores, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(PanelConsultarRutinas, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -1239,34 +2070,66 @@ public class Principal extends javax.swing.JFrame {
         PanelCrearEntrenador.setVisible(false);
         PanelCrearCliente.setVisible(false);
         PanelIniCliente.setVisible(false);
+        PanelPrincipalCliente.setVisible(false);
         PanelConsultarClientes.setVisible(false);
         PanelConsultarRutinas.setVisible(false);
         PanelConsultarEntrenadores.setVisible(false);
         PanelIniEntrenador.setVisible(false);
+        PanelRutinas.setVisible(false);
+        PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
     }//GEN-LAST:event_btnIngresarAdmActionPerformed
 
-    private void txtLoginAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginAdmActionPerformed
-        PanelAdministrador.setVisible(false);
-        PanelEntrenador.setVisible(false);
-        PanelPrincipal.setVisible(false);
-        PanelUsuario.setVisible(false);
-        PanelAddDeAdm.setVisible(false);
-        PanelConsultarDeAdm.setVisible(false);
-        PanelInicioAdm.setVisible(true);
-        PanelCrearEntrenador.setVisible(false);
-        PanelCrearCliente.setVisible(false);
-        PanelIniCliente.setVisible(false);
-        PanelConsultarClientes.setVisible(false);
-        PanelConsultarRutinas.setVisible(false);
-        PanelConsultarEntrenadores.setVisible(false);
-        PanelIniEntrenador.setVisible(false);
-    }//GEN-LAST:event_txtLoginAdmActionPerformed
+    private void btnLoginAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginAdmActionPerformed
+        String nombreAdm=txtNomUsuarioAdm.getText();
+        String passwordAdm=passAdm.getText();
+        if(userCtrl.validarUser(nombreAdm, passwordAdm,1)){
+                PanelAdministrador.setVisible(false);
+                PanelEntrenador.setVisible(false);
+                PanelPrincipal.setVisible(false);
+                PanelUsuario.setVisible(false);
+                PanelPrincipalCliente.setVisible(false);
+                PanelAddDeAdm.setVisible(false);
+                PanelConsultarDeAdm.setVisible(false);
+                PanelInicioAdm.setVisible(true);
+                PanelCrearEntrenador.setVisible(false);
+                PanelCrearCliente.setVisible(false);
+                PanelIniCliente.setVisible(false);
+                PanelConsultarClientes.setVisible(false);
+                PanelConsultarRutinas.setVisible(false);
+                PanelConsultarEntrenadores.setVisible(false);
+                PanelIniEntrenador.setVisible(false);
+                PanelRutinas.setVisible(false);
+                PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
+        }else{
+            JOptionPane.showMessageDialog(this,"Datos Incorrectos");
+        }
+    }//GEN-LAST:event_btnLoginAdmActionPerformed
 
     private void btnIngresarUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarUsuActionPerformed
         PanelAdministrador.setVisible(false);
         PanelEntrenador.setVisible(false);
+        PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
         PanelPrincipal.setVisible(false);
         PanelUsuario.setVisible(true);
+        PanelPrincipalCliente.setVisible(false);
         PanelAddDeAdm.setVisible(false);
         PanelConsultarDeAdm.setVisible(false);
         PanelInicioAdm.setVisible(false);
@@ -1277,13 +2140,22 @@ public class Principal extends javax.swing.JFrame {
         PanelConsultarRutinas.setVisible(false);
         PanelConsultarEntrenadores.setVisible(false);
         PanelIniEntrenador.setVisible(false);
+        PanelRutinas.setVisible(false);
     }//GEN-LAST:event_btnIngresarUsuActionPerformed
 
     private void btnIngresarEntrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarEntrActionPerformed
         PanelAdministrador.setVisible(false);
         PanelEntrenador.setVisible(true);
         PanelPrincipal.setVisible(false);
+        PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
         PanelUsuario.setVisible(false);
+        PanelPrincipalCliente.setVisible(false);
         PanelAddDeAdm.setVisible(false);
         PanelConsultarDeAdm.setVisible(false);
         PanelInicioAdm.setVisible(false);
@@ -1294,6 +2166,7 @@ public class Principal extends javax.swing.JFrame {
         PanelConsultarRutinas.setVisible(false);
         PanelConsultarEntrenadores.setVisible(false);
         PanelIniEntrenador.setVisible(false);
+        PanelRutinas.setVisible(false);
     }//GEN-LAST:event_btnIngresarEntrActionPerformed
 
     private void btnAddDeAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDeAdmActionPerformed
@@ -1301,6 +2174,14 @@ public class Principal extends javax.swing.JFrame {
         PanelEntrenador.setVisible(false);
         PanelPrincipal.setVisible(false);
         PanelUsuario.setVisible(false);
+        PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
+        PanelPrincipalCliente.setVisible(false);
         PanelAddDeAdm.setVisible(true);
         PanelConsultarDeAdm.setVisible(false);
         PanelInicioAdm.setVisible(false);
@@ -1311,6 +2192,7 @@ public class Principal extends javax.swing.JFrame {
         PanelConsultarRutinas.setVisible(false);
         PanelConsultarEntrenadores.setVisible(false);
         PanelIniEntrenador.setVisible(false);
+        PanelRutinas.setVisible(false);
     }//GEN-LAST:event_btnAddDeAdmActionPerformed
 
     private void bntConsultarDeAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntConsultarDeAdmActionPerformed
@@ -1318,7 +2200,15 @@ public class Principal extends javax.swing.JFrame {
         PanelEntrenador.setVisible(false);
         PanelPrincipal.setVisible(false);
         PanelUsuario.setVisible(false);
+        PanelPrincipalCliente.setVisible(false);
         PanelAddDeAdm.setVisible(false);
+        PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
         PanelConsultarDeAdm.setVisible(true);
         PanelInicioAdm.setVisible(false);
         PanelCrearEntrenador.setVisible(false);
@@ -1328,6 +2218,7 @@ public class Principal extends javax.swing.JFrame {
         PanelConsultarRutinas.setVisible(false);
         PanelConsultarEntrenadores.setVisible(false);
         PanelIniEntrenador.setVisible(false);
+        PanelRutinas.setVisible(false);
     }//GEN-LAST:event_bntConsultarDeAdmActionPerformed
 
     private void btnVolverDeConsultarAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverDeConsultarAdmActionPerformed
@@ -1336,6 +2227,14 @@ public class Principal extends javax.swing.JFrame {
         PanelPrincipal.setVisible(false);
         PanelUsuario.setVisible(false);
         PanelAddDeAdm.setVisible(false);
+        PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
+        PanelPrincipalCliente.setVisible(false);
         PanelConsultarDeAdm.setVisible(false);
         PanelInicioAdm.setVisible(true);
         PanelCrearEntrenador.setVisible(false);
@@ -1345,16 +2244,25 @@ public class Principal extends javax.swing.JFrame {
         PanelConsultarRutinas.setVisible(false);
         PanelConsultarEntrenadores.setVisible(false);
         PanelIniEntrenador.setVisible(false);
+        PanelRutinas.setVisible(false);
     }//GEN-LAST:event_btnVolverDeConsultarAdmActionPerformed
 
     private void btnVolverDeCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverDeCrearActionPerformed
         PanelAdministrador.setVisible(false);
         PanelEntrenador.setVisible(false);
         PanelPrincipal.setVisible(false);
+        PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
         PanelUsuario.setVisible(false);
         PanelAddDeAdm.setVisible(false);
         PanelConsultarDeAdm.setVisible(false);
         PanelInicioAdm.setVisible(true);
+        PanelPrincipalCliente.setVisible(false);
         PanelCrearEntrenador.setVisible(false);
         PanelCrearCliente.setVisible(false);
         PanelIniCliente.setVisible(false);
@@ -1362,11 +2270,20 @@ public class Principal extends javax.swing.JFrame {
         PanelConsultarRutinas.setVisible(false);
         PanelConsultarEntrenadores.setVisible(false);
         PanelIniEntrenador.setVisible(false);
+        PanelRutinas.setVisible(false);
     }//GEN-LAST:event_btnVolverDeCrearActionPerformed
 
     private void btnAddEntrenadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEntrenadorActionPerformed
         PanelAdministrador.setVisible(false);
         PanelEntrenador.setVisible(false);
+        PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
+        PanelPrincipalCliente.setVisible(false);
         PanelPrincipal.setVisible(false);
         PanelUsuario.setVisible(false);
         PanelAddDeAdm.setVisible(false);
@@ -1379,12 +2296,20 @@ public class Principal extends javax.swing.JFrame {
         PanelConsultarRutinas.setVisible(false);
         PanelConsultarEntrenadores.setVisible(false);
         PanelIniEntrenador.setVisible(false);
+        PanelRutinas.setVisible(false);
     }//GEN-LAST:event_btnAddEntrenadorActionPerformed
 
     private void btnVolverCrearClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverCrearClienteActionPerformed
         PanelAdministrador.setVisible(false);
         PanelEntrenador.setVisible(false);
         PanelPrincipal.setVisible(false);
+        PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
         PanelUsuario.setVisible(false);
         PanelAddDeAdm.setVisible(true);
         PanelConsultarDeAdm.setVisible(false);
@@ -1396,14 +2321,24 @@ public class Principal extends javax.swing.JFrame {
         PanelConsultarRutinas.setVisible(false);
         PanelConsultarEntrenadores.setVisible(false);
         PanelIniEntrenador.setVisible(false);
+        PanelRutinas.setVisible(false);
+        PanelPrincipalCliente.setVisible(false);
     }//GEN-LAST:event_btnVolverCrearClienteActionPerformed
 
     private void btnVolverDeAddEntrenadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverDeAddEntrenadorActionPerformed
         PanelAdministrador.setVisible(false);
         PanelEntrenador.setVisible(false);
         PanelPrincipal.setVisible(false);
+        PanelPrincipalCliente.setVisible(false);
         PanelUsuario.setVisible(false);
         PanelAddDeAdm.setVisible(true);
+        PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
         PanelConsultarDeAdm.setVisible(false);
         PanelInicioAdm.setVisible(false);
         PanelCrearEntrenador.setVisible(false);
@@ -1413,17 +2348,50 @@ public class Principal extends javax.swing.JFrame {
         PanelConsultarRutinas.setVisible(false);
         PanelConsultarEntrenadores.setVisible(false);
         PanelIniEntrenador.setVisible(false);
+        PanelRutinas.setVisible(false);
     }//GEN-LAST:event_btnVolverDeAddEntrenadorActionPerformed
 
     private void btnAddClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddClienteActionPerformed
-      
+        String nombre = txtNombreClienteDeAdd.getText();
+        String dia =txtDiaNacimiento.getText(), mes= txtMesNacimiento.getText(),year=txtAnoNacimiento.getText();
+        String masa = txtMasaClienteAdd.getText();
+        String altura = txtAlturaClienteAdd.getText();
+        String objetivo = cmbObjetivoCrearCliente.getSelectedItem().toString();
+        String genero = cmbGeneroCliente.getSelectedItem().toString();
+        String fecha = year+"-"+mes+"-"+dia;
+        String gen="";
+        if(genero.equals("Masculino")){
+            gen="M";
+        }else if(genero.equals("Femenino")){
+            gen="F";
+        }
+        txtNombreClienteDeAdd.setText("");
+        txtDiaNacimiento.setText("");
+        txtMesNacimiento.setText("");
+        txtAnoNacimiento.setText("");
+        txtMasaClienteAdd.setText("");
+        txtAlturaClienteAdd.setText("");
+        cmbGeneroCliente.setSelectedItem("Seleccione");
+        cmbObjetivoCrearCliente.setSelectedItem("Seleccione");
+        clienteCtrl.insertarCliente(nombre, altura, masa, fecha, gen ,objetivo);
+        lstClientesCrear.setListData(clienteCtrl.consultarClientes().toArray());
+        JOptionPane.showMessageDialog(this,"su nombre es:"+nombre+" su contraseña es:0000" );
     }//GEN-LAST:event_btnAddClienteActionPerformed
 
     private void btnCrearClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearClienteActionPerformed
         PanelAdministrador.setVisible(false);
         PanelEntrenador.setVisible(false);
+        PanelPrincipalCliente.setVisible(false);
         PanelPrincipal.setVisible(false);
         PanelUsuario.setVisible(false);
+        PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
+        PanelRutinas.setVisible(false);
         PanelAddDeAdm.setVisible(false);
         PanelConsultarDeAdm.setVisible(false);
         PanelInicioAdm.setVisible(false);
@@ -1437,28 +2405,53 @@ public class Principal extends javax.swing.JFrame {
         PanelIniEntrenador.setVisible(false);
     }//GEN-LAST:event_btnCrearClienteActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        PanelAdministrador.setVisible(false);
-        PanelEntrenador.setVisible(false);
-        PanelPrincipal.setVisible(false);
-        PanelUsuario.setVisible(false);
-        PanelAddDeAdm.setVisible(false);
-        PanelConsultarDeAdm.setVisible(false);
-        PanelInicioAdm.setVisible(false);
-        PanelCrearEntrenador.setVisible(false);
-        PanelCrearCliente.setVisible(false);
-        PanelIniCliente.setVisible(true);
-        PanelConsultarClientes.setVisible(false);
-        PanelConsultarRutinas.setVisible(false);
-        PanelConsultarEntrenadores.setVisible(false);
-        PanelIniEntrenador.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnLoginUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginUsuarioActionPerformed
+        String nombre=txtNomUsuarioCliente.getText();
+        String password=passCliente.getText();
+        if(userCtrl.validarUser(nombre, password,3)){
+                PanelAdministrador.setVisible(false);
+                PanelEntrenador.setVisible(false);
+                PanelCambiarClaveCliente.setVisible(false);
+            PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
+                PanelPrincipalCliente.setVisible(false);
+                PanelPrincipal.setVisible(false);
+                PanelPrincipalCliente.setVisible(true);
+                PanelUsuario.setVisible(false);
+                PanelRutinas.setVisible(false);
+                PanelAddDeAdm.setVisible(false);
+                PanelConsultarDeAdm.setVisible(false);
+                PanelInicioAdm.setVisible(false);
+                PanelCrearEntrenador.setVisible(false);
+                PanelCrearCliente.setVisible(false);
+                PanelIniCliente.setVisible(false);
+                PanelConsultarClientes.setVisible(false);
+                PanelConsultarRutinas.setVisible(false);
+                PanelConsultarEntrenadores.setVisible(false);
+                PanelIniEntrenador.setVisible(false);
+        }else{
+            JOptionPane.showMessageDialog(this, "Datos Incorrectos");
+        }
+    }//GEN-LAST:event_btnLoginUsuarioActionPerformed
 
     private void btnSalirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirClienteActionPerformed
         PanelAdministrador.setVisible(false);
         PanelEntrenador.setVisible(false);
-        PanelPrincipal.setVisible(true);
+        PanelPrincipal.setVisible(false);
         PanelUsuario.setVisible(false);
+        PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
+        PanelPrincipalCliente.setVisible(true);
+        PanelRutinas.setVisible(false);
         PanelAddDeAdm.setVisible(false);
         PanelConsultarDeAdm.setVisible(false);
         PanelInicioAdm.setVisible(false);
@@ -1476,9 +2469,17 @@ public class Principal extends javax.swing.JFrame {
         PanelEntrenador.setVisible(false);
         PanelPrincipal.setVisible(true);
         PanelUsuario.setVisible(false);
-        PanelAddDeAdm.setVisible(false);
+        PanelAddDeAdm.setVisible(false);PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
         PanelConsultarDeAdm.setVisible(false);
         PanelInicioAdm.setVisible(false);
+        PanelRutinas.setVisible(false);
+        PanelPrincipalCliente.setVisible(false);
         PanelCrearEntrenador.setVisible(false);
         PanelCrearCliente.setVisible(false);
         PanelIniCliente.setVisible(false);
@@ -1491,8 +2492,17 @@ public class Principal extends javax.swing.JFrame {
     private void btnVolverConsultarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverConsultarClientesActionPerformed
         PanelAdministrador.setVisible(false);
         PanelEntrenador.setVisible(false);
+        PanelPrincipalCliente.setVisible(false);
         PanelPrincipal.setVisible(false);
         PanelUsuario.setVisible(false);
+        PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
+        PanelRutinas.setVisible(false);
         PanelAddDeAdm.setVisible(false);
         PanelConsultarClientes.setVisible(false);
         PanelConsultarDeAdm.setVisible(true);
@@ -1510,6 +2520,15 @@ public class Principal extends javax.swing.JFrame {
         PanelEntrenador.setVisible(false);
         PanelPrincipal.setVisible(false);
         PanelUsuario.setVisible(false);
+        PanelRutinas.setVisible(false);
+        PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
+        PanelPrincipalCliente.setVisible(false);
         PanelAddDeAdm.setVisible(false);
         PanelConsultarClientes.setVisible(true);
         PanelConsultarDeAdm.setVisible(false);
@@ -1525,8 +2544,17 @@ public class Principal extends javax.swing.JFrame {
     private void btnConsultarRutinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarRutinaActionPerformed
         PanelAdministrador.setVisible(false);
         PanelEntrenador.setVisible(false);
+        PanelPrincipalCliente.setVisible(false);
         PanelPrincipal.setVisible(false);
+        PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
         PanelUsuario.setVisible(false);
+        PanelRutinas.setVisible(false);
         PanelAddDeAdm.setVisible(false);
         PanelConsultarClientes.setVisible(false);
         PanelConsultarDeAdm.setVisible(false);
@@ -1539,28 +2567,46 @@ public class Principal extends javax.swing.JFrame {
         PanelIniEntrenador.setVisible(false);
     }//GEN-LAST:event_btnConsultarRutinaActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnVolverVonsultarRutinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverVonsultarRutinasActionPerformed
         PanelAdministrador.setVisible(false);
         PanelEntrenador.setVisible(false);
         PanelPrincipal.setVisible(false);
         PanelUsuario.setVisible(false);
+        PanelRutinas.setVisible(false);
+        PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
         PanelAddDeAdm.setVisible(false);
         PanelConsultarClientes.setVisible(false);
         PanelConsultarDeAdm.setVisible(true);
         PanelInicioAdm.setVisible(false);
+        PanelPrincipalCliente.setVisible(false);
         PanelCrearEntrenador.setVisible(false);
         PanelCrearCliente.setVisible(false);
         PanelIniCliente.setVisible(false);
         PanelConsultarRutinas.setVisible(false);
         PanelConsultarEntrenadores.setVisible(false);
         PanelIniEntrenador.setVisible(false);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnVolverVonsultarRutinasActionPerformed
 
     private void btnVolverConsultarEntrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverConsultarEntrActionPerformed
         PanelAdministrador.setVisible(false);
         PanelEntrenador.setVisible(false);
         PanelPrincipal.setVisible(false);
+        PanelPrincipalCliente.setVisible(false);
         PanelUsuario.setVisible(false);
+        PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
+        PanelRutinas.setVisible(false);
         PanelAddDeAdm.setVisible(false);
         PanelConsultarClientes.setVisible(false);
         PanelConsultarDeAdm.setVisible(true);
@@ -1578,11 +2624,20 @@ public class Principal extends javax.swing.JFrame {
         PanelEntrenador.setVisible(false);
         PanelPrincipal.setVisible(false);
         PanelUsuario.setVisible(false);
+        PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
+        PanelRutinas.setVisible(false);
         PanelAddDeAdm.setVisible(false);
         PanelConsultarClientes.setVisible(false);
         PanelConsultarDeAdm.setVisible(false);
         PanelInicioAdm.setVisible(false);
         PanelCrearEntrenador.setVisible(false);
+        PanelPrincipalCliente.setVisible(false);
         PanelCrearCliente.setVisible(false);
         PanelIniCliente.setVisible(false);
         PanelConsultarRutinas.setVisible(false);
@@ -1591,20 +2646,35 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConsultarEntrenadorActionPerformed
 
     private void btnLoginEntrenadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginEntrenadorActionPerformed
-        PanelAdministrador.setVisible(false);
-        PanelEntrenador.setVisible(false);
-        PanelPrincipal.setVisible(false);
-        PanelUsuario.setVisible(false);
-        PanelAddDeAdm.setVisible(false);
-        PanelConsultarClientes.setVisible(false);
-        PanelConsultarDeAdm.setVisible(false);
-        PanelInicioAdm.setVisible(false);
-        PanelCrearEntrenador.setVisible(false);
-        PanelCrearCliente.setVisible(false);
-        PanelIniCliente.setVisible(false);
-        PanelConsultarRutinas.setVisible(false);
-        PanelConsultarEntrenadores.setVisible(false);
-        PanelIniEntrenador.setVisible(true);
+        String nombre=txtNombreUsuarioEntr.getText();
+        String password=passEntrenador.getText();
+        if(userCtrl.validarUser(nombre, password,2)){
+                PanelAdministrador.setVisible(false);
+                PanelEntrenador.setVisible(false);
+                PanelPrincipalCliente.setVisible(false);
+                PanelPrincipal.setVisible(false);
+                PanelUsuario.setVisible(false);
+                PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
+                PanelRutinas.setVisible(false);
+                PanelAddDeAdm.setVisible(false);
+                PanelConsultarClientes.setVisible(false);
+                PanelConsultarDeAdm.setVisible(false);
+                PanelInicioAdm.setVisible(false);
+                PanelCrearEntrenador.setVisible(false);
+                PanelCrearCliente.setVisible(false);
+                PanelIniCliente.setVisible(false);
+                PanelConsultarRutinas.setVisible(false);
+                PanelConsultarEntrenadores.setVisible(false);
+                PanelIniEntrenador.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(this, "Datos Incorrectos");
+        }
     }//GEN-LAST:event_btnLoginEntrenadorActionPerformed
 
     private void btnSalirEntrenadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirEntrenadorActionPerformed
@@ -1612,6 +2682,41 @@ public class Principal extends javax.swing.JFrame {
         PanelEntrenador.setVisible(false);
         PanelPrincipal.setVisible(true);
         PanelUsuario.setVisible(false);
+        PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
+        PanelRutinas.setVisible(false);
+        PanelAddDeAdm.setVisible(false);
+        PanelConsultarClientes.setVisible(false);
+        PanelConsultarDeAdm.setVisible(false);
+        PanelInicioAdm.setVisible(false);
+        PanelPrincipalCliente.setVisible(false);
+        PanelCrearEntrenador.setVisible(false);
+        PanelCrearCliente.setVisible(false);
+        PanelIniCliente.setVisible(false);
+        PanelConsultarRutinas.setVisible(false);
+        PanelConsultarEntrenadores.setVisible(false);
+        PanelIniEntrenador.setVisible(false);
+    }//GEN-LAST:event_btnSalirEntrenadorActionPerformed
+
+    private void btnRutinaEntrenadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRutinaEntrenadorActionPerformed
+        PanelAdministrador.setVisible(false);
+        PanelEntrenador.setVisible(false);
+        PanelPrincipal.setVisible(false);
+        PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
+        PanelPrincipalCliente.setVisible(false);
+        PanelUsuario.setVisible(false);
+        PanelRutinas.setVisible(true);
         PanelAddDeAdm.setVisible(false);
         PanelConsultarClientes.setVisible(false);
         PanelConsultarDeAdm.setVisible(false);
@@ -1622,7 +2727,419 @@ public class Principal extends javax.swing.JFrame {
         PanelConsultarRutinas.setVisible(false);
         PanelConsultarEntrenadores.setVisible(false);
         PanelIniEntrenador.setVisible(false);
-    }//GEN-LAST:event_btnSalirEntrenadorActionPerformed
+    }//GEN-LAST:event_btnRutinaEntrenadorActionPerformed
+
+    private void btnVolverRutinasEntreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverRutinasEntreActionPerformed
+        PanelAdministrador.setVisible(false);
+        PanelEntrenador.setVisible(false);
+        PanelPrincipal.setVisible(false);
+        PanelUsuario.setVisible(false);
+        PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
+        PanelRutinas.setVisible(false);
+        PanelAddDeAdm.setVisible(false);
+        PanelConsultarClientes.setVisible(false);
+        PanelConsultarDeAdm.setVisible(false);
+        PanelInicioAdm.setVisible(false);
+        PanelCrearEntrenador.setVisible(false);
+        PanelCrearCliente.setVisible(false);
+        PanelIniCliente.setVisible(false);
+        PanelPrincipalCliente.setVisible(false);
+        PanelConsultarRutinas.setVisible(false);
+        PanelConsultarEntrenadores.setVisible(false);
+        PanelIniEntrenador.setVisible(true);
+    }//GEN-LAST:event_btnVolverRutinasEntreActionPerformed
+
+    private void btnCrearEntrenadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearEntrenadorActionPerformed
+        String nombre = txtNombreEntrenadorCrear.getText();
+        entrenadorCtrl.insertarEntrenador(nombre);
+        entrenadorCtrl.cargarEntrenadores();
+        lstEntrenadoresCrear.setListData(entrenadorCtrl.getEntrenadores().toArray());
+        txtNombreEntrenadorCrear.setText("");
+         JOptionPane.showMessageDialog(this, "su nombre es:"+nombre+" su password es:0000");
+    }//GEN-LAST:event_btnCrearEntrenadorActionPerformed
+
+    private void btnConsultarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarClienteActionPerformed
+        PanelAdministrador.setVisible(false);
+        PanelEntrenador.setVisible(false);
+        PanelPrincipal.setVisible(false);
+        PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
+        PanelUsuario.setVisible(false);
+        PanelRutinas.setVisible(false);
+        PanelAddDeAdm.setVisible(false);
+        PanelConsultarClientes.setVisible(false);
+        PanelConsultarDeAdm.setVisible(false);
+        PanelInicioAdm.setVisible(false);
+        PanelCrearEntrenador.setVisible(false);
+        PanelCrearCliente.setVisible(false);
+        PanelIniCliente.setVisible(true);
+        PanelPrincipalCliente.setVisible(false);
+        PanelConsultarRutinas.setVisible(false);
+        PanelConsultarEntrenadores.setVisible(false);
+        PanelIniEntrenador.setVisible(false);
+    }//GEN-LAST:event_btnConsultarClienteActionPerformed
+
+    private void btnSalirClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirClientActionPerformed
+        PanelAdministrador.setVisible(false);
+        PanelEntrenador.setVisible(false);
+        PanelPrincipal.setVisible(true);
+        PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
+        PanelUsuario.setVisible(false);
+        PanelPrincipalCliente.setVisible(false);
+        PanelRutinas.setVisible(false);
+        PanelAddDeAdm.setVisible(false);
+        PanelConsultarDeAdm.setVisible(false);
+        PanelInicioAdm.setVisible(false);
+        PanelCrearEntrenador.setVisible(false);
+        PanelCrearCliente.setVisible(false);
+        PanelIniCliente.setVisible(false);
+        PanelConsultarClientes.setVisible(false);
+        PanelConsultarRutinas.setVisible(false);
+        PanelConsultarEntrenadores.setVisible(false);
+        PanelIniEntrenador.setVisible(false);
+    }//GEN-LAST:event_btnSalirClientActionPerformed
+
+    private void btnCambiarContrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarContrActionPerformed
+        PanelAdministrador.setVisible(false);
+        PanelEntrenador.setVisible(false);
+        PanelPrincipal.setVisible(false);
+        PanelCambiarClaveCliente.setVisible(true);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
+        PanelUsuario.setVisible(false);
+        PanelPrincipalCliente.setVisible(false);
+        PanelRutinas.setVisible(false);
+        PanelAddDeAdm.setVisible(false);
+        PanelConsultarDeAdm.setVisible(false);
+        PanelInicioAdm.setVisible(false);
+        PanelCrearEntrenador.setVisible(false);
+        PanelCrearCliente.setVisible(false);
+        PanelIniCliente.setVisible(false);
+        PanelConsultarClientes.setVisible(false);
+        PanelConsultarRutinas.setVisible(false);
+        PanelConsultarEntrenadores.setVisible(false);
+        PanelIniEntrenador.setVisible(false);
+    }//GEN-LAST:event_btnCambiarContrActionPerformed
+
+    private void btnConsultarRutinasEntreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarRutinasEntreActionPerformed
+        PanelAdministrador.setVisible(false);
+        PanelEntrenador.setVisible(false);
+        PanelPrincipal.setVisible(false);
+        PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(true);
+        PanelUsuario.setVisible(false);
+        PanelPrincipalCliente.setVisible(false);
+        PanelRutinas.setVisible(false);
+        PanelAddDeAdm.setVisible(false);
+        PanelConsultarDeAdm.setVisible(false);
+        PanelInicioAdm.setVisible(false);
+        PanelCrearEntrenador.setVisible(false);
+        PanelCrearCliente.setVisible(false);
+        PanelIniCliente.setVisible(false);
+        PanelConsultarClientes.setVisible(false);
+        PanelConsultarRutinas.setVisible(false);
+        PanelConsultarEntrenadores.setVisible(false);
+        PanelIniEntrenador.setVisible(false);
+    }//GEN-LAST:event_btnConsultarRutinasEntreActionPerformed
+
+    private void btnAddRutinasEntreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddRutinasEntreActionPerformed
+        PanelAdministrador.setVisible(false);
+        PanelEntrenador.setVisible(false);
+        PanelPrincipal.setVisible(false);
+        PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(true);
+        PanelConsultarRutinasEntr.setVisible(false);
+        PanelUsuario.setVisible(false);
+        PanelPrincipalCliente.setVisible(false);
+        PanelRutinas.setVisible(false);
+        PanelAddDeAdm.setVisible(false);
+        PanelConsultarDeAdm.setVisible(false);
+        PanelInicioAdm.setVisible(false);
+        PanelCrearEntrenador.setVisible(false);
+        PanelCrearCliente.setVisible(false);
+        PanelIniCliente.setVisible(false);
+        PanelConsultarClientes.setVisible(false);
+        PanelConsultarRutinas.setVisible(false);
+        PanelConsultarEntrenadores.setVisible(false);
+        PanelIniEntrenador.setVisible(false);
+    }//GEN-LAST:event_btnAddRutinasEntreActionPerformed
+
+    private void btnVolverEjercicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverEjercicioActionPerformed
+        PanelAdministrador.setVisible(false);
+        PanelEntrenador.setVisible(false);
+        PanelPrincipal.setVisible(false);
+        PanelUsuario.setVisible(false);
+        PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
+        PanelRutinas.setVisible(false);
+        PanelAddDeAdm.setVisible(false);
+        PanelConsultarClientes.setVisible(false);
+        PanelConsultarDeAdm.setVisible(false);
+        PanelInicioAdm.setVisible(false);
+        PanelCrearEntrenador.setVisible(false);
+        PanelCrearCliente.setVisible(false);
+        PanelIniCliente.setVisible(false);
+        PanelPrincipalCliente.setVisible(false);
+        PanelConsultarRutinas.setVisible(false);
+        PanelConsultarEntrenadores.setVisible(false);
+        PanelIniEntrenador.setVisible(true);
+    }//GEN-LAST:event_btnVolverEjercicioActionPerformed
+
+    private void btnVolverEjerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverEjerActionPerformed
+        PanelAdministrador.setVisible(false);
+        PanelEntrenador.setVisible(false);
+        PanelPrincipal.setVisible(false);
+        PanelUsuario.setVisible(false);
+        PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(true);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
+        PanelRutinas.setVisible(false);
+        PanelAddDeAdm.setVisible(false);
+        PanelConsultarClientes.setVisible(false);
+        PanelConsultarDeAdm.setVisible(false);
+        PanelInicioAdm.setVisible(false);
+        PanelCrearEntrenador.setVisible(false);
+        PanelCrearCliente.setVisible(false);
+        PanelIniCliente.setVisible(false);
+        PanelPrincipalCliente.setVisible(false);
+        PanelConsultarRutinas.setVisible(false);
+        PanelConsultarEntrenadores.setVisible(false);
+        PanelIniEntrenador.setVisible(false);
+    }//GEN-LAST:event_btnVolverEjerActionPerformed
+
+    private void btnVolverConsultarRutEntActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverConsultarRutEntActionPerformed
+        PanelAdministrador.setVisible(false);
+        PanelEntrenador.setVisible(false);
+        PanelPrincipal.setVisible(false);
+        PanelUsuario.setVisible(false);
+        PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
+        PanelRutinas.setVisible(true);
+        PanelAddDeAdm.setVisible(false);
+        PanelConsultarClientes.setVisible(false);
+        PanelConsultarDeAdm.setVisible(false);
+        PanelInicioAdm.setVisible(false);
+        PanelCrearEntrenador.setVisible(false);
+        PanelCrearCliente.setVisible(false);
+        PanelIniCliente.setVisible(false);
+        PanelPrincipalCliente.setVisible(false);
+        PanelConsultarRutinas.setVisible(false);
+        PanelConsultarEntrenadores.setVisible(false);
+        PanelIniEntrenador.setVisible(false);
+    }//GEN-LAST:event_btnVolverConsultarRutEntActionPerformed
+
+    private void btnVolverAddRutEntrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverAddRutEntrActionPerformed
+        PanelAdministrador.setVisible(false);
+        PanelEntrenador.setVisible(false);
+        PanelPrincipal.setVisible(false);
+        PanelUsuario.setVisible(false);
+        PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
+        PanelRutinas.setVisible(true);
+        PanelAddDeAdm.setVisible(false);
+        PanelConsultarClientes.setVisible(false);
+        PanelConsultarDeAdm.setVisible(false);
+        PanelInicioAdm.setVisible(false);
+        PanelCrearEntrenador.setVisible(false);
+        PanelCrearCliente.setVisible(false);
+        PanelIniCliente.setVisible(false);
+        PanelPrincipalCliente.setVisible(false);
+        PanelConsultarRutinas.setVisible(false);
+        PanelConsultarEntrenadores.setVisible(false);
+        PanelIniEntrenador.setVisible(false);
+    }//GEN-LAST:event_btnVolverAddRutEntrActionPerformed
+
+    private void btnCambiarClaveEntrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarClaveEntrActionPerformed
+        PanelAdministrador.setVisible(false);
+        PanelEntrenador.setVisible(false);
+        PanelPrincipal.setVisible(false);
+        PanelUsuario.setVisible(false);
+        PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(true);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
+        PanelRutinas.setVisible(false);
+        PanelAddDeAdm.setVisible(false);
+        PanelConsultarClientes.setVisible(false);
+        PanelConsultarDeAdm.setVisible(false);
+        PanelInicioAdm.setVisible(false);
+        PanelCrearEntrenador.setVisible(false);
+        PanelCrearCliente.setVisible(false);
+        PanelIniCliente.setVisible(false);
+        PanelPrincipalCliente.setVisible(false);
+        PanelConsultarRutinas.setVisible(false);
+        PanelConsultarEntrenadores.setVisible(false);
+        PanelIniEntrenador.setVisible(false);
+    }//GEN-LAST:event_btnCambiarClaveEntrActionPerformed
+
+    private void btnEjerciciosEntrenadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEjerciciosEntrenadorActionPerformed
+        PanelAdministrador.setVisible(false);
+        PanelEntrenador.setVisible(false);
+        PanelPrincipal.setVisible(false);
+        PanelUsuario.setVisible(false);
+        PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(true);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
+        PanelRutinas.setVisible(false);
+        PanelAddDeAdm.setVisible(false);
+        PanelConsultarClientes.setVisible(false);
+        PanelConsultarDeAdm.setVisible(false);
+        PanelInicioAdm.setVisible(false);
+        PanelCrearEntrenador.setVisible(false);
+        PanelCrearCliente.setVisible(false);
+        PanelIniCliente.setVisible(false);
+        PanelPrincipalCliente.setVisible(false);
+        PanelConsultarRutinas.setVisible(false);
+        PanelConsultarEntrenadores.setVisible(false);
+        PanelIniEntrenador.setVisible(false);
+    }//GEN-LAST:event_btnEjerciciosEntrenadorActionPerformed
+
+    private void btnConsultarEjerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarEjerActionPerformed
+        PanelAdministrador.setVisible(false);
+        PanelEntrenador.setVisible(false);
+        PanelPrincipal.setVisible(false);
+        PanelUsuario.setVisible(false);
+        PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(true);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
+        PanelRutinas.setVisible(false);
+        PanelAddDeAdm.setVisible(false);
+        PanelConsultarClientes.setVisible(false);
+        PanelConsultarDeAdm.setVisible(false);
+        PanelInicioAdm.setVisible(false);
+        PanelCrearEntrenador.setVisible(false);
+        PanelCrearCliente.setVisible(false);
+        PanelIniCliente.setVisible(false);
+        PanelPrincipalCliente.setVisible(false);
+        PanelConsultarRutinas.setVisible(false);
+        PanelConsultarEntrenadores.setVisible(false);
+        PanelIniEntrenador.setVisible(false);
+    }//GEN-LAST:event_btnConsultarEjerActionPerformed
+
+    private void btnAddEjerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEjerActionPerformed
+        PanelAdministrador.setVisible(false);
+        PanelEntrenador.setVisible(false);
+        PanelPrincipal.setVisible(false);
+        PanelUsuario.setVisible(false);
+        PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(true);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
+        PanelRutinas.setVisible(false);
+        PanelAddDeAdm.setVisible(false);
+        PanelConsultarClientes.setVisible(false);
+        PanelConsultarDeAdm.setVisible(false);
+        PanelInicioAdm.setVisible(false);
+        PanelCrearEntrenador.setVisible(false);
+        PanelCrearCliente.setVisible(false);
+        PanelIniCliente.setVisible(false);
+        PanelPrincipalCliente.setVisible(false);
+        PanelConsultarRutinas.setVisible(false);
+        PanelConsultarEntrenadores.setVisible(false);
+        PanelIniEntrenador.setVisible(false);
+    }//GEN-LAST:event_btnAddEjerActionPerformed
+
+    private void btnVolverAddEjerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverAddEjerActionPerformed
+PanelAdministrador.setVisible(false);
+        PanelEntrenador.setVisible(false);
+        PanelPrincipal.setVisible(false);
+        PanelUsuario.setVisible(false);
+        PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(true);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
+        PanelRutinas.setVisible(false);
+        PanelAddDeAdm.setVisible(false);
+        PanelConsultarClientes.setVisible(false);
+        PanelConsultarDeAdm.setVisible(false);
+        PanelInicioAdm.setVisible(false);
+        PanelCrearEntrenador.setVisible(false);
+        PanelCrearCliente.setVisible(false);
+        PanelIniCliente.setVisible(false);
+        PanelPrincipalCliente.setVisible(false);
+        PanelConsultarRutinas.setVisible(false);
+        PanelConsultarEntrenadores.setVisible(false);
+        PanelIniEntrenador.setVisible(false); 
+    }//GEN-LAST:event_btnVolverAddEjerActionPerformed
+
+    private void btnAddEjercicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEjercicioActionPerformed
+        String nombre=txtNombreEjercicio.getText();
+        String tipo=txtTipoEjercicio.getText();
+        int serie= Integer.parseInt(txtSerierEjer.getText());
+        int repeticiones = Integer.parseInt(txtRepeticiones.getText());
+        ejercicioCtrl.insetar(nombre, tipo, repeticiones, serie);
+        lstEjercicios.setListData(ejercicioCtrl.consultar().toArray());
+        txtNombreEjercicio.setText("");
+        txtTipoEjercicio.setText("");
+        txtSerierEjer.setText("");
+        txtRepeticiones.setText("");
+    }//GEN-LAST:event_btnAddEjercicioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1661,47 +3178,78 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelAddDeAdm;
+    private javax.swing.JPanel PanelAddRutinas;
     private javax.swing.JPanel PanelAdministrador;
+    private javax.swing.JPanel PanelCambiarClaveCliente;
+    private javax.swing.JPanel PanelCambiarClaveEntr;
     private javax.swing.JPanel PanelConsultarClientes;
     private javax.swing.JPanel PanelConsultarDeAdm;
+    private javax.swing.JPanel PanelConsultarEjer;
     private javax.swing.JPanel PanelConsultarEntrenadores;
     private javax.swing.JPanel PanelConsultarRutinas;
+    private javax.swing.JPanel PanelConsultarRutinasEntr;
     private javax.swing.JPanel PanelCrearCliente;
+    private javax.swing.JPanel PanelCrearEjer;
     private javax.swing.JPanel PanelCrearEntrenador;
+    private javax.swing.JPanel PanelEjercicio;
     private javax.swing.JPanel PanelEntrenador;
     private javax.swing.JPanel PanelIniCliente;
     private javax.swing.JPanel PanelIniEntrenador;
     private javax.swing.JPanel PanelInicioAdm;
     private javax.swing.JPanel PanelPrincipal;
+    private javax.swing.JPanel PanelPrincipalCliente;
+    private javax.swing.JPanel PanelRutinas;
     private javax.swing.JPanel PanelUsuario;
     private javax.swing.JButton bntConsultarDeAdm;
     private javax.swing.JButton btnAddCliente;
     private javax.swing.JButton btnAddDeAdm;
+    private javax.swing.JButton btnAddEjer;
+    private javax.swing.JButton btnAddEjerRutina;
+    private javax.swing.JButton btnAddEjercicio;
     private javax.swing.JButton btnAddEntrenador;
+    private javax.swing.JButton btnAddRutina;
+    private javax.swing.JButton btnAddRutinasEntre;
+    private javax.swing.JButton btnCambiar;
+    private javax.swing.JButton btnCambiarClaveCliente;
+    private javax.swing.JButton btnCambiarClaveEntr;
+    private javax.swing.JButton btnCambiarContr;
+    private javax.swing.JButton btnConsultarCliente;
     private javax.swing.JButton btnConsultarClientes;
+    private javax.swing.JButton btnConsultarEjer;
     private javax.swing.JButton btnConsultarEntrenador;
     private javax.swing.JButton btnConsultarRutina;
+    private javax.swing.JButton btnConsultarRutinasEntre;
     private javax.swing.JButton btnCrearCliente;
     private javax.swing.JButton btnCrearEntrenador;
+    private javax.swing.JButton btnEjerciciosEntrenador;
     private javax.swing.JButton btnIngresarAdm;
     private javax.swing.JButton btnIngresarEntr;
     private javax.swing.JButton btnIngresarUsu;
+    private javax.swing.JButton btnLoginAdm;
     private javax.swing.JButton btnLoginEntrenador;
+    private javax.swing.JButton btnLoginUsuario;
+    private javax.swing.JButton btnRutinaEntrenador;
     private javax.swing.JButton btnSalirAdministrador;
+    private javax.swing.JButton btnSalirClient;
     private javax.swing.JButton btnSalirCliente;
     private javax.swing.JButton btnSalirEntrenador;
+    private javax.swing.JButton btnVolverAddEjer;
+    private javax.swing.JButton btnVolverAddRutEntr;
     private javax.swing.JButton btnVolverConsultarClientes;
     private javax.swing.JButton btnVolverConsultarEntr;
+    private javax.swing.JButton btnVolverConsultarRutEnt;
     private javax.swing.JButton btnVolverCrearCliente;
     private javax.swing.JButton btnVolverDeAddEntrenador;
     private javax.swing.JButton btnVolverDeConsultarAdm;
     private javax.swing.JButton btnVolverDeCrear;
+    private javax.swing.JButton btnVolverEjer;
+    private javax.swing.JButton btnVolverEjercicio;
+    private javax.swing.JButton btnVolverRutinasEntre;
+    private javax.swing.JButton btnVolverVonsultarRutinas;
+    private javax.swing.JComboBox cmbDiaAdd;
     private javax.swing.JComboBox cmbDiaCliente;
+    private javax.swing.JComboBox cmbGeneroCliente;
     private javax.swing.JComboBox cmbObjetivoCrearCliente;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1737,39 +3285,83 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
+    private javax.swing.JLabel jLabel63;
+    private javax.swing.JLabel jLabel64;
+    private javax.swing.JLabel jLabel65;
+    private javax.swing.JLabel jLabel66;
+    private javax.swing.JLabel jLabel67;
+    private javax.swing.JLabel jLabel68;
+    private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JList lstClientesConsultarAdm;
     private javax.swing.JList lstClientesCrear;
+    private javax.swing.JList lstConsultarRutinasEntr;
+    private javax.swing.JList lstEjercicios;
+    private javax.swing.JList lstEjerciciosAddRut;
+    private javax.swing.JList lstEjerciciosConsul;
     private javax.swing.JList lstEjerciciosDiaCliente;
+    private javax.swing.JList lstEjerciciosDiaRut;
     private javax.swing.JList lstEntrenadoresAdm;
     private javax.swing.JList lstEntrenadoresCrear;
     private javax.swing.JList lstRutinasAdm;
-    private javax.swing.JRadioButton rbFemenino;
-    private javax.swing.JRadioButton rbMasculino;
+    private javax.swing.JPasswordField passAdm;
+    private javax.swing.JPasswordField passCliente;
+    private javax.swing.JPasswordField passEntrenador;
     private javax.swing.JTextField txtAlturaClienteAdd;
-    private javax.swing.JTextField txtContrasenaAdm;
-    private javax.swing.JTextField txtContrasenaCliente;
-    private javax.swing.JTextField txtContrasenaEntr;
-    private javax.swing.JTextField txtEdadClienteAdd;
-    private javax.swing.JTextField txtIdClienteDeAdd;
-    private javax.swing.JTextField txtIdEntrenadorcrear;
-    private javax.swing.JButton txtLoginAdm;
+    private javax.swing.JTextField txtAnoNacimiento;
+    private javax.swing.JTextField txtDiaNacimiento;
     private javax.swing.JTextField txtMasaClienteAdd;
+    private javax.swing.JTextField txtMesNacimiento;
+    private javax.swing.JTextField txtNomClienteClave;
+    private javax.swing.JTextField txtNomEntrClave;
     private javax.swing.JTextField txtNomUsuarioAdm;
     private javax.swing.JTextField txtNomUsuarioCliente;
     private javax.swing.JTextField txtNombreClienteDeAdd;
+    private javax.swing.JTextField txtNombreEjercicio;
     private javax.swing.JTextField txtNombreEntrenadorCrear;
     private javax.swing.JTextField txtNombreUsuarioEntr;
+    private javax.swing.JTextField txtPasswordClienteClave;
+    private javax.swing.JTextField txtPasswordEntr;
+    private javax.swing.JTextField txtRepeticiones;
+    private javax.swing.JTextField txtSerierEjer;
+    private javax.swing.JTextField txtTipoEjercicio;
     // End of variables declaration//GEN-END:variables
 }

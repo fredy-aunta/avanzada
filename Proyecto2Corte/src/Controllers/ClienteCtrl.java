@@ -6,17 +6,21 @@
 package Controllers;
 
 import DB.ClienteDB;
+import DB.UsuarioDB;
 import Negocio.Cliente;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Fredy
  */
 public class ClienteCtrl {
+    public static int ROLE_ID = 3;
     private ArrayList<Cliente> clientes = new ArrayList<>();
     private Cliente cliente;
-    ClienteDB clienteDB = new ClienteDB();
+    private ClienteDB clienteDB = new ClienteDB();
+    private UsuarioDB usuarioDB = new UsuarioDB();
 
     public ClienteCtrl() {
     }
@@ -41,30 +45,41 @@ public class ClienteCtrl {
         this.cliente = cliente;
     }
     
-    public void insertarCliente(String nombreCliente, float alturaCliente, float masaCliente, String fechaNacimiento, String generoCliente){
-        clienteDB.insert(nombreCliente, alturaCliente, masaCliente, fechaNacimiento, generoCliente);
+    public void insertarCliente(String nombreCliente, String alturaCliente, String masaCliente, String fechaNacimiento, String generoCliente, String objetivo){
+        int idCliente = clienteDB.insert(nombreCliente, alturaCliente, masaCliente, fechaNacimiento, generoCliente, objetivo);
+        int idUser = usuarioDB.insert(nombreCliente, ROLE_ID);
+        clienteDB.UpdateUserId(idCliente, idUser);
     }
     
     public ArrayList consultarClientes(){
-//        clientes = ClienteDB.mgr.getClientes();
+        clientes = clienteDB.select();
         return clientes;
     }
     
     public Cliente getCliente(String id){
-//        cliente = ClienteDB.mgr.getItem(id);
+        cliente = null;
+        int idCliente;
+        try {
+            idCliente = Integer.parseInt(id);
+            cliente = clienteDB.selectById(idCliente);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
         return cliente;
     }
     
     public void eliminarCliente(String id){
-//        Cliente cliente = new Cliente();
-//        cliente.setId(id);
-//        ClienteDB.mgr.delete(cliente);
+        int idCliente;
+        try {
+            idCliente = Integer.parseInt(id);
+            clienteDB.delete(idCliente);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }
     
-    public void modificarCliente(String id, String cedula, String nombre, String direccion, String telefono){
-//        Cliente cliente = new Cliente(cedula, nombre, direccion, telefono);
-//        cliente.setId(id);
-//        ClienteDB.mgr.save(cliente, Boolean.FALSE);
+    public void modificarCliente(int idCliente, String nombreCliente, String alturaCliente, String masaCliente, String generoCliente, String objetivo){
+          clienteDB.update(idCliente, nombreCliente, alturaCliente, masaCliente, generoCliente, objetivo);
     }
     
 //    public Cliente buscarCliente(String valor){

@@ -18,6 +18,7 @@ public class Rutina {
     private int tiempoRutina;
     private Entrenador entrenador;
     private ArrayList<RutinaDia> rutinasDia = new ArrayList<>();
+    private Objetivo objetivo;
 
     public Rutina() {
     }
@@ -66,6 +67,14 @@ public class Rutina {
 
     public void setRutinasDia(ArrayList<RutinaDia> rutinasDia) {
         this.rutinasDia = rutinasDia;
+    }
+
+    public Objetivo getObjetivo() {
+        return objetivo;
+    }
+
+    public void setObjetivo(Objetivo objetivo) {
+        this.objetivo = objetivo;
     }
 
     @Override

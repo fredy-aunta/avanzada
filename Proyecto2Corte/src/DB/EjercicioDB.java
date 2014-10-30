@@ -18,8 +18,8 @@ import java.util.ArrayList;
  * @author Fredy
  */
 public class EjercicioDB {
-    private final String SQL_INSERT = "INSERT INTO ejercicio(nombre_ejercicio, tipo_ejercicio) VALUES (?,?)";
-    private final String SQL_UPDATE = "UPDATE ejercicio SET nombre_ejercicio = ?, tipo_ejercicio = ? WHERE ejercicio_id = ?;";
+    private final String SQL_INSERT = "INSERT INTO ejercicio(nombre_ejercicio, tipo_ejercicio, repeticiones, serie) VALUES (?,?,?,?)";
+    private final String SQL_UPDATE = "UPDATE ejercicio SET nombre_ejercicio = ?, repeticiones = ?, serie= ?, tipo_ejercicio = ? WHERE ejercicio_id = ?;";
     private final String SQL_DELETE = "DELETE FROM ejercicio WHERE ejercicio_id = ?";
     private final String SQL_SELECT = "SELECT * FROM ejercicio ORDER BY ejercicio_id";
     private final String SQL_SELECT_ID = "SELECT * FROM ejercicio WHERE ejercicio_id = ?";
@@ -28,7 +28,7 @@ public class EjercicioDB {
     public EjercicioDB() {
     }
 
-    public int insert(String nombre, String tipoEjercicio){
+    public int insert(String nombre, String tipoEjercicio, int repeticiones, int serie){
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet rs = null;
@@ -39,6 +39,8 @@ public class EjercicioDB {
             int index = 1;
             statement.setString(index++, nombre);
             statement.setString(index++, tipoEjercicio);
+            statement.setInt(index++, repeticiones);
+            statement.setInt(index++, serie);
             System.out.println("Ejecutando query: " + SQL_INSERT);
             rows = statement.executeUpdate();
             System.out.println("Registros Afectados :" + rows);
@@ -50,7 +52,7 @@ public class EjercicioDB {
         }
         return rows;
     }
-    public int update(int id, String nombre, String tipo){
+    public int update(int id, String nombre, String tipo, int repeticiones, int serie){
         Connection connection = null;
         PreparedStatement statement = null;
         int rows = 0;
@@ -60,6 +62,8 @@ public class EjercicioDB {
             statement = connection.prepareStatement(SQL_UPDATE);
             int index = 1;
             statement.setString(index++, nombre);
+            statement.setInt(index++, repeticiones);
+            statement.setInt(index++, serie);
             statement.setString(index++, tipo);
             statement.setInt(index, id);
             rows = statement.executeUpdate();
@@ -104,13 +108,19 @@ public class EjercicioDB {
             statement = connection.prepareStatement(SQL_SELECT);
             rs = statement.executeQuery();
             while(rs.next()){
-                int idEjercicio = rs.getInt(1);
-                String nombreEjercicio = rs.getString(2);
-                String tipoEjercicio = rs.getString(3);
+                int index = 1;
+                int idEjercicio = rs.getInt(index++);
+                String nombreEjercicio = rs.getString(index++);
+                String tipoEjercicio = rs.getString(index++);
+                int repeticionesEjercicio = rs.getInt(index++);
+                int serieEjercicio = rs.getInt(index++);
+                
                 ejercicio = new Ejercicio();
                 ejercicio.setIdEjercicio(idEjercicio);
                 ejercicio.setNombreEjercicio(nombreEjercicio);
                 ejercicio.setTipoEjercicio(tipoEjercicio);
+                ejercicio.setRepeticionesEjercicio(repeticionesEjercicio);
+                ejercicio.setSerieEjercicio(serieEjercicio);
                 ejercicios.add(ejercicio);
             }
         } catch (Exception e) {
@@ -134,13 +144,19 @@ public class EjercicioDB {
             statement.setInt(1, id);
             rs = statement.executeQuery();
             rs.next();
-            int idEjercicioRes = rs.getInt(1);
-            String nombreEjercicio = rs.getString(2);
-            String tipoEjercicio = rs.getString(3);
+            int index = 1;
+            int idEjercicioRes = rs.getInt(index++);
+            String nombreEjercicio = rs.getString(index++);
+            String tipoEjercicio = rs.getString(index++);
+            int repeticionesEjercicio = rs.getInt(index++);
+            int serieEjercicio = rs.getInt(index++);
+            
             ejercicio = new Ejercicio();
             ejercicio.setIdEjercicio(idEjercicioRes);
             ejercicio.setNombreEjercicio(nombreEjercicio);
             ejercicio.setTipoEjercicio(tipoEjercicio);
+            ejercicio.setRepeticionesEjercicio(repeticionesEjercicio);
+            ejercicio.setSerieEjercicio(serieEjercicio);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }finally{
@@ -163,13 +179,19 @@ public class EjercicioDB {
             statement.setString(1, tipo);
             rs = statement.executeQuery();
             while(rs.next()){
-                int id_ejercicio = rs.getInt(1);
-                String nombreEjercicio = rs.getString(2);
-                String tipoEjercicio = rs.getString(3);
+                int index = 1;
+                int id_ejercicio = rs.getInt(index++);
+                String nombreEjercicio = rs.getString(index++);
+                String tipoEjercicio = rs.getString(index++);
+                int repeticionesEjercicio = rs.getInt(index++);
+                int serieEjercicio = rs.getInt(index++);
+                
                 ejercicio = new Ejercicio();
                 ejercicio.setIdEjercicio(id_ejercicio);
                 ejercicio.setNombreEjercicio(nombreEjercicio);
                 ejercicio.setTipoEjercicio(tipoEjercicio);
+                ejercicio.setRepeticionesEjercicio(repeticionesEjercicio);
+                ejercicio.setSerieEjercicio(serieEjercicio);
                 ejercicios.add(ejercicio);
             }
         } catch (Exception e) {

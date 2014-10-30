@@ -13,22 +13,25 @@ package Negocio;
 public class Cliente {
     private int idCliente;
     private String nombreCliente;
-    private float alturaCliente;
-    private float masaCliente;
+    private String alturaCliente;
+    private String masaCliente;
     private int edadCliente;
     private String generoCliente;
     private Rutina rutinaCliente;
+    private Objetivo objetivo;
 
-    public Cliente() {
-    }
-
-    public Cliente(int idCliente, String nombreCliente, float alturaCliente, int edadCliente, String generoCliente, float masaCliente) {
+    public Cliente(int idCliente, String nombreCliente, String alturaCliente, String masaCliente, int edadCliente, String generoCliente, Rutina rutinaCliente, Objetivo objetivo) {
         this.idCliente = idCliente;
         this.nombreCliente = nombreCliente;
         this.alturaCliente = alturaCliente;
+        this.masaCliente = masaCliente;
         this.edadCliente = edadCliente;
         this.generoCliente = generoCliente;
-        this.masaCliente = masaCliente;
+        this.rutinaCliente = rutinaCliente;
+        this.objetivo = objetivo;
+    }
+
+    public Cliente() {
     }
 
     public int getIdCliente() {
@@ -47,12 +50,20 @@ public class Cliente {
         this.nombreCliente = nombreCliente;
     }
 
-    public float getAlturaCliente() {
+    public String getAlturaCliente() {
         return alturaCliente;
     }
 
-    public void setAlturaCliente(float alturaCliente) {
+    public void setAlturaCliente(String alturaCliente) {
         this.alturaCliente = alturaCliente;
+    }
+
+    public String getMasaCliente() {
+        return masaCliente;
+    }
+
+    public void setMasaCliente(String masaCliente) {
+        this.masaCliente = masaCliente;
     }
 
     public int getEdadCliente() {
@@ -71,14 +82,6 @@ public class Cliente {
         this.generoCliente = generoCliente;
     }
 
-    public float getMasaCliente() {
-        return masaCliente;
-    }
-
-    public void setMasaCliente(float masaCliente) {
-        this.masaCliente = masaCliente;
-    }
-
     public Rutina getRutinaCliente() {
         return rutinaCliente;
     }
@@ -87,6 +90,15 @@ public class Cliente {
         this.rutinaCliente = rutinaCliente;
     }
 
+    public Objetivo getObjetivo() {
+        return objetivo;
+    }
+
+    public void setObjetivo(Objetivo objetivo) {
+        this.objetivo = objetivo;
+    }
+
+      
     @Override
     public String toString() {
         if (rutinaCliente == null) {
@@ -95,4 +107,5 @@ public class Cliente {
             return nombreCliente + rutinaCliente.toString();
         }
     }
+    
 }

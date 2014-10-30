@@ -18,7 +18,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,-10,0,0,3,26"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,-3,0,0,3,26"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -81,11 +81,41 @@
               <Group type="103" rootIndex="13" groupAlignment="0" attributes="0">
                   <Component id="PanelIniEntrenador" alignment="0" max="32767" attributes="0"/>
               </Group>
+              <Group type="103" rootIndex="14" groupAlignment="0" attributes="0">
+                  <Component id="PanelRutinas" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="15" groupAlignment="0" attributes="0">
+                  <Component id="PanelPrincipalCliente" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="16" groupAlignment="0" attributes="0">
+                  <Component id="PanelConsultarRutinasEntr" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="17" groupAlignment="0" attributes="0">
+                  <Component id="PanelAddRutinas" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="18" groupAlignment="0" attributes="0">
+                  <Component id="PanelEjercicio" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="19" groupAlignment="0" attributes="0">
+                  <Component id="PanelConsultarEjer" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="20" groupAlignment="0" attributes="0">
+                  <Component id="PanelCrearEjer" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="21" groupAlignment="0" attributes="0">
+                  <Component id="PanelCambiarClaveCliente" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="22" groupAlignment="0" attributes="0">
+                  <Component id="PanelCambiarClaveEntr" alignment="0" max="32767" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="PanelPrincipal" alignment="0" max="32767" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <Component id="PanelPrincipal" alignment="0" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
+              </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Component id="PanelAdministrador" alignment="0" max="32767" attributes="0"/>
               </Group>
@@ -125,11 +155,38 @@
               <Group type="103" rootIndex="13" groupAlignment="0" attributes="0">
                   <Component id="PanelIniEntrenador" alignment="0" max="32767" attributes="0"/>
               </Group>
+              <Group type="103" rootIndex="14" groupAlignment="0" attributes="0">
+                  <Component id="PanelRutinas" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="15" groupAlignment="0" attributes="0">
+                  <Component id="PanelPrincipalCliente" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="16" groupAlignment="0" attributes="0">
+                  <Component id="PanelConsultarRutinasEntr" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="17" groupAlignment="0" attributes="0">
+                  <Component id="PanelAddRutinas" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="18" groupAlignment="0" attributes="0">
+                  <Component id="PanelEjercicio" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="19" groupAlignment="0" attributes="0">
+                  <Component id="PanelConsultarEjer" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="20" groupAlignment="0" attributes="0">
+                  <Component id="PanelCrearEjer" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="21" groupAlignment="0" attributes="0">
+                  <Component id="PanelCambiarClaveCliente" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="22" groupAlignment="0" attributes="0">
+                  <Component id="PanelCambiarClaveEntr" alignment="0" max="32767" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="PanelIniEntrenador">
+        <Container class="javax.swing.JPanel" name="PanelCambiarClaveEntr">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="66" red="66" type="rgb"/>
@@ -140,20 +197,1007 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="260" max="-2" attributes="0"/>
-                      <Component id="jLabel40" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="246" max="-2" attributes="0"/>
+                              <Component id="jLabel67" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel68" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel69" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txtNomEntrClave" max="32767" attributes="0"/>
+                                  <Component id="txtPasswordEntr" pref="280" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="254" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="btnCambiar" min="-2" pref="58" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="364" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel67" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel68" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtNomEntrClave" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel69" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtPasswordEntr" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                      <Component id="btnCambiar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="156" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabel67">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Snap ITC" size="36" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Cambiar Clave"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel68">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tempus Sans ITC" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Nombre Usuario:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtNomEntrClave">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel69">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tempus Sans ITC" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Password:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtPasswordEntr">
+            </Component>
+            <Component class="javax.swing.JButton" name="btnCambiar">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Data/unidad-de-disco-icono-3963-48.png"/>
+                </Property>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="PanelCambiarClaveCliente">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="66" red="33" type="rgb"/>
+            </Property>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="249" max="-2" attributes="0"/>
+                              <Component id="jLabel63" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel64" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel65" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txtNomClienteClave" max="32767" attributes="0"/>
+                                  <Component id="txtPasswordClienteClave" pref="224" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="323" max="-2" attributes="0"/>
+                              <Component id="btnCambiarClaveCliente" min="-2" pref="58" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="251" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel63" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel64" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtNomClienteClave" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jLabel65" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtPasswordClienteClave" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                      <Component id="btnCambiarClaveCliente" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="164" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabel63">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Snap ITC" size="36" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Cambiar Clave"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel64">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tempus Sans ITC" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Nombre Usuario:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel65">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tempus Sans ITC" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Password:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtNomClienteClave">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtPasswordClienteClave">
+            </Component>
+            <Component class="javax.swing.JButton" name="btnCambiarClaveCliente">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Data/unidad-de-disco-icono-3963-48.png"/>
+                </Property>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="PanelCrearEjer">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="99" red="66" type="rgb"/>
+            </Property>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jLabel58" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="231" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="btnVolverAddEjer" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel60" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel61" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel59" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel62" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txtTipoEjercicio" max="32767" attributes="0"/>
+                                  <Component id="txtRepeticiones" max="32767" attributes="0"/>
+                                  <Component id="txtNombreEjercicio" max="32767" attributes="0"/>
+                                  <Component id="txtSerierEjer" pref="194" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="232" max="-2" attributes="0"/>
+                              <Component id="btnAddEjercicio" min="-2" pref="63" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+                      <Component id="jScrollPane11" min="-2" pref="286" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="68" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel58" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel59" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtNombreEjercicio" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel60" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtTipoEjercicio" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel61" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtRepeticiones" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel62" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtSerierEjer" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                              <Component id="btnAddEjercicio" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jScrollPane11" alignment="0" min="-2" pref="283" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="59" max="32767" attributes="0"/>
+                      <Component id="btnVolverAddEjer" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabel58">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Snap ITC" size="36" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Crear Ejercicio"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnVolverAddEjer">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tempus Sans ITC" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Volver"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVolverAddEjerActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel59">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tempus Sans ITC" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Nombre:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel60">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tempus Sans ITC" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Tipo Ejercicio:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel61">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tempus Sans ITC" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Repeticiones:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel62">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tempus Sans ITC" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Serie Ejercicio"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtTipoEjercicio">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtRepeticiones">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtNombreEjercicio">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtSerierEjer">
+            </Component>
+            <Component class="javax.swing.JButton" name="btnAddEjercicio">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Data/unidad-de-disco-icono-3963-48.png"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddEjercicioActionPerformed"/>
+              </Events>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane11">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JList" name="lstEjercicios">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+                      <StringArray count="0"/>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="PanelConsultarEjer">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="99" red="66" type="rgb"/>
+            </Property>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="195" max="-2" attributes="0"/>
+                      <Component id="jLabel57" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="135" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="btnVolverEjer" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jScrollPane10" min="-2" pref="562" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
-                      <Component id="jButton4" min="-2" pref="131" max="-2" attributes="0"/>
-                      <EmptySpace pref="256" max="32767" attributes="0"/>
-                      <Component id="jButton5" min="-2" pref="131" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel57" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="79" max="32767" attributes="0"/>
+                      <Component id="jScrollPane10" min="-2" pref="262" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                      <Component id="btnVolverEjer" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabel57">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Snap ITC" size="36" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Consultar Ejercicio"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnVolverEjer">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tempus Sans ITC" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Volver"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVolverEjerActionPerformed"/>
+              </Events>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane10">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JList" name="lstEjerciciosConsul">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+                      <StringArray count="0"/>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="PanelEjercicio">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="66" red="33" type="rgb"/>
+            </Property>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="293" max="-2" attributes="0"/>
+                      <Component id="jLabel54" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="317" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jLabel56" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnConsultarEjer" min="-2" pref="119" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="btnAddEjer" min="-2" pref="119" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jLabel55" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="btnSalirEntrenador" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnVolverEjercicio" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="jLabel56" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="btnConsultarEjer" min="-2" pref="143" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel54" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="92" max="32767" attributes="0"/>
+                              <Component id="jLabel55" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="btnAddEjer" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
+                      <Component id="btnVolverEjercicio" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabel54">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Snap ITC" size="36" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Ejercicio"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnConsultarEjer">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Data/consultar.jpg"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConsultarEjerActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnAddEjer">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Data/Add.jpg"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddEjerActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel55">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tempus Sans ITC" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Add Ejercicio"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel56">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tempus Sans ITC" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Consultar Ejercicio"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnVolverEjercicio">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tempus Sans ITC" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Volver"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVolverEjercicioActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="PanelAddRutinas">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="66" red="66" type="rgb"/>
+            </Property>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                      <Component id="jScrollPane8" min="-2" pref="149" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+                                  <Component id="cmbDiaAdd" min="-2" pref="126" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
+                                  <Component id="btnAddEjerRutina" min="-2" pref="112" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
+                              <Component id="jLabel51" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
+                              <Component id="jLabel53" min="-2" pref="33" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="119" max="32767" attributes="0"/>
+                      <Component id="jScrollPane9" min="-2" pref="196" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="259" max="-2" attributes="0"/>
+                      <Component id="jLabel50" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jLabel52" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                              <Component id="btnVolverAddRutEntr" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="btnAddRutina" min="-2" pref="59" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="165" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel50" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="103" alignment="1" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="jScrollPane8" pref="226" max="32767" attributes="0"/>
+                              <Component id="jScrollPane9" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jLabel53" min="-2" pref="14" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="cmbDiaAdd" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="jLabel51" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btnAddEjerRutina" min="-2" pref="127" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="38" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jLabel52" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btnAddRutina" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="btnVolverAddRutEntr" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabel50">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Snap ITC" size="36" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Add Rutinas"/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane8">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JList" name="lstEjerciciosAddRut">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+                      <StringArray count="0"/>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane9">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JList" name="lstEjerciciosDiaRut">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+                      <StringArray count="0"/>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JComboBox" name="cmbDiaAdd">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnAddEjerRutina">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Data/Add.jpg"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnAddRutina">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Data/unidad-de-disco-icono-3963-48.png"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel51">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tempus Sans ITC" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Add Ejercicio"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel52">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tempus Sans ITC" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Add Rutina"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel53">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tempus Sans ITC" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Dia"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnVolverAddRutEntr">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tempus Sans ITC" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Volver"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVolverAddRutEntrActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="PanelConsultarRutinasEntr">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="33" red="33" type="rgb"/>
+            </Property>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="227" max="-2" attributes="0"/>
+                              <Component id="jLabel49" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                              <Component id="jScrollPane7" min="-2" pref="693" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="45" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="btnVolverConsultarRutEnt" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel49" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                      <Component id="jScrollPane7" min="-2" pref="337" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="btnVolverConsultarRutEnt" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabel49">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Snap ITC" size="36" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Consultar Rutinas"/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane7">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JList" name="lstConsultarRutinasEntr">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+                      <StringArray count="0"/>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JButton" name="btnVolverConsultarRutEnt">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tempus Sans ITC" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Volver"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVolverConsultarRutEntActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="PanelPrincipalCliente">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="66" red="33" type="rgb"/>
+            </Property>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="315" max="-2" attributes="0"/>
+                      <Component id="jLabel44" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="jLabel45" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jLabel46" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                              <Component id="btnConsultarCliente" min="-2" pref="129" max="-2" attributes="0"/>
+                              <EmptySpace pref="312" max="32767" attributes="0"/>
+                              <Component id="btnCambiarContr" min="-2" pref="129" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="137" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btnSalirClient" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel45" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btnConsultarCliente" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel44" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+                              <Component id="jLabel46" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btnCambiarContr" min="-2" pref="123" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="107" max="32767" attributes="0"/>
+                      <Component id="btnSalirClient" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabel44">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Snap ITC" size="36" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Cliente"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnConsultarCliente">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Data/consultar.jpg"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConsultarClienteActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnCambiarContr">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Data/contra.jpg"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCambiarContrActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel45">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tempus Sans ITC" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Consultar Rutina"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel46">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tempus Sans ITC" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Cambiar Contrase&#xf1;a"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnSalirClient">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tempus Sans ITC" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Salir"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalirClientActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="PanelRutinas">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="66" red="66" type="rgb"/>
+            </Property>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="285" max="-2" attributes="0"/>
+                      <Component id="jLabel41" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="btnConsultarRutinasEntre" min="-2" pref="122" max="-2" attributes="0"/>
+                              <EmptySpace pref="290" max="32767" attributes="0"/>
+                              <Component id="btnAddRutinasEntre" min="-2" pref="143" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="143" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel42" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jLabel43" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="175" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btnVolverRutinasEntre" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -162,15 +1206,153 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel40" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton5" min="-2" pref="131" max="-2" attributes="0"/>
-                          <Component id="jButton4" min="-2" pref="131" max="-2" attributes="0"/>
+                      <Component id="jLabel41" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel42" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel43" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="111" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="btnConsultarRutinasEntre" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="118" max="32767" attributes="0"/>
+                              <Component id="btnVolverRutinasEntre" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="btnAddRutinasEntre" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabel41">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Snap ITC" size="36" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Rutinas "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnConsultarRutinasEntre">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Data/consultar.jpg"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConsultarRutinasEntreActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnAddRutinasEntre">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Data/Add.jpg"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddRutinasEntreActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel42">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tempus Sans ITC" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Consultar Rutinas"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel43">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tempus Sans ITC" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Agregar Rutinas"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnVolverRutinasEntre">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tempus Sans ITC" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Volver"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVolverRutinasEntreActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="PanelIniEntrenador">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="66" red="66" type="rgb"/>
+            </Property>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="btnSalirEntrenador" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
+                              <Component id="jLabel47" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
+                              <Component id="jLabel66" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="260" max="-2" attributes="0"/>
+                              <Component id="jLabel40" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
+                              <Component id="btnRutinaEntrenador" min="-2" pref="131" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                              <Component id="btnCambiarClaveEntr" min="-2" pref="131" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="69" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnEjerciciosEntrenador" min="-2" pref="131" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jLabel48" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel40" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel47" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel48" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel66" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btnCambiarClaveEntr" max="32767" attributes="0"/>
+                          <Component id="btnEjerciciosEntrenador" pref="131" max="32767" attributes="0"/>
+                          <Component id="btnRutinaEntrenador" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="103" max="32767" attributes="0"/>
+                      <Component id="btnSalirEntrenador" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -184,19 +1366,15 @@
                 <Property name="text" type="java.lang.String" value="Entrenador"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton4">
+            <Component class="javax.swing.JButton" name="btnEjerciciosEntrenador">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Views/rut.jpg"/>
+                  <Image iconType="3" name="/Data/ej.jpg"/>
                 </Property>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButton5">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Views/ej.jpg"/>
-                </Property>
-              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEjerciciosEntrenadorActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnSalirEntrenador">
               <Properties>
@@ -208,6 +1386,50 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalirEntrenadorActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnRutinaEntrenador">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Data/rut.jpg"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRutinaEntrenadorActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel47">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tempus Sans ITC" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Rutina"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel48">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tempus Sans ITC" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Ejercicio"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnCambiarClaveEntr">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Data/contra.jpg"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCambiarClaveEntrActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel66">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tempus Sans ITC" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Cambiar Clave"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -248,7 +1470,7 @@
                       <Component id="jLabel39" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                       <Component id="jScrollPane6" min="-2" pref="314" max="-2" attributes="0"/>
-                      <EmptySpace pref="44" max="32767" attributes="0"/>
+                      <EmptySpace pref="51" max="32767" attributes="0"/>
                       <Component id="btnVolverConsultarEntr" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -318,7 +1540,7 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnVolverVonsultarRutinas" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -331,7 +1553,7 @@
                       <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                       <Component id="jScrollPane5" min="-2" pref="352" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnVolverVonsultarRutinas" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -362,7 +1584,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="jButton3">
+            <Component class="javax.swing.JButton" name="btnVolverVonsultarRutinas">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tempus Sans ITC" size="14" style="0"/>
@@ -370,7 +1592,7 @@
                 <Property name="text" type="java.lang.String" value="Volver"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVolverVonsultarRutinasActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -411,7 +1633,7 @@
                       <Component id="jScrollPane4" min="-2" pref="300" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Component id="btnVolverConsultarClientes" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="37" max="32767" attributes="0"/>
+                      <EmptySpace pref="44" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -509,7 +1731,7 @@
                               <Component id="cmbDiaCliente" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="32" max="32767" attributes="0"/>
+                      <EmptySpace pref="39" max="32767" attributes="0"/>
                       <Component id="btnSalirCliente" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -553,7 +1775,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tempus Sans ITC" size="14" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Salir"/>
+                <Property name="text" type="java.lang.String" value="Volver"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalirClienteActionPerformed"/>
@@ -580,27 +1802,24 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                              <EmptySpace pref="41" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel28" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel31" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel35" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                      <Component id="jLabel30" min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel33" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel32" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                                  <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel31" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel30" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel35" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel33" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel32" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                               <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -619,22 +1838,21 @@
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="txtAlturaClienteAdd" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="cmbGeneroCliente" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txtNombreClienteDeAdd" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="cmbObjetivoCrearCliente" alignment="0" pref="165" max="32767" attributes="0"/>
+                                              <Component id="txtDiaNacimiento" alignment="0" pref="165" max="32767" attributes="0"/>
+                                              <Component id="txtMasaClienteAdd" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txtMesNacimiento" alignment="1" max="32767" attributes="0"/>
+                                          </Group>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Component id="rbMasculino" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace pref="24" max="32767" attributes="0"/>
-                                              <Component id="rbFemenino" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                                              <Component id="txtAnoNacimiento" min="-2" pref="165" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="txtNombreClienteDeAdd" max="32767" attributes="0"/>
-                                              <Component id="txtIdClienteDeAdd" max="32767" attributes="0"/>
-                                              <Component id="txtEdadClienteAdd" max="32767" attributes="0"/>
-                                              <Component id="txtMasaClienteAdd" max="32767" attributes="0"/>
-                                              <Component id="txtAlturaClienteAdd" pref="202" max="32767" attributes="0"/>
-                                          </Group>
-                                          <Component id="cmbObjetivoCrearCliente" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace pref="20" max="32767" attributes="0"/>
+                                      <EmptySpace pref="41" max="32767" attributes="0"/>
                                       <Component id="jScrollPane2" min="-2" pref="347" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -647,56 +1865,58 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jScrollPane2" min="-2" pref="299" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel28" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtIdClienteDeAdd" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txtNombreClienteDeAdd" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel29" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtNombreClienteDeAdd" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel35" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel35" alignment="3" min="-2" pref="19" max="-2" attributes="0"/>
                                   <Component id="cmbObjetivoCrearCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="cmbGeneroCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel30" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="rbMasculino" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="rbFemenino" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txtEdadClienteAdd" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtDiaNacimiento" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel31" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txtAlturaClienteAdd" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel32" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtMesNacimiento" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txtMasaClienteAdd" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel28" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtAnoNacimiento" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel33" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtMasaClienteAdd" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel32" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtAlturaClienteAdd" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <Component id="jScrollPane2" min="-2" pref="299" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="10" max="32767" attributes="0"/>
+                      <EmptySpace pref="17" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="btnAddCliente" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnVolverCrearCliente" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnVolverCrearCliente" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                   </Group>
@@ -710,14 +1930,6 @@
                   <Font name="Snap ITC" size="36" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Crear Cliente"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel28">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tempus Sans ITC" size="14" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Id:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel29">
@@ -741,7 +1953,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tempus Sans ITC" size="14" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Edad:"/>
+                <Property name="text" type="java.lang.String" value="Dia Nacimiento:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel32">
@@ -762,9 +1974,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtNombreClienteDeAdd">
             </Component>
-            <Component class="javax.swing.JTextField" name="txtIdClienteDeAdd">
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtEdadClienteAdd">
+            <Component class="javax.swing.JTextField" name="txtDiaNacimiento">
             </Component>
             <Component class="javax.swing.JTextField" name="txtMasaClienteAdd">
             </Component>
@@ -789,28 +1999,12 @@
             <Component class="javax.swing.JButton" name="btnAddCliente">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Views/unidad-de-disco-icono-3963-48.png"/>
+                  <Image iconType="3" name="/Data/unidad-de-disco-icono-3963-48.png"/>
                 </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddClienteActionPerformed"/>
               </Events>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="rbMasculino">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="66" red="66" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Masculino"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="rbFemenino">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="66" red="66" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Femenino"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="btnVolverCrearCliente">
               <Properties>
@@ -838,6 +2032,33 @@
                 </Property>
               </Properties>
             </Component>
+            <Component class="javax.swing.JComboBox" name="cmbGeneroCliente">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel25">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tempus Sans ITC" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Mes Nacimiento:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel28">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tempus Sans ITC" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="A&#xf1;o Nacimiento:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtAnoNacimiento">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtMesNacimiento">
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="PanelCrearEntrenador">
@@ -858,24 +2079,19 @@
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
                                       <EmptySpace min="-2" pref="176" max="-2" attributes="0"/>
                                       <Component id="btnCrearEntrenador" min="-2" pref="60" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel26" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel25" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
-                                      </Group>
+                                  <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="txtNombreEntrenadorCrear" max="32767" attributes="0"/>
-                                          <Component id="txtIdEntrenadorcrear" pref="201" max="32767" attributes="0"/>
-                                      </Group>
+                                      <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="txtNombreEntrenadorCrear" min="-2" pref="201" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                               <Component id="jScrollPane1" min="-2" pref="290" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -895,27 +2111,28 @@
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                              <Component id="jScrollPane1" min="-2" pref="279" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                      <Component id="jScrollPane1" min="-2" pref="279" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="txtNombreEntrenadorCrear" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel26" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
                           </Group>
                           <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtIdEntrenadorcrear" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel26" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtNombreEntrenadorCrear" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="227" max="-2" attributes="0"/>
                               <Component id="btnCrearEntrenador" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnVolverDeAddEntrenador" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="91" max="32767" attributes="0"/>
+                      <EmptySpace pref="98" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -929,29 +2146,25 @@
                 <Property name="text" type="java.lang.String" value="Crear Entrenador"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel25">
+            <Component class="javax.swing.JLabel" name="jLabel26">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tempus Sans ITC" size="14" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Id:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel26">
-              <Properties>
                 <Property name="text" type="java.lang.String" value="Nombre:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtNombreEntrenadorCrear">
             </Component>
-            <Component class="javax.swing.JTextField" name="txtIdEntrenadorcrear">
-            </Component>
             <Component class="javax.swing.JButton" name="btnCrearEntrenador">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Views/unidad-de-disco-icono-3963-48.png"/>
+                  <Image iconType="3" name="/Data/unidad-de-disco-icono-3963-48.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCrearEntrenadorActionPerformed"/>
+              </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane1">
               <AuxValues>
@@ -1023,7 +2236,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="140" max="32767" attributes="0"/>
+                      <EmptySpace pref="147" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1052,7 +2265,7 @@
             <Component class="javax.swing.JButton" name="btnAddEntrenador">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Views/CrearEntrenador.png"/>
+                  <Image iconType="3" name="/Data/CrearEntrenador.png"/>
                 </Property>
               </Properties>
               <Events>
@@ -1062,7 +2275,7 @@
             <Component class="javax.swing.JButton" name="btnCrearCliente">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Views/crearUsuario.png"/>
+                  <Image iconType="3" name="/Data/crearUsuario.png"/>
                 </Property>
               </Properties>
               <Events>
@@ -1114,7 +2327,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="txtContrasenaCliente" min="-2" pref="243" max="-2" attributes="0"/>
+                              <Component id="passCliente" min="-2" pref="243" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
@@ -1133,7 +2346,7 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="jButton1" min="-2" pref="57" max="-2" attributes="0"/>
+                      <Component id="btnLoginUsuario" min="-2" pref="57" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="328" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -1150,12 +2363,12 @@
                       </Group>
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtContrasenaCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="passCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" pref="58" max="-2" attributes="0"/>
-                      <EmptySpace pref="185" max="32767" attributes="0"/>
+                      <Component id="btnLoginUsuario" min="-2" pref="58" max="-2" attributes="0"/>
+                      <EmptySpace pref="192" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1187,17 +2400,17 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtNomUsuarioCliente">
             </Component>
-            <Component class="javax.swing.JTextField" name="txtContrasenaCliente">
-            </Component>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="btnLoginUsuario">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Views/login.jpg"/>
+                  <Image iconType="3" name="/Data/login.jpg"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLoginUsuarioActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JPasswordField" name="passCliente">
             </Component>
           </SubComponents>
         </Container>
@@ -1258,11 +2471,11 @@
                           <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="btnConsultarClientes" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnConsultarRutina" min="-2" pref="105" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btnConsultarClientes" max="32767" attributes="0"/>
+                          <Component id="btnConsultarRutina" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="91" max="32767" attributes="0"/>
+                      <EmptySpace pref="98" max="32767" attributes="0"/>
                       <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnConsultarEntrenador" min="-2" pref="105" max="-2" attributes="0"/>
@@ -1285,7 +2498,7 @@
             <Component class="javax.swing.JButton" name="btnConsultarClientes">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Views/usu.png"/>
+                  <Image iconType="3" name="/Data/usu.png"/>
                 </Property>
               </Properties>
               <Events>
@@ -1295,7 +2508,7 @@
             <Component class="javax.swing.JButton" name="btnConsultarRutina">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Views/ejer.jpg"/>
+                  <Image iconType="3" name="/Data/ejer.jpg"/>
                 </Property>
               </Properties>
               <Events>
@@ -1305,7 +2518,7 @@
             <Component class="javax.swing.JButton" name="btnConsultarEntrenador">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Views/CrearEntrenador.png"/>
+                  <Image iconType="3" name="/Data/CrearEntrenador.png"/>
                 </Property>
               </Properties>
               <Events>
@@ -1374,7 +2587,7 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="txtNombreUsuarioEntr" pref="289" max="32767" attributes="0"/>
-                                  <Component id="txtContrasenaEntr" max="32767" attributes="0"/>
+                                  <Component id="passEntrenador" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -1400,11 +2613,11 @@
                       <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtContrasenaEntr" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="passEntrenador" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                       <Component id="btnLoginEntrenador" min="-2" pref="56" max="-2" attributes="0"/>
-                      <EmptySpace pref="174" max="32767" attributes="0"/>
+                      <EmptySpace pref="181" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1436,17 +2649,17 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtNombreUsuarioEntr">
             </Component>
-            <Component class="javax.swing.JTextField" name="txtContrasenaEntr">
-            </Component>
             <Component class="javax.swing.JButton" name="btnLoginEntrenador">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Views/login.jpg"/>
+                  <Image iconType="3" name="/Data/login.jpg"/>
                 </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLoginEntrenadorActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JPasswordField" name="passEntrenador">
             </Component>
           </SubComponents>
         </Container>
@@ -1474,13 +2687,13 @@
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtNomUsuarioAdm" max="32767" attributes="0"/>
-                                  <Component id="txtContrasenaAdm" pref="227" max="32767" attributes="0"/>
+                                  <Component id="txtNomUsuarioAdm" pref="227" max="32767" attributes="0"/>
+                                  <Component id="passAdm" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="331" max="-2" attributes="0"/>
-                              <Component id="txtLoginAdm" min="-2" pref="62" max="-2" attributes="0"/>
+                              <Component id="btnLoginAdm" min="-2" pref="62" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="291" max="32767" attributes="0"/>
@@ -1490,7 +2703,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace pref="95" max="32767" attributes="0"/>
+                      <EmptySpace pref="102" max="32767" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -1500,10 +2713,10 @@
                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtContrasenaAdm" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="passAdm" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                      <Component id="txtLoginAdm" min="-2" pref="57" max="-2" attributes="0"/>
+                      <Component id="btnLoginAdm" min="-2" pref="57" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="140" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -1536,17 +2749,17 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtNomUsuarioAdm">
             </Component>
-            <Component class="javax.swing.JTextField" name="txtContrasenaAdm">
-            </Component>
-            <Component class="javax.swing.JButton" name="txtLoginAdm">
+            <Component class="javax.swing.JButton" name="btnLoginAdm">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Views/login.jpg"/>
+                  <Image iconType="3" name="/Data/login.jpg"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtLoginAdmActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLoginAdmActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JPasswordField" name="passAdm">
             </Component>
           </SubComponents>
         </Container>
@@ -1603,7 +2816,7 @@
                       </Group>
                       <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                       <Component id="btnSalirAdministrador" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="125" max="32767" attributes="0"/>
+                      <EmptySpace pref="132" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1620,7 +2833,7 @@
             <Component class="javax.swing.JButton" name="btnAddDeAdm">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Views/Add.jpg"/>
+                  <Image iconType="3" name="/Data/Add.jpg"/>
                 </Property>
               </Properties>
               <Events>
@@ -1630,7 +2843,7 @@
             <Component class="javax.swing.JButton" name="bntConsultarDeAdm">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Views/consultar.jpg"/>
+                  <Image iconType="3" name="/Data/consultar.jpg"/>
                 </Property>
               </Properties>
               <Events>
@@ -1723,7 +2936,7 @@
                           <Component id="btnIngresarAdm" min="-2" pref="147" max="-2" attributes="0"/>
                           <Component id="btnIngresarEntr" min="-2" pref="147" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="157" max="32767" attributes="0"/>
+                      <EmptySpace pref="153" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1732,7 +2945,7 @@
             <Component class="javax.swing.JButton" name="btnIngresarAdm">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Views/Adm.png"/>
+                  <Image iconType="3" name="/Data/Adm.png"/>
                 </Property>
               </Properties>
               <Events>
@@ -1742,7 +2955,7 @@
             <Component class="javax.swing.JButton" name="btnIngresarUsu">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Views/usu.png"/>
+                  <Image iconType="3" name="/Data/usu.png"/>
                 </Property>
               </Properties>
               <Events>
@@ -1752,7 +2965,7 @@
             <Component class="javax.swing.JButton" name="btnIngresarEntr">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Views/entr.jpg"/>
+                  <Image iconType="3" name="/Data/entr.jpg"/>
                 </Property>
               </Properties>
               <Events>

@@ -19,18 +19,26 @@ import java.util.ArrayList;
  */
 public class EntrenadorDB {
     private final String SQL_INSERT = "INSERT INTO entrenador(nombre_entrenador) VALUES (?)";
+    private final String SQL_INSERT_ID = "SELECT @@identity AS id";
     private final String SQL_UPDATE = "UPDATE entrenador SET nombre_entrenador = ? WHERE entrenador_id = ?;";
+    private final String SQL_UPDATE_USER_ID = "UPDATE entrenador SET user_id = ? WHERE entrenador_id = ?;";
     private final String SQL_DELETE = "DELETE FROM entrenador WHERE entrenador_id = ?";
     private final String SQL_SELECT = "SELECT * FROM entrenador ORDER BY entrenador_id";
     private final String SQL_SELECT_ID = "SELECT * FROM entrenador WHERE entrenador_id = ?";
 
     public EntrenadorDB() {
     }
-
+    /**
+     * 
+     * @param nombre nombre del entrenador a grabar
+     * @return id retorna el id del entrenador insertado
+     */
     public int insert(String nombre){
         Connection connection = null;
         PreparedStatement statement = null;
+        ResultSet rs = null;
         int rows = 0;
+        int id = 0;
         try {
             connection = DBManager.getConnection();
             statement = connection.prepareStatement(SQL_INSERT);
@@ -38,9 +46,40 @@ public class EntrenadorDB {
             System.out.println("Ejecutando query: " + SQL_INSERT);
             rows = statement.executeUpdate();
             System.out.println("Registros Afectados :" + rows);
+            /**
+             * Obtiene el id del cliente que se acabo de insertar
+             */
+            statement = connection.prepareStatement(SQL_INSERT_ID);
+            rs = statement.executeQuery();
+            rs.next();
+            id = rs.getInt(1);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }finally{
+            DBManager.close(statement);
+            DBManager.close(connection);
+        }
+        return id;
+    }
+    
+    public int UpdateUserId(int idEntrenador, int idUser){
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        int rows = 0;
+        try {
+            connection = DBManager.getConnection();
+            statement = connection.prepareStatement(SQL_UPDATE_USER_ID);
+            int index = 1;
+            statement.setInt(index++, idUser);
+            statement.setInt(index++, idEntrenador);
+            System.out.println("Ejecutando query: " + SQL_UPDATE_USER_ID);
+            rows = statement.executeUpdate();
+            System.out.println("Registros Afectados :" + rows);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }finally{
+            DBManager.close(rs);
             DBManager.close(statement);
             DBManager.close(connection);
         }

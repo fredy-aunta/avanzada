@@ -11,5 +11,5 @@ package Negocio;
  * @author sebastian
  */
 public interface Objetivo {
-    public void getObjetivo();
+    public String getObjetivo();
 }

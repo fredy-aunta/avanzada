@@ -3,8 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/sebastian/Documents/NetBeansProjects/Proyecto2Corte/src/Views/Main.java</file>
-            <file>file:/C:/Users/sebastian/Documents/NetBeansProjects/Proyecto2Corte/src/Views/Principal.java</file>
+            <file>file:/C:/Users/sebastian/Dropbox/taller%201/avanzada/Proyecto2Corte/src/Views/Principal.java</file>
+            <file>file:/C:/Users/sebastian/Dropbox/taller%201/avanzada/Proyecto2Corte/src/Controllers/EntrenadorCtrl.java</file>
+            <file>file:/C:/Users/sebastian/Dropbox/taller%201/avanzada/Proyecto2Corte/src/Negocio/Ejercicio.java</file>
+            <file>file:/C:/Users/sebastian/Dropbox/taller%201/avanzada/Proyecto2Corte/src/DB/EjercicioDB.java</file>
+            <file>file:/C:/Users/sebastian/Dropbox/taller%201/avanzada/Proyecto2Corte/src/Controllers/EjercicioCtrl.java</file>
         </group>
     </open-files>
 </project-private>

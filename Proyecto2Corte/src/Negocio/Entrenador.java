@@ -39,4 +39,10 @@ public class Entrenador {
     public void setNombreEntrenador(String nombreEntrenador) {
         this.nombreEntrenador = nombreEntrenador;
     }
+
+    @Override
+    public String toString() {
+        return nombreEntrenador+"-"+idEntrenador;
+    }
+    
 }
