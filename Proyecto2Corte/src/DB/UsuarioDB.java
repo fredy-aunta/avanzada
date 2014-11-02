@@ -22,6 +22,7 @@ public class UsuarioDB {
     private final String SQL_INSERT = "INSERT INTO auth_user (username, role_id) VALUES (?,?)";
     private final String SQL_INSERT_ID = "SELECT @@identity AS id";
     private final String SQL_UPDATE = "UPDATE auth_user SET username = ?, password= ? WHERE user_id = ?;";
+    private final String SQL_UPDATE_PASSWORD = "UPDATE auth_user SET password= ? WHERE username = ?;";
     private final String SQL_DELETE = "DELETE FROM auth_user WHERE user_id = ?";
     private final String SQL_SELECT = "SELECT * FROM auth_user ORDER BY user_id";
     private final String SQL_SELECT_ID = "SELECT * FROM auth_user WHERE user_id = ?";
@@ -115,6 +116,7 @@ public class UsuarioDB {
         boolean acierto=false;
         try {
             connection = DBManager.getConnection();
+            System.out.println("Ejecutando query:" + SQL_SELECT_NAME);
             statement = connection.prepareStatement(SQL_SELECT_NAME);
             statement.setString(1, username);
             rs = statement.executeQuery();
@@ -134,5 +136,77 @@ public class UsuarioDB {
         return acierto;
     }
     
+    public String getPassword(String username){
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        String password = "";
+        try {
+            connection = DBManager.getConnection();
+            System.out.println("Ejecutando query:" + SQL_SELECT_NAME);
+            statement = connection.prepareStatement(SQL_SELECT_NAME);
+            statement.setString(1, username);
+            rs = statement.executeQuery();
+            rs.next();
+            password = rs.getString(3);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }finally{
+            DBManager.close(rs);
+            DBManager.close(statement);
+            DBManager.close(connection);
+        }
+        return password;
+    }
     
+    public boolean setPassword(String username, String newPassword){
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        boolean wasChanged = false;
+        int rows = 0;
+        try {
+            connection = DBManager.getConnection();
+            System.out.println("Ejecutando query:" + SQL_UPDATE_PASSWORD);
+            statement = connection.prepareStatement(SQL_UPDATE_PASSWORD);
+            int index = 1;
+            statement.setString(index++, newPassword);
+            statement.setString(index++, username);
+            rows = statement.executeUpdate();
+            System.out.println("Registros actualizados:" + rows);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }finally{
+            DBManager.close(rs);
+            DBManager.close(statement);
+            DBManager.close(connection);
+        }
+        if (rows > 0) {
+            wasChanged = true;
+        }
+        return wasChanged;
+    }
+    public int getId(String username){
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        int idUser = 0;
+        try {
+            connection = DBManager.getConnection();
+            System.out.println("Ejecutando query:" + SQL_SELECT_NAME);
+            statement = connection.prepareStatement(SQL_SELECT_NAME);
+            int index = 1;
+            statement.setString(index++, username);
+            rs = statement.executeQuery();
+            rs.next();
+            idUser = rs.getInt(1);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }finally{
+            DBManager.close(rs);
+            DBManager.close(statement);
+            DBManager.close(connection);
+        }
+        return idUser;
+    }
 }

@@ -25,9 +25,11 @@ public class ClienteDB {
     private final String SQL_INSERT_USER = "INSERT INTO auth_user (user_id, username, password, role_id) VALUES (?,?,?,?)";
     private final String SQL_UPDATE = "UPDATE cliente SET nombre_cliente = ?, altura_cliente = ?, masa_cliente = ?, genero_cliente = ?, objetivo = ? WHERE cliente_id = ?;";
     private final String SQL_UPDATE_USER_ID = "UPDATE cliente SET user_id = ? WHERE cliente_id = ?;";
+    private final String SQL_UPDATE_RUTINA_ID = "UPDATE cliente SET rutina_id = ? WHERE cliente_id = ?;";
     private final String SQL_DELETE = "DELETE FROM cliente WHERE cliente_id = ?";
     private final String SQL_SELECT = "SELECT * FROM cliente LEFT JOIN rutina ON rutina.rutina_id = cliente.rutina_id ORDER BY cliente_id";
     private final String SQL_SELECT_ID = "SELECT * FROM cliente LEFT JOIN rutina ON rutina.rutina_id = cliente.rutina_id WHERE cliente_id = ?";
+    private final String SQL_SELECT_USER_ID = "SELECT * FROM cliente LEFT JOIN rutina ON rutina.rutina_id = cliente.rutina_id WHERE user_id = ?";
     private final String PASSWORD_DEFAULT = "0000"; 
     public ClienteDB() {
     }
@@ -164,7 +166,7 @@ public class ClienteDB {
                 cliente.setEdadCliente(this.getCustomerAge(dob));
                 cliente.setGeneroCliente(this.getCustomerGender(genero));
                 if (rutinaId != 0) {
-                    String nombreRutina = rs.getString(9);
+                    String nombreRutina = rs.getString(11);
                     rutina = new Rutina();
                     rutina.setIdRutina(rutinaId);
                     rutina.setNombreRutina(nombreRutina);
@@ -195,12 +197,56 @@ public class ClienteDB {
             rs = statement.executeQuery();
             rs.next();
             int idCliente = rs.getInt(1);
-            String nombreCliente = rs.getString(2);
-            String alturaCliente = rs.getString(3);
-            String masaCliente = rs.getString(4);
-            String dob = rs.getString(5);
-            String genero = rs.getString(6);
-            int rutinaId = rs.getInt(7);
+            String nombreCliente = rs.getString(3);
+            String alturaCliente = rs.getString(4);
+            String masaCliente = rs.getString(5);
+            String dob = rs.getString(6);
+            String genero = rs.getString(7);
+            int rutinaId = rs.getInt(8);
+            cliente = new Cliente();
+            cliente.setIdCliente(idCliente);
+            cliente.setNombreCliente(nombreCliente);
+            cliente.setAlturaCliente(alturaCliente);
+            cliente.setMasaCliente(masaCliente);
+            cliente.setEdadCliente(this.getCustomerAge(dob));
+            cliente.setGeneroCliente(this.getCustomerGender(genero));
+            if (rutinaId != 0) {
+                String nombreRutina = rs.getString(11);
+                rutina = new Rutina();
+                rutina.setIdRutina(rutinaId);
+                rutina.setNombreRutina(nombreRutina);
+            }
+            cliente.setRutinaCliente(rutina);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }finally{
+            DBManager.close(rs);
+            DBManager.close(statement);
+            DBManager.close(connection);
+        }
+        return cliente;
+    }
+    
+    public Cliente selectByUserId(int userId){
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        Cliente cliente = null;
+        Rutina rutina = null;
+        try {
+            connection = DBManager.getConnection();
+            System.out.println("Ejecutando query:" + SQL_SELECT_USER_ID);
+            statement = connection.prepareStatement(SQL_SELECT_USER_ID);
+            statement.setInt(1, userId);
+            rs = statement.executeQuery();
+            rs.next();
+            int idCliente = rs.getInt(1);
+            String nombreCliente = rs.getString(3);
+            String alturaCliente = rs.getString(4);
+            String masaCliente = rs.getString(5);
+            String dob = rs.getString(6);
+            String genero = rs.getString(7);
+            int rutinaId = rs.getInt(8);
             cliente = new Cliente();
             cliente.setIdCliente(idCliente);
             cliente.setNombreCliente(nombreCliente);
@@ -248,5 +294,29 @@ public class ClienteDB {
             new Exception("Gender Incorrect!!");
         }
         return customerGender;
+    }
+    
+    public int UpdateRutinaId(int idCliente, int idRutina){
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        int rows = 0;
+        try {
+            connection = DBManager.getConnection();
+            statement = connection.prepareStatement(SQL_UPDATE_RUTINA_ID);
+            int index = 1;
+            statement.setInt(index++, idRutina);
+            statement.setInt(index++, idCliente);
+            System.out.println("Ejecutando query: " + SQL_UPDATE_RUTINA_ID);
+            rows = statement.executeUpdate();
+            System.out.println("Registros Afectados :" + rows);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }finally{
+            DBManager.close(rs);
+            DBManager.close(statement);
+            DBManager.close(connection);
+        }
+        return rows;
     }
 }

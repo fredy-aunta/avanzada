@@ -7,6 +7,7 @@
 package Services;
 
 import Negocio.Ejercicio;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -23,6 +24,12 @@ public class Ejercicios implements Iterator{
     
     public Ejercicios() {
         inicialize();
+        ec = data.elements();
+    }
+    
+    public Ejercicios(ArrayList<Ejercicios> arrayList) {
+//        data = ;
+        data = new Vector(arrayList);
         ec = data.elements();
     }
 
@@ -53,4 +60,30 @@ public class Ejercicios implements Iterator{
     public void add(Ejercicio ejercicio){
         data.add(ejercicio);
     }
+
+    public Vector getData() {
+        return data;
+    }
+
+    public void setData(Vector data) {
+        this.data = data;
+    }
+
+    public Enumeration getEc() {
+        return ec;
+    }
+
+    public void setEc(Enumeration ec) {
+        this.ec = ec;
+    }
+
+    public Ejercicio getNextEjercicio() {
+        return nextEjercicio;
+    }
+
+    public void setNextEjercicio(Ejercicio nextEjercicio) {
+        this.nextEjercicio = nextEjercicio;
+    }
+    
+    
 }

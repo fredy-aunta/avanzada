@@ -6,8 +6,13 @@
 
 package Views;
 import Controllers.*;
+import Negocio.Cliente;
+import Negocio.Ejercicio;
 import Negocio.Objetivo;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 /**
  *
@@ -18,6 +23,7 @@ public class Principal extends javax.swing.JFrame {
     EjercicioCtrl ejercicioCtrl=new EjercicioCtrl();
     EntrenadorCtrl entrenadorCtrl = new EntrenadorCtrl();
     ClienteCtrl clienteCtrl =new ClienteCtrl();
+    RutinaCtrl rutinaCtrl = new RutinaCtrl();
     ObjetivoCtrl objetivoCtrl = new ObjetivoCtrl();
     
     /**
@@ -31,12 +37,13 @@ public class Principal extends javax.swing.JFrame {
         lstClientesCrear.setListData(clienteCtrl.consultarClientes().toArray());
         lstClientesConsultarAdm.setListData(clienteCtrl.consultarClientes().toArray());
         lstEjercicios.setListData(ejercicioCtrl.consultar().toArray());
-        lstEjerciciosAddRut.setListData(ejercicioCtrl.consultar().toArray());
+        lstClientesAddRut.setListData(clienteCtrl.consultarClientes().toArray());
         lstEjerciciosConsul.setListData(ejercicioCtrl.consultar().toArray());
+        cmbEjerciciosAddRutina.setModel(new DefaultComboBoxModel(ejercicioCtrl.consultar().toArray()));
         cmbDiaCliente.addItem("Seleccione");
         for (int i = 1; i <= 7; i++) {
             cmbDiaCliente.addItem(i);
-            cmbDiaAdd.addItem(i);
+            cmbDiaAddRutina.addItem(i);
         }
         cmbObjetivoCrearCliente.addItem("Seleccione");
         objetivoCtrl.cargarObjetivos();
@@ -46,6 +53,15 @@ public class Principal extends javax.swing.JFrame {
         cmbGeneroCliente.addItem("Selecione");
         cmbGeneroCliente.addItem("Masculino");
         cmbGeneroCliente.addItem("Femenino");
+        cmbDiaAddRutina.setVisible(false);
+        cmbEjerciciosAddRutina.setVisible(false);
+        lstEjerciciosDiaRut.setVisible(false);
+        btnAddEjerRutina.setVisible(false);
+        lblAddEjercicioRut.setVisible(false);
+        lstClientesAddRut.setVisible(false);
+        lblDia.setVisible(false);
+        btnAddRutina.setVisible(false);
+        lblAddRutina.setVisible(false);
         PanelAdministrador.setVisible(false);
         PanelEntrenador.setVisible(false);
         PanelPrincipal.setVisible(true);
@@ -62,7 +78,6 @@ public class Principal extends javax.swing.JFrame {
         PanelIniEntrenador.setVisible(false);
         PanelRutinas.setVisible(false);
         PanelPrincipalCliente.setVisible(false);
-        
         PanelCambiarClaveCliente.setVisible(false);
         PanelCambiarClaveEntr.setVisible(false);
         PanelCrearEjer.setVisible(false);
@@ -71,8 +86,6 @@ public class Principal extends javax.swing.JFrame {
         PanelAddRutinas.setVisible(false);
         PanelConsultarRutinasEntr.setVisible(false);
     }
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -86,17 +99,17 @@ public class Principal extends javax.swing.JFrame {
         PanelCambiarClaveEntr = new javax.swing.JPanel();
         jLabel67 = new javax.swing.JLabel();
         jLabel68 = new javax.swing.JLabel();
-        txtNomEntrClave = new javax.swing.JTextField();
         jLabel69 = new javax.swing.JLabel();
-        txtPasswordEntr = new javax.swing.JTextField();
-        btnCambiar = new javax.swing.JButton();
+        btnCambiarPassEntrenador = new javax.swing.JButton();
+        passCurrentEntrenador = new javax.swing.JPasswordField();
+        passNewEntrenador = new javax.swing.JPasswordField();
         PanelCambiarClaveCliente = new javax.swing.JPanel();
         jLabel63 = new javax.swing.JLabel();
         jLabel64 = new javax.swing.JLabel();
         jLabel65 = new javax.swing.JLabel();
-        txtNomClienteClave = new javax.swing.JTextField();
-        txtPasswordClienteClave = new javax.swing.JTextField();
-        btnCambiarClaveCliente = new javax.swing.JButton();
+        btnCambiarPassCliente = new javax.swing.JButton();
+        passCurrentCliente = new javax.swing.JPasswordField();
+        passNewCliente = new javax.swing.JPasswordField();
         PanelCrearEjer = new javax.swing.JPanel();
         jLabel58 = new javax.swing.JLabel();
         btnVolverAddEjer = new javax.swing.JButton();
@@ -126,16 +139,19 @@ public class Principal extends javax.swing.JFrame {
         PanelAddRutinas = new javax.swing.JPanel();
         jLabel50 = new javax.swing.JLabel();
         jScrollPane8 = new javax.swing.JScrollPane();
-        lstEjerciciosAddRut = new javax.swing.JList();
+        lstClientesAddRut = new javax.swing.JList();
         jScrollPane9 = new javax.swing.JScrollPane();
         lstEjerciciosDiaRut = new javax.swing.JList();
-        cmbDiaAdd = new javax.swing.JComboBox();
+        cmbDiaAddRutina = new javax.swing.JComboBox();
         btnAddEjerRutina = new javax.swing.JButton();
         btnAddRutina = new javax.swing.JButton();
-        jLabel51 = new javax.swing.JLabel();
-        jLabel52 = new javax.swing.JLabel();
-        jLabel53 = new javax.swing.JLabel();
+        lblAddEjercicioRut = new javax.swing.JLabel();
+        lblAddRutina = new javax.swing.JLabel();
+        lblDia = new javax.swing.JLabel();
         btnVolverAddRutEntr = new javax.swing.JButton();
+        cmbEjerciciosAddRutina = new javax.swing.JComboBox();
+        btnCrearRutina = new javax.swing.JButton();
+        lblCrearRutina = new javax.swing.JLabel();
         PanelConsultarRutinasEntr = new javax.swing.JPanel();
         jLabel49 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
@@ -280,53 +296,54 @@ public class Principal extends javax.swing.JFrame {
         jLabel67.setText("Cambiar Clave");
 
         jLabel68.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
-        jLabel68.setText("Nombre Usuario:");
+        jLabel68.setText("Current Password");
 
         jLabel69.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
-        jLabel69.setText("Password:");
+        jLabel69.setText("New Password");
 
-        btnCambiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/unidad-de-disco-icono-3963-48.png"))); // NOI18N
+        btnCambiarPassEntrenador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/unidad-de-disco-icono-3963-48.png"))); // NOI18N
+        btnCambiarPassEntrenador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCambiarPassEntrenadorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelCambiarClaveEntrLayout = new javax.swing.GroupLayout(PanelCambiarClaveEntr);
         PanelCambiarClaveEntr.setLayout(PanelCambiarClaveEntrLayout);
         PanelCambiarClaveEntrLayout.setHorizontalGroup(
             PanelCambiarClaveEntrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelCambiarClaveEntrLayout.createSequentialGroup()
+                .addGap(164, 164, 164)
                 .addGroup(PanelCambiarClaveEntrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelCambiarClaveEntrLayout.createSequentialGroup()
-                        .addGap(246, 246, 246)
-                        .addComponent(jLabel67))
-                    .addGroup(PanelCambiarClaveEntrLayout.createSequentialGroup()
-                        .addGap(106, 106, 106)
-                        .addGroup(PanelCambiarClaveEntrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel68)
-                            .addComponent(jLabel69))
-                        .addGap(18, 18, 18)
-                        .addGroup(PanelCambiarClaveEntrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNomEntrClave)
-                            .addComponent(txtPasswordEntr, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))))
-                .addContainerGap(254, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCambiarClaveEntrLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnCambiar, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(364, 364, 364))
+                    .addComponent(jLabel67)
+                    .addGroup(PanelCambiarClaveEntrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnCambiarPassEntrenador, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(PanelCambiarClaveEntrLayout.createSequentialGroup()
+                            .addGroup(PanelCambiarClaveEntrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel68)
+                                .addComponent(jLabel69))
+                            .addGap(37, 37, 37)
+                            .addGroup(PanelCambiarClaveEntrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(passNewEntrenador, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(passCurrentEntrenador, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(336, Short.MAX_VALUE))
         );
         PanelCambiarClaveEntrLayout.setVerticalGroup(
             PanelCambiarClaveEntrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelCambiarClaveEntrLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel67)
-                .addGap(90, 90, 90)
+                .addGap(94, 94, 94)
                 .addGroup(PanelCambiarClaveEntrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel68)
-                    .addComponent(txtNomEntrClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(passCurrentEntrenador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
                 .addGroup(PanelCambiarClaveEntrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel69)
-                    .addComponent(txtPasswordEntr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(65, 65, 65)
-                .addComponent(btnCambiar)
-                .addContainerGap(156, Short.MAX_VALUE))
+                    .addComponent(passNewEntrenador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(56, 56, 56)
+                .addComponent(btnCambiarPassEntrenador)
+                .addContainerGap(161, Short.MAX_VALUE))
         );
 
         PanelCambiarClaveCliente.setBackground(new java.awt.Color(51, 102, 255));
@@ -335,52 +352,55 @@ public class Principal extends javax.swing.JFrame {
         jLabel63.setText("Cambiar Clave");
 
         jLabel64.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
-        jLabel64.setText("Nombre Usuario:");
+        jLabel64.setText("Current Password");
 
         jLabel65.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
-        jLabel65.setText("Password:");
+        jLabel65.setText("New Password");
 
-        btnCambiarClaveCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/unidad-de-disco-icono-3963-48.png"))); // NOI18N
+        btnCambiarPassCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/unidad-de-disco-icono-3963-48.png"))); // NOI18N
+        btnCambiarPassCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCambiarPassClienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelCambiarClaveClienteLayout = new javax.swing.GroupLayout(PanelCambiarClaveCliente);
         PanelCambiarClaveCliente.setLayout(PanelCambiarClaveClienteLayout);
         PanelCambiarClaveClienteLayout.setHorizontalGroup(
             PanelCambiarClaveClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelCambiarClaveClienteLayout.createSequentialGroup()
-                .addGroup(PanelCambiarClaveClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(168, 168, 168)
+                .addGroup(PanelCambiarClaveClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(PanelCambiarClaveClienteLayout.createSequentialGroup()
-                        .addGap(249, 249, 249)
-                        .addComponent(jLabel63))
+                        .addComponent(jLabel65)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(passNewCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(PanelCambiarClaveClienteLayout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addGroup(PanelCambiarClaveClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel64)
-                            .addComponent(jLabel65))
-                        .addGap(18, 18, 18)
-                        .addGroup(PanelCambiarClaveClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNomClienteClave)
-                            .addComponent(txtPasswordClienteClave, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)))
-                    .addGroup(PanelCambiarClaveClienteLayout.createSequentialGroup()
-                        .addGap(323, 323, 323)
-                        .addComponent(btnCambiarClaveCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(251, Short.MAX_VALUE))
+                        .addComponent(jLabel64)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(passCurrentCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel63)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCambiarClaveClienteLayout.createSequentialGroup()
+                        .addComponent(btnCambiarPassCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)))
+                .addContainerGap(332, Short.MAX_VALUE))
         );
         PanelCambiarClaveClienteLayout.setVerticalGroup(
             PanelCambiarClaveClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelCambiarClaveClienteLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel63)
-                .addGap(70, 70, 70)
+                .addGap(93, 93, 93)
                 .addGroup(PanelCambiarClaveClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel64)
-                    .addComponent(txtNomClienteClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(66, 66, 66)
-                .addGroup(PanelCambiarClaveClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(passCurrentCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
+                .addGroup(PanelCambiarClaveClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel65)
-                    .addComponent(txtPasswordClienteClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54)
-                .addComponent(btnCambiarClaveCliente)
-                .addContainerGap(164, Short.MAX_VALUE))
+                    .addComponent(passNewCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(68, 68, 68)
+                .addComponent(btnCambiarPassCliente)
+                .addContainerGap(149, Short.MAX_VALUE))
         );
 
         PanelCrearEjer.setBackground(new java.awt.Color(102, 153, 255));
@@ -613,22 +633,37 @@ public class Principal extends javax.swing.JFrame {
         jLabel50.setFont(new java.awt.Font("Snap ITC", 0, 36)); // NOI18N
         jLabel50.setText("Add Rutinas");
 
-        jScrollPane8.setViewportView(lstEjerciciosAddRut);
+        lstClientesAddRut.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lstClientesAddRutMouseClicked(evt);
+            }
+        });
+        jScrollPane8.setViewportView(lstClientesAddRut);
 
         jScrollPane9.setViewportView(lstEjerciciosDiaRut);
 
-        btnAddEjerRutina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/Add.jpg"))); // NOI18N
+        btnAddEjerRutina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/Addpeque.jpg"))); // NOI18N
+        btnAddEjerRutina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddEjerRutinaActionPerformed(evt);
+            }
+        });
 
         btnAddRutina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/unidad-de-disco-icono-3963-48.png"))); // NOI18N
+        btnAddRutina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddRutinaActionPerformed(evt);
+            }
+        });
 
-        jLabel51.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
-        jLabel51.setText("Add Ejercicio");
+        lblAddEjercicioRut.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        lblAddEjercicioRut.setText("Add Ejercicio");
 
-        jLabel52.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
-        jLabel52.setText("Add Rutina");
+        lblAddRutina.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        lblAddRutina.setText("Add Rutina");
 
-        jLabel53.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
-        jLabel53.setText("Dia");
+        lblDia.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        lblDia.setText("Dia");
 
         btnVolverAddRutEntr.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         btnVolverAddRutEntr.setText("Volver");
@@ -638,45 +673,58 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        btnCrearRutina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/Addpeque.jpg"))); // NOI18N
+        btnCrearRutina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearRutinaActionPerformed(evt);
+            }
+        });
+
+        lblCrearRutina.setText("Crear Rutina");
+
         javax.swing.GroupLayout PanelAddRutinasLayout = new javax.swing.GroupLayout(PanelAddRutinas);
         PanelAddRutinas.setLayout(PanelAddRutinasLayout);
         PanelAddRutinasLayout.setHorizontalGroup(
             PanelAddRutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelAddRutinasLayout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(PanelAddRutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelAddRutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(PanelAddRutinasLayout.createSequentialGroup()
-                            .addGap(75, 75, 75)
-                            .addComponent(cmbDiaAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelAddRutinasLayout.createSequentialGroup()
-                            .addGap(89, 89, 89)
-                            .addComponent(btnAddEjerRutina, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(PanelAddRutinasLayout.createSequentialGroup()
-                        .addGap(101, 101, 101)
-                        .addComponent(jLabel51))
-                    .addGroup(PanelAddRutinasLayout.createSequentialGroup()
-                        .addGap(122, 122, 122)
-                        .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(85, 85, 85))
-            .addGroup(PanelAddRutinasLayout.createSequentialGroup()
                 .addGap(259, 259, 259)
                 .addComponent(jLabel50)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelAddRutinasLayout.createSequentialGroup()
-                .addGroup(PanelAddRutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(PanelAddRutinasLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addGroup(PanelAddRutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelAddRutinasLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel52))
+                        .addGroup(PanelAddRutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelAddRutinasLayout.createSequentialGroup()
+                                .addComponent(btnVolverAddRutEntr)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnAddRutina, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblAddRutina, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(165, 165, 165))
                     .addGroup(PanelAddRutinasLayout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(btnVolverAddRutEntr)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAddRutina, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(165, 165, 165))
+                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(PanelAddRutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanelAddRutinasLayout.createSequentialGroup()
+                                .addGap(122, 122, 122)
+                                .addComponent(lblDia, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(PanelAddRutinasLayout.createSequentialGroup()
+                                .addGap(75, 75, 75)
+                                .addGroup(PanelAddRutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cmbDiaAddRutina, 0, 126, Short.MAX_VALUE)
+                                    .addComponent(cmbEjerciciosAddRutina, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(PanelAddRutinasLayout.createSequentialGroup()
+                                .addGap(92, 92, 92)
+                                .addGroup(PanelAddRutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblAddEjercicioRut)
+                                    .addGroup(PanelAddRutinasLayout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addGroup(PanelAddRutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(btnCrearRutina, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(btnAddEjerRutina, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lblCrearRutina))))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
+                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(85, 85, 85))))
         );
         PanelAddRutinasLayout.setVerticalGroup(
             PanelAddRutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -684,25 +732,36 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel50)
                 .addGap(71, 71, 71)
-                .addGroup(PanelAddRutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(PanelAddRutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
-                        .addComponent(jScrollPane9))
-                    .addGroup(PanelAddRutinasLayout.createSequentialGroup()
-                        .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbDiaAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel51)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAddEjerRutina, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(PanelAddRutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelAddRutinasLayout.createSequentialGroup()
+                        .addGroup(PanelAddRutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                            .addComponent(jScrollPane9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelAddRutinasLayout.createSequentialGroup()
-                        .addComponent(jLabel52)
+                        .addComponent(lblDia, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAddRutina))
-                    .addComponent(btnVolverAddRutEntr, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addComponent(cmbDiaAddRutina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmbEjerciciosAddRutina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblAddEjercicioRut)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAddEjerRutina)
+                        .addGap(47, 47, 47)
+                        .addComponent(lblCrearRutina)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(PanelAddRutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelAddRutinasLayout.createSequentialGroup()
+                        .addComponent(lblAddRutina)
+                        .addGroup(PanelAddRutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanelAddRutinasLayout.createSequentialGroup()
+                                .addGap(48, 48, 48)
+                                .addComponent(btnVolverAddRutEntr))
+                            .addGroup(PanelAddRutinasLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnAddRutina))))
+                    .addComponent(btnCrearRutina))
                 .addGap(34, 34, 34))
         );
 
@@ -2089,7 +2148,7 @@ public class Principal extends javax.swing.JFrame {
         String nombreAdm=txtNomUsuarioAdm.getText();
         String passwordAdm=passAdm.getText();
         if(userCtrl.validarUser(nombreAdm, passwordAdm,1)){
-                PanelAdministrador.setVisible(false);
+            PanelAdministrador.setVisible(false);
                 PanelEntrenador.setVisible(false);
                 PanelPrincipal.setVisible(false);
                 PanelUsuario.setVisible(false);
@@ -2112,8 +2171,14 @@ public class Principal extends javax.swing.JFrame {
         PanelEjercicio.setVisible(false);
         PanelAddRutinas.setVisible(false);
         PanelConsultarRutinasEntr.setVisible(false);
+        txtNomUsuarioAdm.setText("");
+        passAdm.setText("");
         }else{
-            JOptionPane.showMessageDialog(this,"Datos Incorrectos");
+            if(txtNomUsuarioAdm.getText().equals("") || passAdm.getText().equals("")){
+                JOptionPane.showMessageDialog(this, "Todos los campos son requeridos");
+            }else{
+                    JOptionPane.showMessageDialog(this,"Datos Incorrectos");
+            }
         }
     }//GEN-LAST:event_btnLoginAdmActionPerformed
 
@@ -2352,30 +2417,43 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverDeAddEntrenadorActionPerformed
 
     private void btnAddClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddClienteActionPerformed
+        
         String nombre = txtNombreClienteDeAdd.getText();
         String dia =txtDiaNacimiento.getText(), mes= txtMesNacimiento.getText(),year=txtAnoNacimiento.getText();
         String masa = txtMasaClienteAdd.getText();
         String altura = txtAlturaClienteAdd.getText();
         String objetivo = cmbObjetivoCrearCliente.getSelectedItem().toString();
         String genero = cmbGeneroCliente.getSelectedItem().toString();
-        String fecha = year+"-"+mes+"-"+dia;
-        String gen="";
-        if(genero.equals("Masculino")){
-            gen="M";
-        }else if(genero.equals("Femenino")){
-            gen="F";
+        int d=0,m=0,y=0;
+        d=Integer.parseInt(dia);
+        m=Integer.parseInt(mes);
+        y=Integer.parseInt(year);
+        if(!nombre.equals("") && !genero.equals("Seleccione") && !objetivo.equals("Seleccione") && !dia.equals("") && !masa.equals("") && !altura.equals("") && !objetivo.equals("") && !genero.equals("") && !mes.equals("") && !year.equals("")){
+                    if(y<2014 && m<=12 && d<=31){      
+                            String fecha = year+"-"+mes+"-"+dia;
+                            String gen="";
+                            if(genero.equals("Masculino")){
+                                gen="M";
+                            }else if(genero.equals("Femenino")){
+                                gen="F";
+                            }
+                            txtNombreClienteDeAdd.setText("");
+                            txtDiaNacimiento.setText("");
+                            txtMesNacimiento.setText("");
+                            txtAnoNacimiento.setText("");
+                            txtMasaClienteAdd.setText("");
+                            txtAlturaClienteAdd.setText("");
+                            cmbGeneroCliente.setSelectedItem("Seleccione");
+                            cmbObjetivoCrearCliente.setSelectedItem("Seleccione");
+                            clienteCtrl.insertarCliente(nombre, altura, masa, fecha, gen ,objetivo);
+                            lstClientesCrear.setListData(clienteCtrl.consultarClientes().toArray());
+                            JOptionPane.showMessageDialog(this,"su nombre es:"+nombre+" su contraseña es:0000" );
+            }else{
+                        JOptionPane.showMessageDialog(this,"La Fecha Ingresada No Es Valida");
+            }
+        }else{
+            JOptionPane.showMessageDialog(this,"Todos los campos son requeridos");
         }
-        txtNombreClienteDeAdd.setText("");
-        txtDiaNacimiento.setText("");
-        txtMesNacimiento.setText("");
-        txtAnoNacimiento.setText("");
-        txtMasaClienteAdd.setText("");
-        txtAlturaClienteAdd.setText("");
-        cmbGeneroCliente.setSelectedItem("Seleccione");
-        cmbObjetivoCrearCliente.setSelectedItem("Seleccione");
-        clienteCtrl.insertarCliente(nombre, altura, masa, fecha, gen ,objetivo);
-        lstClientesCrear.setListData(clienteCtrl.consultarClientes().toArray());
-        JOptionPane.showMessageDialog(this,"su nombre es:"+nombre+" su contraseña es:0000" );
     }//GEN-LAST:event_btnAddClienteActionPerformed
 
     private void btnCrearClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearClienteActionPerformed
@@ -2409,6 +2487,9 @@ public class Principal extends javax.swing.JFrame {
         String nombre=txtNomUsuarioCliente.getText();
         String password=passCliente.getText();
         if(userCtrl.validarUser(nombre, password,3)){
+                txtNomUsuarioCliente.setText("");
+                passCliente.setText("");
+            clienteCtrl.clienteActivo(nombre);
                 PanelAdministrador.setVisible(false);
                 PanelEntrenador.setVisible(false);
                 PanelCambiarClaveCliente.setVisible(false);
@@ -2434,7 +2515,11 @@ public class Principal extends javax.swing.JFrame {
                 PanelConsultarEntrenadores.setVisible(false);
                 PanelIniEntrenador.setVisible(false);
         }else{
-            JOptionPane.showMessageDialog(this, "Datos Incorrectos");
+            if(txtNomUsuarioCliente.getText().equals("") || passCliente.getText().equals("")){
+                JOptionPane.showMessageDialog(this, "Todos los campos son requeridos");
+            }else{
+                    JOptionPane.showMessageDialog(this,"Datos Incorrectos");
+            }
         }
     }//GEN-LAST:event_btnLoginUsuarioActionPerformed
 
@@ -2649,6 +2734,9 @@ public class Principal extends javax.swing.JFrame {
         String nombre=txtNombreUsuarioEntr.getText();
         String password=passEntrenador.getText();
         if(userCtrl.validarUser(nombre, password,2)){
+            txtNombreUsuarioEntr.setText("");
+            passEntrenador.setText("");
+            entrenadorCtrl.entrenadorActivo(nombre);
                 PanelAdministrador.setVisible(false);
                 PanelEntrenador.setVisible(false);
                 PanelPrincipalCliente.setVisible(false);
@@ -2672,8 +2760,13 @@ public class Principal extends javax.swing.JFrame {
                 PanelConsultarRutinas.setVisible(false);
                 PanelConsultarEntrenadores.setVisible(false);
                 PanelIniEntrenador.setVisible(true);
+                System.out.println(entrenadorCtrl.getEntrenador());
         }else{
-            JOptionPane.showMessageDialog(this, "Datos Incorrectos");
+            if(txtNombreUsuarioEntr.getText().equals("") || passEntrenador.getText().equals("")){
+                JOptionPane.showMessageDialog(this, "Todos los campos son requeridos");
+            }else{
+                    JOptionPane.showMessageDialog(this,"Datos Incorrectos");
+            }
         }
     }//GEN-LAST:event_btnLoginEntrenadorActionPerformed
 
@@ -2756,12 +2849,16 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverRutinasEntreActionPerformed
 
     private void btnCrearEntrenadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearEntrenadorActionPerformed
+        if(!txtNombreEntrenadorCrear.getText().equals("")){
         String nombre = txtNombreEntrenadorCrear.getText();
         entrenadorCtrl.insertarEntrenador(nombre);
         entrenadorCtrl.cargarEntrenadores();
         lstEntrenadoresCrear.setListData(entrenadorCtrl.getEntrenadores().toArray());
         txtNombreEntrenadorCrear.setText("");
          JOptionPane.showMessageDialog(this, "su nombre es:"+nombre+" su password es:0000");
+        }else{
+            JOptionPane.showMessageDialog(this, "El nombre es requerido");
+        }
     }//GEN-LAST:event_btnCrearEntrenadorActionPerformed
 
     private void btnConsultarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarClienteActionPerformed
@@ -3131,15 +3228,132 @@ PanelAdministrador.setVisible(false);
     private void btnAddEjercicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEjercicioActionPerformed
         String nombre=txtNombreEjercicio.getText();
         String tipo=txtTipoEjercicio.getText();
-        int serie= Integer.parseInt(txtSerierEjer.getText());
-        int repeticiones = Integer.parseInt(txtRepeticiones.getText());
-        ejercicioCtrl.insetar(nombre, tipo, repeticiones, serie);
-        lstEjercicios.setListData(ejercicioCtrl.consultar().toArray());
-        txtNombreEjercicio.setText("");
-        txtTipoEjercicio.setText("");
-        txtSerierEjer.setText("");
-        txtRepeticiones.setText("");
+        if(!nombre.equals("") && !tipo.equals("") && !txtSerierEjer.getText().equals("") && !txtRepeticiones.getText().equals("")){
+            int serie= Integer.parseInt(txtSerierEjer.getText());
+            int repeticiones = Integer.parseInt(txtRepeticiones.getText());
+            ejercicioCtrl.insetar(nombre, tipo, repeticiones, serie);
+            lstEjercicios.setListData(ejercicioCtrl.consultar().toArray());
+            cmbEjerciciosAddRutina.setModel(new DefaultComboBoxModel(ejercicioCtrl.consultar().toArray()));
+            txtNombreEjercicio.setText("");
+            txtTipoEjercicio.setText("");
+            txtSerierEjer.setText("");
+            txtRepeticiones.setText("");
+        }else{
+            JOptionPane.showMessageDialog(this,"Todos los Campos son Requeridos");
+        }
     }//GEN-LAST:event_btnAddEjercicioActionPerformed
+
+    private void btnCambiarPassEntrenadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarPassEntrenadorActionPerformed
+        String currentPasswordEntrenador = passCurrentEntrenador.getText();
+        String newPasswordEntrenador = passNewEntrenador.getText();
+        if(!currentPasswordEntrenador.equals("") || !newPasswordEntrenador.equals(evt)){
+        boolean wasChanged = userCtrl.cambiarPassword(entrenadorCtrl.getEntrenador().getNombreEntrenador(), currentPasswordEntrenador, newPasswordEntrenador);
+        if (wasChanged) {
+            JOptionPane.showMessageDialog(this, "Contraseña Actualizada");
+            PanelAdministrador.setVisible(false);
+        PanelEntrenador.setVisible(false);
+        PanelPrincipal.setVisible(false);
+        PanelUsuario.setVisible(false);
+        PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
+        PanelRutinas.setVisible(false);
+        PanelAddDeAdm.setVisible(false);
+        PanelConsultarClientes.setVisible(false);
+        PanelConsultarDeAdm.setVisible(false);
+        PanelInicioAdm.setVisible(false);
+        PanelCrearEntrenador.setVisible(false);
+        PanelCrearCliente.setVisible(false);
+        PanelIniCliente.setVisible(false);
+        PanelPrincipalCliente.setVisible(false);
+        PanelConsultarRutinas.setVisible(false);
+        PanelConsultarEntrenadores.setVisible(false);
+        PanelIniEntrenador.setVisible(true); 
+        }else{
+            JOptionPane.showMessageDialog(this, "Datos Incorrectos");
+        }
+        }else{
+            JOptionPane.showMessageDialog(this,"Todos los campos son requeridos");
+        }
+    }//GEN-LAST:event_btnCambiarPassEntrenadorActionPerformed
+
+    private void btnCambiarPassClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarPassClienteActionPerformed
+        String currentPasswordCliente = passCurrentCliente.getText();
+        String newPasswordCliente = passNewCliente.getText();
+        if(!currentPasswordCliente.equals("") && !newPasswordCliente.equals("")){
+        boolean wasChanged = userCtrl.cambiarPassword(clienteCtrl.getCliente().getNombreCliente(), currentPasswordCliente, newPasswordCliente);
+        if (wasChanged) {
+            JOptionPane.showMessageDialog(this, "Contraseña Actualizada");
+            PanelAdministrador.setVisible(false);
+        PanelEntrenador.setVisible(false);
+        PanelPrincipal.setVisible(false);
+        PanelUsuario.setVisible(false);
+        PanelCambiarClaveCliente.setVisible(false);
+        PanelCambiarClaveEntr.setVisible(false);
+        PanelCrearEjer.setVisible(false);
+        PanelConsultarEjer.setVisible(false);
+        PanelEjercicio.setVisible(false);
+        PanelAddRutinas.setVisible(false);
+        PanelConsultarRutinasEntr.setVisible(false);
+        PanelPrincipalCliente.setVisible(true);
+        PanelRutinas.setVisible(false);
+        PanelAddDeAdm.setVisible(false);
+        PanelConsultarDeAdm.setVisible(false);
+        PanelInicioAdm.setVisible(false);
+        PanelCrearEntrenador.setVisible(false);
+        PanelCrearCliente.setVisible(false);
+        PanelIniCliente.setVisible(false);
+        PanelConsultarClientes.setVisible(false);
+        PanelConsultarRutinas.setVisible(false);
+        PanelConsultarEntrenadores.setVisible(false);
+        PanelIniEntrenador.setVisible(false);
+        }else{
+            JOptionPane.showMessageDialog(this, "Datos Incorrectos");
+        }
+        }else{
+            JOptionPane.showMessageDialog(this,"Todos los datos son requeridos");
+        }
+    }//GEN-LAST:event_btnCambiarPassClienteActionPerformed
+
+    private void btnAddEjerRutinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEjerRutinaActionPerformed
+        int dia=Integer.parseInt(cmbDiaAddRutina.getSelectedItem().toString());
+        ejercicioCtrl.setEjercicio((Ejercicio)cmbEjerciciosAddRutina.getSelectedItem());
+        try {
+            rutinaCtrl.adicionarEjercicioDia(dia, ejercicioCtrl.getEjercicio());
+            lstEjerciciosDiaRut.setListData(rutinaCtrl.getRutinaDias(dia).toArray());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this,ex.getMessage());
+        }
+    }//GEN-LAST:event_btnAddEjerRutinaActionPerformed
+
+    private void btnCrearRutinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearRutinaActionPerformed
+        rutinaCtrl.crearRutina();
+        lstClientesAddRut.setVisible(true);
+        btnCrearRutina.setVisible(false);
+        lblCrearRutina.setVisible(false);
+    }//GEN-LAST:event_btnCrearRutinaActionPerformed
+
+    private void lstClientesAddRutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstClientesAddRutMouseClicked
+        cmbDiaAddRutina.setVisible(true);
+        cmbEjerciciosAddRutina.setVisible(true);
+        lstEjerciciosDiaRut.setVisible(true);
+        btnAddEjerRutina.setVisible(true);
+        lblAddEjercicioRut.setVisible(true);
+        lstClientesAddRut.setVisible(true);
+        lblDia.setVisible(true);
+        btnAddRutina.setVisible(true);
+        lblAddRutina.setVisible(true);
+    }//GEN-LAST:event_lstClientesAddRutMouseClicked
+
+    private void btnAddRutinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddRutinaActionPerformed
+        clienteCtrl.setCliente((Cliente) lstClientesAddRut.getSelectedValue());
+        System.out.println(entrenadorCtrl.getEntrenador());
+        rutinaCtrl.grabarRutina(clienteCtrl.getCliente(),entrenadorCtrl.getEntrenador().getIdEntrenador());
+    }//GEN-LAST:event_btnAddRutinaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -3209,10 +3423,10 @@ PanelAdministrador.setVisible(false);
     private javax.swing.JButton btnAddEntrenador;
     private javax.swing.JButton btnAddRutina;
     private javax.swing.JButton btnAddRutinasEntre;
-    private javax.swing.JButton btnCambiar;
-    private javax.swing.JButton btnCambiarClaveCliente;
     private javax.swing.JButton btnCambiarClaveEntr;
     private javax.swing.JButton btnCambiarContr;
+    private javax.swing.JButton btnCambiarPassCliente;
+    private javax.swing.JButton btnCambiarPassEntrenador;
     private javax.swing.JButton btnConsultarCliente;
     private javax.swing.JButton btnConsultarClientes;
     private javax.swing.JButton btnConsultarEjer;
@@ -3221,6 +3435,7 @@ PanelAdministrador.setVisible(false);
     private javax.swing.JButton btnConsultarRutinasEntre;
     private javax.swing.JButton btnCrearCliente;
     private javax.swing.JButton btnCrearEntrenador;
+    private javax.swing.JButton btnCrearRutina;
     private javax.swing.JButton btnEjerciciosEntrenador;
     private javax.swing.JButton btnIngresarAdm;
     private javax.swing.JButton btnIngresarEntr;
@@ -3246,8 +3461,9 @@ PanelAdministrador.setVisible(false);
     private javax.swing.JButton btnVolverEjercicio;
     private javax.swing.JButton btnVolverRutinasEntre;
     private javax.swing.JButton btnVolverVonsultarRutinas;
-    private javax.swing.JComboBox cmbDiaAdd;
+    private javax.swing.JComboBox cmbDiaAddRutina;
     private javax.swing.JComboBox cmbDiaCliente;
+    private javax.swing.JComboBox cmbEjerciciosAddRutina;
     private javax.swing.JComboBox cmbGeneroCliente;
     private javax.swing.JComboBox cmbObjetivoCrearCliente;
     private javax.swing.JLabel jLabel1;
@@ -3296,9 +3512,6 @@ PanelAdministrador.setVisible(false);
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
-    private javax.swing.JLabel jLabel51;
-    private javax.swing.JLabel jLabel52;
-    private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
@@ -3331,11 +3544,15 @@ PanelAdministrador.setVisible(false);
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
+    private javax.swing.JLabel lblAddEjercicioRut;
+    private javax.swing.JLabel lblAddRutina;
+    private javax.swing.JLabel lblCrearRutina;
+    private javax.swing.JLabel lblDia;
+    private javax.swing.JList lstClientesAddRut;
     private javax.swing.JList lstClientesConsultarAdm;
     private javax.swing.JList lstClientesCrear;
     private javax.swing.JList lstConsultarRutinasEntr;
     private javax.swing.JList lstEjercicios;
-    private javax.swing.JList lstEjerciciosAddRut;
     private javax.swing.JList lstEjerciciosConsul;
     private javax.swing.JList lstEjerciciosDiaCliente;
     private javax.swing.JList lstEjerciciosDiaRut;
@@ -3344,22 +3561,22 @@ PanelAdministrador.setVisible(false);
     private javax.swing.JList lstRutinasAdm;
     private javax.swing.JPasswordField passAdm;
     private javax.swing.JPasswordField passCliente;
+    private javax.swing.JPasswordField passCurrentCliente;
+    private javax.swing.JPasswordField passCurrentEntrenador;
     private javax.swing.JPasswordField passEntrenador;
+    private javax.swing.JPasswordField passNewCliente;
+    private javax.swing.JPasswordField passNewEntrenador;
     private javax.swing.JTextField txtAlturaClienteAdd;
     private javax.swing.JTextField txtAnoNacimiento;
     private javax.swing.JTextField txtDiaNacimiento;
     private javax.swing.JTextField txtMasaClienteAdd;
     private javax.swing.JTextField txtMesNacimiento;
-    private javax.swing.JTextField txtNomClienteClave;
-    private javax.swing.JTextField txtNomEntrClave;
     private javax.swing.JTextField txtNomUsuarioAdm;
     private javax.swing.JTextField txtNomUsuarioCliente;
     private javax.swing.JTextField txtNombreClienteDeAdd;
     private javax.swing.JTextField txtNombreEjercicio;
     private javax.swing.JTextField txtNombreEntrenadorCrear;
     private javax.swing.JTextField txtNombreUsuarioEntr;
-    private javax.swing.JTextField txtPasswordClienteClave;
-    private javax.swing.JTextField txtPasswordEntr;
     private javax.swing.JTextField txtRepeticiones;
     private javax.swing.JTextField txtSerierEjer;
     private javax.swing.JTextField txtTipoEjercicio;

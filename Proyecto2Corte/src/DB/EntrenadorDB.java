@@ -25,6 +25,7 @@ public class EntrenadorDB {
     private final String SQL_DELETE = "DELETE FROM entrenador WHERE entrenador_id = ?";
     private final String SQL_SELECT = "SELECT * FROM entrenador ORDER BY entrenador_id";
     private final String SQL_SELECT_ID = "SELECT * FROM entrenador WHERE entrenador_id = ?";
+    private final String SQL_SELECT_USER_ID = "SELECT * FROM entrenador WHERE user_id = ?";
 
     public EntrenadorDB() {
     }
@@ -164,6 +165,33 @@ public class EntrenadorDB {
             connection = DBManager.getConnection();
             statement = connection.prepareStatement(SQL_SELECT_ID);
             statement.setInt(1, id);
+            rs = statement.executeQuery();
+            rs.next();
+            int idEntrenador = rs.getInt(1);
+            String nombreEntrenador = rs.getString(2);
+            entrenador = new Entrenador();
+            entrenador.setIdEntrenador(idEntrenador);
+            entrenador.setNombreEntrenador(nombreEntrenador);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }finally{
+            DBManager.close(rs);
+            DBManager.close(statement);
+            DBManager.close(connection);
+        }
+        return entrenador;
+    }
+    
+    public Entrenador selectByUserId(int userId){
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        Entrenador entrenador = null;
+        try {
+            connection = DBManager.getConnection();
+            System.out.println("Ejecutando query:" + SQL_SELECT_USER_ID);
+            statement = connection.prepareStatement(SQL_SELECT_USER_ID);
+            statement.setInt(1, userId);
             rs = statement.executeQuery();
             rs.next();
             int idEntrenador = rs.getInt(1);

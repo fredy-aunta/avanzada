@@ -101,11 +101,8 @@ public class Cliente {
       
     @Override
     public String toString() {
-        if (rutinaCliente == null) {
-            return nombreCliente;
-        } else {
-            return nombreCliente + rutinaCliente.toString();
-        }
+            return nombreCliente+"-"+alturaCliente+"-"+masaCliente+"-"+edadCliente+"-"+generoCliente;
+        
     }
     
 }

@@ -56,7 +56,7 @@ CREATE TABLE `auth_user` (
   PRIMARY KEY (`user_id`),
   KEY `role_id_fk_idx` (`role_id`),
   CONSTRAINT `role_id_fk` FOREIGN KEY (`role_id`) REFERENCES `auth_role` (`role_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,7 +65,7 @@ CREATE TABLE `auth_user` (
 
 LOCK TABLES `auth_user` WRITE;
 /*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
-INSERT INTO `auth_user` VALUES (1,'a','a',1),(2,'e','e',2),(3,'c','c',3);
+INSERT INTO `auth_user` VALUES (1,'a','a',1),(2,'e','e',2),(3,'c','c',3),(7,'gg','0000',2),(8,'hh','123',3),(9,'ll','0000',3),(10,'jj','456',2);
 /*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -88,7 +88,7 @@ CREATE TABLE `cliente` (
   `objetivo` enum('Marcar','Adelgazar') NOT NULL,
   PRIMARY KEY (`cliente_id`),
   UNIQUE KEY `rutina_id_UNIQUE` (`rutina_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -97,6 +97,7 @@ CREATE TABLE `cliente` (
 
 LOCK TABLES `cliente` WRITE;
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
+INSERT INTO `cliente` VALUES (4,8,'hh','1.89','34','1998-05-04','M',4,'Marcar'),(5,9,'ll','1,43','43','1978-03-04','M',NULL,'Adelgazar');
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -114,7 +115,7 @@ CREATE TABLE `ejercicio` (
   `repeticiones` int(11) DEFAULT NULL,
   `serie` int(11) DEFAULT NULL,
   PRIMARY KEY (`ejercicio_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -123,6 +124,7 @@ CREATE TABLE `ejercicio` (
 
 LOCK TABLES `ejercicio` WRITE;
 /*!40000 ALTER TABLE `ejercicio` DISABLE KEYS */;
+INSERT INTO `ejercicio` VALUES (3,'dd','dd',33,4),(4,'ttu','ghj',89,67);
 /*!40000 ALTER TABLE `ejercicio` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -136,8 +138,9 @@ DROP TABLE IF EXISTS `entrenador`;
 CREATE TABLE `entrenador` (
   `entrenador_id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre_entrenador` varchar(128) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`entrenador_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -146,6 +149,7 @@ CREATE TABLE `entrenador` (
 
 LOCK TABLES `entrenador` WRITE;
 /*!40000 ALTER TABLE `entrenador` DISABLE KEYS */;
+INSERT INTO `entrenador` VALUES (1,'sebastian',6),(2,'gg',7),(3,'jj',10);
 /*!40000 ALTER TABLE `entrenador` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -163,7 +167,7 @@ CREATE TABLE `rutina` (
   PRIMARY KEY (`rutina_id`),
   KEY `entrenador_id_fk_idx` (`entrenador_id`),
   CONSTRAINT `entrenador_id_fk` FOREIGN KEY (`entrenador_id`) REFERENCES `entrenador` (`entrenador_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -172,7 +176,7 @@ CREATE TABLE `rutina` (
 
 LOCK TABLES `rutina` WRITE;
 /*!40000 ALTER TABLE `rutina` DISABLE KEYS */;
-INSERT INTO `rutina` VALUES (2,'test_1',NULL);
+INSERT INTO `rutina` VALUES (2,'test_1',NULL),(3,'rutina-3',3),(4,'rutina-3',3);
 /*!40000 ALTER TABLE `rutina` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -200,6 +204,7 @@ CREATE TABLE `rutina_dia_ejercicio` (
 
 LOCK TABLES `rutina_dia_ejercicio` WRITE;
 /*!40000 ALTER TABLE `rutina_dia_ejercicio` DISABLE KEYS */;
+INSERT INTO `rutina_dia_ejercicio` VALUES (3,1,3),(4,1,3);
 /*!40000 ALTER TABLE `rutina_dia_ejercicio` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -212,4 +217,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-10-30  0:46:32
+-- Dump completed on 2014-10-31  6:31:41

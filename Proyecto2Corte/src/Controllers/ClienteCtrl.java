@@ -8,6 +8,7 @@ package Controllers;
 import DB.ClienteDB;
 import DB.UsuarioDB;
 import Negocio.Cliente;
+import Negocio.Rutina;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -56,16 +57,13 @@ public class ClienteCtrl {
         return clientes;
     }
     
-    public Cliente getCliente(String id){
+    public void clienteActivo(String username){
+        int idUser = usuarioDB.getId(username);
+        cliente = clienteDB.selectByUserId(idUser);
+    }
+    
+    public void clienteInactivo(){
         cliente = null;
-        int idCliente;
-        try {
-            idCliente = Integer.parseInt(id);
-            cliente = clienteDB.selectById(idCliente);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-        return cliente;
     }
     
     public void eliminarCliente(String id){
@@ -82,6 +80,10 @@ public class ClienteCtrl {
           clienteDB.update(idCliente, nombreCliente, alturaCliente, masaCliente, generoCliente, objetivo);
     }
     
+    public Cliente asignarRutina(Cliente cliente, Rutina rutina){
+        cliente.setRutinaCliente(rutina);
+        return cliente;
+    }
 //    public Cliente buscarCliente(String valor){
 //        return ClienteDB.mgr.getCliente(valor);
 //    }

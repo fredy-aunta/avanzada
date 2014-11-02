@@ -30,6 +30,15 @@ public class EntrenadorCtrl {
         entrenadores = entrenadorDB.select();
     }
 
+    public void entrenadorActivo(String username){
+        int idUser = usuarioDB.getId(username);
+        entrenador = entrenadorDB.selectByUserId(idUser);
+    }
+    
+    public void entrenadorInactivo(){
+        entrenador = null;
+    }
+    
     public EntrenadorDB getEntrenadorDB() {
         return entrenadorDB;
     }
