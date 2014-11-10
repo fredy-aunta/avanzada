@@ -12,10 +12,17 @@ import DB.UsuarioDB;
  */
 public class UserCtrl {
     UsuarioDB usuarioDB = new UsuarioDB();
+    
     public boolean validarUser(String nombre,String password,int roleID){
         return usuarioDB.buscarUser(nombre, password,roleID);
     }
-    public void cambiarPassword(String nombre,String pasword,int roleID){
-        
+    
+    public boolean cambiarPassword(String nombre,String currentPassword, String newPassword){
+        boolean wasChanged = false;
+        String passwordUser = usuarioDB.getPassword(nombre);
+        if (passwordUser.equals(currentPassword)) {
+            wasChanged = usuarioDB.setPassword(nombre, newPassword);
+        }
+        return wasChanged;
     }
 }

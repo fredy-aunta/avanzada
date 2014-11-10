@@ -33,6 +33,7 @@ public class RutinaDB {
     private final String SQL_JOIN_RUTINA_DIA_EJERCICIO = "SELECT dia, ejercicio.ejercicio_id, nombre_ejercicio, tipo_ejercicio" +
                                                          " FROM rutina_dia_ejercicio JOIN ejercicio ON ejercicio.ejercicio_id = rutina_dia_ejercicio.ejercicio_id" +
                                                          " WHERE rutina_id = ?";
+    private final String SQL_INSERT_ID = "SELECT @@identity AS id";
 
     public RutinaDB() {
     }
@@ -40,7 +41,9 @@ public class RutinaDB {
     public int insert(String nombre, int idEntrenador){
         Connection connection = null;
         PreparedStatement statement = null;
+        ResultSet rs = null;
         int rows = 0;
+        int id = 0;
         try {
             connection = DBManager.getConnection();
             statement = connection.prepareStatement(SQL_INSERT);
@@ -49,13 +52,20 @@ public class RutinaDB {
             System.out.println("Ejecutando query: " + SQL_INSERT);
             rows = statement.executeUpdate();
             System.out.println("Registros Afectados :" + rows);
+            /**
+             * Obtiene el id del cliente que se acabo de insertar
+             */
+            statement = connection.prepareStatement(SQL_INSERT_ID);
+            rs = statement.executeQuery();
+            rs.next();
+            id = rs.getInt(1);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }finally{
             DBManager.close(statement);
             DBManager.close(connection);
         }
-        return rows;
+        return id;
     }
     
     public int insert(String nombre){
