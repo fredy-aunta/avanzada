@@ -31,7 +31,6 @@ public class User extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
         String roleId = request.getParameter("roleId");
         int roleIdInt = Integer.parseInt(roleId);
         String username = request.getParameter("username");
@@ -49,22 +48,7 @@ public class User extends HttpServlet {
                 break;
         }
         }else{
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet User</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet User at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-        
-        try {
-            /* TODO output your page here. You may use following sample code. */
-            
-        } finally {            
-            out.close();
+            response.sendRedirect("usuarioNoValido.jsp");
         }
     }
     
