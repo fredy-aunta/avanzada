@@ -25,7 +25,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="objetivo" class="col-sm-2 col-md-2 control-label">Name</label>
+                                <label for="objetivo" class="col-sm-2 col-md-2 control-label">Objetivo</label>
                                 <div class="col-sm-10 col-md-10">
                                     <select class="form-control" id="objetivo" name="objetivo">
 
