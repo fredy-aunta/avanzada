@@ -20,7 +20,7 @@
                         <div class="row">
                             <div class="col-md-4 col-md-offset-2 col-sm-4 col-sm-offset-2">
                                 <div class="thumbnail">
-                                    <img alt="..." src="data/usu.png">
+                                    <img alt="..." src="data/Add.jpg">
                                     <div class="caption">
                                         <h3>Agregar</h3>
                                         <p>...</p>
@@ -31,7 +31,7 @@
                             </div>
                             <div class="col-md-4 col-sm-4">
                                 <div class="thumbnail">
-                                    <img alt="..." src="data/usu.png">
+                                    <img alt="..." src="data/consultar.jpg">
                                     <div class="caption">
                                         <h3>Consultar</h3>
                                         <p>...</p>
