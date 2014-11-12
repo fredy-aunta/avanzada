@@ -17,7 +17,21 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6">
-                        
+                        <h1>Rutinas</h1>
+                        <table class="table">
+                            <tr>
+                                <td>ID Rutina</td>
+                                <td>Nombre Rutina</td>
+                                <td>Nombre Entrenador</td>
+                            </tr>
+                            <% for(int i=0;i<=10;i++){%>
+                            <tr>
+                                <td>ID</td>
+                                <td>NOMR</td>
+                                <td>NOME</td>
+                            </tr>
+                            <%}%>
+                        </table>
                     </div>
                 </div>
             </div>
