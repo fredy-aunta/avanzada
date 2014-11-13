@@ -18,13 +18,29 @@
                 <div class="row">
                     <div class="col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6">
                         <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <h1>Consultar Rutina</h1>
+                            </div>
                             <div class="col-md-3">
                                 <select name="dia">
-                                    <option>Lunes</option>
+                                    <option vale="1">Lunes</option>
+                                    <option value="2">Martes</option>
+                                    <option value="3">Miercoles</option>
+                                    <option value="4">Jueves</option>
+                                    <option value="5">Viernes</option>
+                                    <option value="6">Sabado</option>
+                                    <option value="7">Domingo</option>
                                 </select>
                             </div>
                             <div class="col-md-9">
-                                ejercicios
+                                <table class="table">
+                                    <tr>
+                                        <td>Nombre Ejercicio</td>
+                                        <td>Tipo Ejercicio</td>
+                                        <td>Repeticiones</td>
+                                        <td>Serie</td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
                     </div>
