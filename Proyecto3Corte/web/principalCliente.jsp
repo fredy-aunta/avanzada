@@ -20,7 +20,7 @@
                         <div class="row">
                             <div class="col-md-6 col-sm-6">
                                 <div class="thumbnail">
-                                    <img alt="..." src="data/Adm.png">
+                                    <img alt="..." src="data/consultar.jpg">
                                     <div class="caption">
                                         <h3>Consultar</h3>
                                         <p>...</p>
@@ -30,7 +30,7 @@
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="thumbnail">
-                                    <img alt="..." src="data/Adm.png">
+                                    <img alt="..." src="data/contra.jpg">
                                     <div class="caption">
                                         <h3>Cambiar</h3>
                                         <p>...</p>
