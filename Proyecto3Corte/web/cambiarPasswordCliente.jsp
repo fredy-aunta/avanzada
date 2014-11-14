@@ -16,7 +16,7 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6">
+                    <div class="col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8">
                         <div class="row">
                             <form class="form-horizontal" role="form" action="">
                                 <div class="form-group">

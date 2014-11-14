@@ -18,7 +18,8 @@
                 <div class="row">
                     <div class="col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6">
                         <div class="row">
-                            <form class="form-horizontal" role="form" action="User">
+                            <div class="alert alert-danger" id="errorLogin">${errorLogin}</div>
+                            <form class="form-horizontal" role="form" action="User" method="post">
                                 <div class="form-group">
                                     <label for="username" class="col-sm-2 col-md-2 control-label">Username</label>
                                     <div class="col-sm-10 col-md-10">
@@ -43,5 +44,6 @@
                 </div>
             </div>
         </div>
+        <script type="text/javascript" src="assets/js/footer.js"></script>
     </body>
 </html>

@@ -10,7 +10,7 @@
     <head>
         <jsp:include page="_head.html" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>GYM-Admin</title>
+        <title>GYM-Cliente</title>
     </head>
     <body>
         <div class="content">
@@ -18,6 +18,7 @@
                 <div class="row">
                     <div class="col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6">
                         <div class="row">
+                            <div class="alert alert-danger" id="errorLogin">${errorLogin}</div>
                             <form class="form-horizontal" role="form" action="User">
                                 <div class="form-group">
                                     <label for="username" class="col-sm-2 col-md-2 control-label">Username</label>
@@ -43,5 +44,6 @@
                 </div>
             </div>
         </div>
+        <script type="text/javascript" src="assets/js/footer.js"></script>
     </body>
 </html>

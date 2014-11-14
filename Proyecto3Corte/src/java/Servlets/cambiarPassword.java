@@ -4,9 +4,7 @@
  */
 package Servlets;
 
-import DB.ClienteDB;
 import DB.UsuarioDB;
-import Negocio.Cliente;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -19,9 +17,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Fredy
  */
-public class User extends HttpServlet {
+public class cambiarPassword extends HttpServlet {
     UsuarioDB usuarioDB = new UsuarioDB();
-    ClienteDB clienteDB = new ClienteDB();
     /**
      * Processes requests for both HTTP
      * <code>GET</code> and
@@ -34,19 +31,18 @@ public class User extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
+        response.setContentType("text/html;charset=UTF-8");
         String roleId = request.getParameter("roleId");
         int roleIdInt = Integer.parseInt(roleId);
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        if (this.validarUser(username, password, roleIdInt)) {
-            int userId = usuarioDB.getId(username);
-            session.setAttribute("auth_user_id", userId);
-            switch (roleIdInt){
-            case UsuarioDB.ROLE_ADMIN:
-                request.getRequestDispatcher("principalAdmin.jsp").forward(request, response);
-                break;
+        String currentPassword = request.getParameter("currentPassword");
+        String newPassword = request.getParameter("newPassword");
+        int userId = Integer.parseInt(session.getAttribute("auth_user_id").toString());
+        String passwordUser = usuarioDB.getPassword(userId);
+        if(passwordUser.equals(currentPassword)){
+            if(usuarioDB.setPassword(userId, newPassword)){
+                request.setAttribute("updatedPass", "Password actualizada");
+                switch (roleIdInt){
             case UsuarioDB.ROLE_ENTRENADOR:
                 request.getRequestDispatcher("principalEntrenador.jsp").forward(request, response);
                 break;
@@ -54,24 +50,27 @@ public class User extends HttpServlet {
                 request.getRequestDispatcher("principalCliente.jsp").forward(request, response);
                 break;
             }
+            }else{
+//                no se modifico la contraseña
+            }
         }else{
-            request.setAttribute("errorLogin", "Usuario no valido");
-            switch (roleIdInt){
-            case UsuarioDB.ROLE_ADMIN:
-                request.getRequestDispatcher("loginAdmin.jsp").forward(request, response);
-                break;
-            case UsuarioDB.ROLE_ENTRENADOR:
-                request.getRequestDispatcher("loginEntrenador.jsp").forward(request, response);
-                break;
-            case UsuarioDB.ROLE_CLIENTE:
-                request.getRequestDispatcher("loginCliente.jsp").forward(request, response);
-                break;
+//            la contraseña ingresada no es la que tiene en la DB
         }
-        }
-    }
-    
-    public boolean validarUser(String nombre, String password, int roleID){
-        return usuarioDB.buscarUser(nombre, password, roleID);
+//        if (this.validarUser(username, password, roleIdInt)) {
+//            switch (roleIdInt){
+//            case UsuarioDB.ROLE_ADMIN:
+//                response.sendRedirect("principalAdmin.jsp");
+//                break;
+//            case UsuarioDB.ROLE_ENTRENADOR:
+//                response.sendRedirect("principalEntrenador.jsp");
+//                break;
+//            case UsuarioDB.ROLE_CLIENTE:
+//                response.sendRedirect("principalCliente.jsp");
+//                break;
+//        }
+//        }else{
+//            response.sendRedirect("usuarioNoValido.jsp");
+//        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

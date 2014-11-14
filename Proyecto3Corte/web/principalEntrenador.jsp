@@ -18,6 +18,7 @@
                 <div class="row">
                     <div class="col-md-offset-2 col-md-8">
                         <div class="row">
+                            <div class="col-md-12 col-sm-12">${updatedPass}</div>
                             <div class="col-md-4 col-sm-4">
                                 <div class="thumbnail">
                                     <img alt="..." src="data/Adm.png">
