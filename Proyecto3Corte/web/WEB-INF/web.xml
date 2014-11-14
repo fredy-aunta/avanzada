@@ -4,9 +4,17 @@
         <servlet-name>User</servlet-name>
         <servlet-class>Servlets.User</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>cambiarPassword</servlet-name>
+        <servlet-class>Servlets.cambiarPassword</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>User</servlet-name>
         <url-pattern>/User</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cambiarPassword</servlet-name>
+        <url-pattern>/cambiarPassword</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
