@@ -4,8 +4,11 @@
  */
 package Servlets;
 
+import DB.ClienteDB;
 import DB.EjercicioDB;
 import DB.RutinaDB;
+import DB.RutinaDiaDB;
+import Negocio.Cliente;
 import Negocio.Ejercicio;
 import Negocio.Rutina;
 import Negocio.RutinaDia;
@@ -13,6 +16,7 @@ import Services.Ejercicios;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Vector;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -31,6 +35,8 @@ public class AdicionarRutina extends HttpServlet {
     Ejercicios todosEjercicios = null;
     ArrayList<Ejercicio> es = new ArrayList<Ejercicio>();
     EjercicioDB ejercicioDB = new EjercicioDB();
+    RutinaDiaDB rutinaDiaDB =  new RutinaDiaDB();
+    ClienteDB clienteDB = new ClienteDB();
     /**
      * Processes requests for both HTTP
      * <code>GET</code> and
@@ -71,6 +77,20 @@ public class AdicionarRutina extends HttpServlet {
     
     private void cargarTodosEjercicios(){
         es = ejercicioDB.select();
+    }
+    
+    private void grabarRutina(Cliente cliente, int idEntrenador){
+        int idRutina = rutinaDB.insert("rutina-" + idEntrenador, idEntrenador);
+        ArrayList<RutinaDia> rutinasDias = this.rutina.getRutinasDia();
+        Ejercicios ejercicios;
+        for (RutinaDia rutinasDia : rutinasDias) {
+            ejercicios = rutinasDia.getEjerciciosDia();
+            Vector<Ejercicio> ejercicios1 = ejercicios.getData();
+            for (Ejercicio ejercicios11 : ejercicios1) {
+                rutinaDiaDB.insert(idRutina, rutinasDia.getDiaRutina(), ejercicios11.getIdEjercicio());
+            }
+        }
+        clienteDB.UpdateRutinaId(cliente.getIdCliente(), idRutina);
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
