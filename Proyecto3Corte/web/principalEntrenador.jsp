@@ -25,7 +25,7 @@
                                     <div class="caption">
                                         <h3>Crear</h3>
                                         <p>...</p>
-                                        <p><a href="crearRutina.jsp" class="btn btn-primary btn-block" role="button">Rutina</a></p>
+                                        <p><a href="CrearRutina" class="btn btn-primary btn-block" role="button">Rutina</a></p>
                                         <p><a href="crearEjercicio.jsp" class="btn btn-primary btn-block" role="button">Ejercicio</a></p>
                                     </div>
                                 </div>
