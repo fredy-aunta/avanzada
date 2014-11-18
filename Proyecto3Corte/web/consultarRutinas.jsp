@@ -4,6 +4,8 @@
     Author     : Fredy
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,18 +21,28 @@
                     <div class="col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6">
                         <h1>Rutinas</h1>
                         <table class="table">
-                            <tr>
-                                <td>ID Rutina</td>
-                                <td>Nombre Rutina</td>
-                                <td>Nombre Entrenador</td>
-                            </tr>
-                            <% for(int i=0;i<=10;i++){%>
-                            <tr>
-                                <td>ID</td>
-                                <td>NOMR</td>
-                                <td>NOME</td>
-                            </tr>
-                            <%}%>
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Nombre</th>
+                                    <th>Id Entrenador</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <c:forEach var="rutina" items="${rutinas}">
+                                <tr>
+                                    <td>
+                                    <c:out value="${rutina.idRutina}"></c:out>
+                                    </td>
+                                    <td>
+                                    <c:out value="${rutina.nombreRutina}"></c:out>
+                                    </td>
+                                    <td>
+                                    <c:out value="${rutina.entrenador.idEntrenador}"></c:out>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
                         </table>
                     </div>
                 </div>

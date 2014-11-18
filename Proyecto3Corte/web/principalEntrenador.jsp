@@ -36,8 +36,8 @@
                                     <div class="caption">
                                         <h3>Consultar</h3>
                                         <p>...</p>
-                                        <p><a href="consultarRutinasEntrenador.jsp" class="btn btn-primary btn-block" role="button">Rutinas</a></p>
-                                        <p><a href="consultarEjercicios.jsp" class="btn btn-primary btn-block" role="button">Ejercicios</a></p>
+                                        <p><a href="ConsultarRutinasEntrenador" class="btn btn-primary btn-block" role="button">Rutinas</a></p>
+                                        <p><a href="ConsultarEjercicios" class="btn btn-primary btn-block" role="button">Ejercicios</a></p>
                                     </div>
                                 </div>
                             </div>

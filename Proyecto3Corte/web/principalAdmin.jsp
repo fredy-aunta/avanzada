@@ -35,9 +35,9 @@
                                     <div class="caption">
                                         <h3>Consultar</h3>
                                         <p>...</p>
-                                        <p><a href="consultarClientes.jsp" class="btn btn-primary btn-block" role="button">Clientes</a></p>
-                                        <p><a href="consultarEntrenadores.jsp" class="btn btn-primary btn-block" role="button">Entrenadores</a></p>
-                                        <p><a href="consultarRutinas.jsp" class="btn btn-primary btn-block" role="button">Rutinas</a></p>
+                                        <p><a href="ConsultarClientes" class="btn btn-primary btn-block" role="button">Clientes</a></p>
+                                        <p><a href="ConsultarEntrenadores" class="btn btn-primary btn-block" role="button">Entrenadores</a></p>
+                                        <p><a href="ConsultarRutinas" class="btn btn-primary btn-block" role="button">Rutinas</a></p>
                                     </div>
                                 </div>
                             </div>

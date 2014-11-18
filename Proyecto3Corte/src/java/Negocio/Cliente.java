@@ -98,6 +98,15 @@ public class Cliente {
         this.objetivo = objetivo;
     }
 
+    public void setObjetivo(String objetivo) {
+        Objetivo o = null;
+        if (objetivo.equalsIgnoreCase("Marcar")) {
+            o = new Marcar();
+        } else if(objetivo.equalsIgnoreCase("Adelgazar")){
+            o = new Adelgazar();
+        }
+        this.setObjetivo(o);
+    }
       
     @Override
     public String toString() {

@@ -4,8 +4,12 @@
  */
 package Servlets;
 
+import DB.ClienteDB;
+import DB.EjercicioDB;
+import Negocio.Cliente;
+import Negocio.Ejercicio;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +19,11 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Fredy
  */
-public class ConsultarRutinasEntrenador extends HttpServlet {
+public class CrearRutina extends HttpServlet {
+    ClienteDB clienteDB = new ClienteDB();
+    EjercicioDB ejercicioDB = new EjercicioDB();
+    ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+    ArrayList<Ejercicio> ejercicios = new ArrayList<Ejercicio>();
     
     /**
      * Processes requests for both HTTP
@@ -30,7 +38,11 @@ public class ConsultarRutinasEntrenador extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+        clientes = clienteDB.select();
+        ejercicios = ejercicioDB.select();
+        request.setAttribute("clientes", clientes);
+        request.setAttribute("ejercicios", ejercicios);
+        request.getRequestDispatcher("crearRutina.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

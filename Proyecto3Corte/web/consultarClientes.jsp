@@ -4,6 +4,7 @@
     Author     : Fredy
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,26 +20,45 @@
                     <div class="col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6">
                         <h1>Clientes</h1>
                         <table class="table">
-                            <tr>
-                                <td><strong>ID Cliente</strong></td>
-                                <td><strong>Nombre</strong></td>
-                                <td><strong>Altura</strong></td>
-                                <td><strong>Masa</strong></td>
-                                <td><strong>Edad</strong></td>
-                                <td><strong>Genero</strong></td>
-                                <td><strong>Objetivo</strong></td>
-                            </tr>
-                            <% for(int x=1;x<=10;x++){%>
-                            <tr>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                            </tr>
-                            <%}%>
+                            <thead>
+                                <tr>
+                                    <th>ID Cliente</th>
+                                    <th>Nombre</th>
+                                    <th>Altura</th>
+                                    <th>Masa</th>
+                                    <th>Edad</th>
+                                    <th>Genero</th>
+                                    <th>Objetivo</th>
+                                </tr>
+                            </thead>
+                            </th>
+                            <tbody>
+                            <c:forEach var="cliente" items="${clientes}">
+                                <tr>
+                                    <td>
+                                        <c:out value="${cliente.idCliente}"/>
+                                    </td>
+                                    <td>
+                                        <c:out value="${cliente.nombreCliente}"/>
+                                    </td>
+                                    <td>
+                                        <c:out value="${cliente.alturaCliente}"/>
+                                    </td>
+                                    <td>
+                                        <c:out value="${cliente.masaCliente}"/>
+                                    </td>
+                                    <td>
+                                        <c:out value="${cliente.edadCliente}"/>
+                                    </td>
+                                    <td>
+                                        <c:out value="${cliente.generoCliente}"/>
+                                    </td>
+                                    <td>
+                                        <c:out value="${cliente.objetivo.getObjetivo()}"/>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                                    </tbody>
                         </table>
                     </div>
                 </div>

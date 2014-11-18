@@ -159,6 +159,7 @@ public class ClienteDB {
                 String dob = rs.getString(6);
                 String genero = rs.getString(7);
                 int rutinaId = rs.getInt(8);
+                String objetivo = rs.getString(9);
                 cliente = new Cliente();
                 cliente.setIdCliente(idCliente);
                 cliente.setNombreCliente(nombreCliente);
@@ -166,6 +167,7 @@ public class ClienteDB {
                 cliente.setMasaCliente(masaCliente);
                 cliente.setEdadCliente(this.getCustomerAge(dob));
                 cliente.setGeneroCliente(this.getCustomerGender(genero));
+                cliente.setObjetivo(objetivo);
                 if (rutinaId != 0) {
                     String nombreRutina = rs.getString(11);
                     rutina = new Rutina();

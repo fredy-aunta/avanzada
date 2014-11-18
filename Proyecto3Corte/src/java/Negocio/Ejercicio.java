@@ -76,9 +76,9 @@ public class Ejercicio {
         this.tipoEjercicio = tipoEjercicio;
     }
 
-    @Override
-    public String toString() {
-        return nombreEjercicio;
-    }
+//    @Override
+//    public String toString() {
+//        return nombreEjercicio;
+//    }
     
 }

@@ -24,6 +24,26 @@
         <servlet-name>ConsultarRutinasEntrenador</servlet-name>
         <servlet-class>Servlets.ConsultarRutinasEntrenador</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ConsultarEjercicios</servlet-name>
+        <servlet-class>Servlets.ConsultarEjercicios</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConsultarClientes</servlet-name>
+        <servlet-class>Servlets.ConsultarClientes</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConsultarEntrenadores</servlet-name>
+        <servlet-class>Servlets.ConsultarEntrenadores</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConsultarRutinas</servlet-name>
+        <servlet-class>Servlets.ConsultarRutinas</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CrearRutina</servlet-name>
+        <servlet-class>Servlets.CrearRutina</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>User</servlet-name>
         <url-pattern>/User</url-pattern>
@@ -47,6 +67,26 @@
     <servlet-mapping>
         <servlet-name>ConsultarRutinasEntrenador</servlet-name>
         <url-pattern>/ConsultarRutinasEntrenador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConsultarEjercicios</servlet-name>
+        <url-pattern>/ConsultarEjercicios</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConsultarClientes</servlet-name>
+        <url-pattern>/ConsultarClientes</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConsultarEntrenadores</servlet-name>
+        <url-pattern>/ConsultarEntrenadores</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConsultarRutinas</servlet-name>
+        <url-pattern>/ConsultarRutinas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CrearRutina</servlet-name>
+        <url-pattern>/CrearRutina</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

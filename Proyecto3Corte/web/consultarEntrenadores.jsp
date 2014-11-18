@@ -4,6 +4,8 @@
     Author     : Fredy
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,16 +21,20 @@
                     <div class="col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6">
                         <h1>Entrenadores</h1>
                         <table class="table">
-                            <tr>
-                                <td>Id Entrenador</td>
-                                <td>Nombre</td>
-                            </tr>
-                            <% for(int i=0;i<=10;i++){%>
-                            <tr>
-                                <td>ID</td>
-                                <td>NOM</td>
-                            </tr>
-                            <%}%>
+                            <thead>
+                                <tr>
+                                    <th>Id Entrenador</th>
+                                    <th>Nombre</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <c:forEach var="entrenador" items="${entrenadores}">
+                                <tr>
+                                    <td><c:out value="${entrenador.idEntrenador}"></c:out></td>
+                                    <td><c:out value="${entrenador.nombreEntrenador}"></c:out></td>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
                         </table>
                     </div>
                 </div>
