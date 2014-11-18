@@ -17,7 +17,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8">
-                        <form class="form-horizontal" role="form" action="User">
+                        <form class="form-horizontal" role="form" action="CrearCliente">
                             <div class="form-group">
                                 <label for="nombre" class="col-sm-2 col-md-2 control-label">Name</label>
                                 <div class="col-sm-10 col-md-10">
@@ -28,7 +28,8 @@
                                 <label for="objetivo" class="col-sm-2 col-md-2 control-label">Objetivo</label>
                                 <div class="col-sm-10 col-md-10">
                                     <select class="form-control" id="objetivo" name="objetivo">
-
+                                        <option value="Marcar">Marcar</option>
+                                        <option value="Adelgazar">Adelgazar</option>
                                     </select>
                                 </div>
                             </div>

@@ -8,6 +8,22 @@
         <servlet-name>cambiarPassword</servlet-name>
         <servlet-class>Servlets.cambiarPassword</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CrearEntrenador</servlet-name>
+        <servlet-class>Servlets.CrearEntrenador</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CrearCliente</servlet-name>
+        <servlet-class>Servlets.CrearCliente</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CrearEjercicio</servlet-name>
+        <servlet-class>Servlets.CrearEjercicio</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConsultarRutinasEntrenador</servlet-name>
+        <servlet-class>Servlets.ConsultarRutinasEntrenador</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>User</servlet-name>
         <url-pattern>/User</url-pattern>
@@ -15,6 +31,22 @@
     <servlet-mapping>
         <servlet-name>cambiarPassword</servlet-name>
         <url-pattern>/cambiarPassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CrearEntrenador</servlet-name>
+        <url-pattern>/CrearEntrenador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CrearCliente</servlet-name>
+        <url-pattern>/CrearCliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CrearEjercicio</servlet-name>
+        <url-pattern>/CrearEjercicio</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConsultarRutinasEntrenador</servlet-name>
+        <url-pattern>/ConsultarRutinasEntrenador</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

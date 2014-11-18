@@ -4,20 +4,22 @@
  */
 package Servlets;
 
+import DB.ClienteDB;
 import DB.UsuarioDB;
+import com.sun.security.ntlm.Client;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Fredy
  */
-public class cambiarPassword extends HttpServlet {
+public class CrearCliente extends HttpServlet {
+    ClienteDB clienteDB = new ClienteDB();
     UsuarioDB usuarioDB = new UsuarioDB();
     /**
      * Processes requests for both HTTP
@@ -31,33 +33,27 @@ public class cambiarPassword extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
         response.setContentType("text/html;charset=UTF-8");
-        String roleId = request.getParameter("roleId");
-        int roleIdInt = Integer.parseInt(roleId);
-        String currentPassword = request.getParameter("currentPassword");
-        String newPassword = request.getParameter("newPassword");
-        int userId = Integer.parseInt(session.getAttribute("auth_user_id").toString());
-        String passwordUser = usuarioDB.getPassword(userId);
-        if(passwordUser.equals(currentPassword)){
-            if(usuarioDB.setPassword(userId, newPassword)){
-                request.setAttribute("updatedPass", "Password actualizada");
-                switch (roleIdInt){
-            case UsuarioDB.ROLE_ENTRENADOR:
-                request.getRequestDispatcher("principalEntrenador.jsp").forward(request, response);
-                break;
-            case UsuarioDB.ROLE_CLIENTE:
-                request.getRequestDispatcher("principalCliente.jsp").forward(request, response);
-                break;
-            }
-            }else{
-//                no se modifico la contraseña
-            }
-        }else{
-//            la contraseña ingresada no es la que tiene en la DB
+        String nombre = request.getParameter("nombre");
+        String altura = request.getParameter("altura");
+        String masa = request.getParameter("masa");
+        String fechaNacimiento = request.getParameter("dob");
+        String genero = request.getParameter("gender");
+        String objetivo = request.getParameter("objetivo");
+        
+        if (this.insertarCliente(nombre, altura, masa, fechaNacimiento, genero, objetivo)) {
+            request.getRequestDispatcher("principalAdmin.jsp").forward(request, response);
+        } else {
+//            Error
         }
     }
-
+    public boolean insertarCliente(String nombreCliente, String alturaCliente, String masaCliente, String fechaNacimiento, String generoCliente, String objetivo){
+        int idCliente = clienteDB.insert(nombreCliente, alturaCliente, masaCliente, fechaNacimiento, generoCliente, objetivo);
+        int idUser = usuarioDB.insert(nombreCliente, UsuarioDB.ROLE_CLIENTE);
+        int affectedRows = clienteDB.UpdateUserId(idCliente, idUser);
+        
+        return (affectedRows > 0);
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP

@@ -17,7 +17,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8">
-                        <form class="form-horizontal" role="form" action="User">
+                        <form class="form-horizontal" role="form" action="CrearEjercicio" method="post">
                             <div class="form-group">
                                 <label for="nombre" class="col-sm-3 col-md-3 control-label">Nombre</label>
                                 <div class="col-sm-9 col-md-9">

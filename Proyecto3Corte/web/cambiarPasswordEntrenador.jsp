@@ -18,7 +18,7 @@
                 <div class="row">
                     <div class="col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6">
                         <div class="row">
-                            <form class="form-horizontal" role="form" action="">
+                            <form class="form-horizontal" role="form" action="cambiarPassword" method="post">
                                 <div class="form-group">
                                     <label for="currentPassword" class="col-sm-3 col-md-3 control-label">Current Password</label>
                                     <div class="col-sm-9 col-md-9">

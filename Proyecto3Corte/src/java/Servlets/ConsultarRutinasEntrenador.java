@@ -4,21 +4,19 @@
  */
 package Servlets;
 
-import DB.UsuarioDB;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Fredy
  */
-public class cambiarPassword extends HttpServlet {
-    UsuarioDB usuarioDB = new UsuarioDB();
+public class ConsultarRutinasEntrenador extends HttpServlet {
+
     /**
      * Processes requests for both HTTP
      * <code>GET</code> and
@@ -31,31 +29,8 @@ public class cambiarPassword extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
         response.setContentType("text/html;charset=UTF-8");
-        String roleId = request.getParameter("roleId");
-        int roleIdInt = Integer.parseInt(roleId);
-        String currentPassword = request.getParameter("currentPassword");
-        String newPassword = request.getParameter("newPassword");
-        int userId = Integer.parseInt(session.getAttribute("auth_user_id").toString());
-        String passwordUser = usuarioDB.getPassword(userId);
-        if(passwordUser.equals(currentPassword)){
-            if(usuarioDB.setPassword(userId, newPassword)){
-                request.setAttribute("updatedPass", "Password actualizada");
-                switch (roleIdInt){
-            case UsuarioDB.ROLE_ENTRENADOR:
-                request.getRequestDispatcher("principalEntrenador.jsp").forward(request, response);
-                break;
-            case UsuarioDB.ROLE_CLIENTE:
-                request.getRequestDispatcher("principalCliente.jsp").forward(request, response);
-                break;
-            }
-            }else{
-//                no se modifico la contraseña
-            }
-        }else{
-//            la contraseña ingresada no es la que tiene en la DB
-        }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
