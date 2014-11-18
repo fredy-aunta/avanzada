@@ -27,7 +27,7 @@ public class Ejercicios implements Iterator{
         ec = data.elements();
     }
     
-    public Ejercicios(ArrayList<Ejercicios> arrayList) {
+    public Ejercicios(ArrayList<Ejercicio> arrayList) {
 //        data = ;
         data = new Vector(arrayList);
         ec = data.elements();
@@ -83,6 +83,17 @@ public class Ejercicios implements Iterator{
 
     public void setNextEjercicio(Ejercicio nextEjercicio) {
         this.nextEjercicio = nextEjercicio;
+    }
+    
+    public Ejercicio searchById(int idEjercicio){
+        Ejercicio e = null;
+        while(this.hasNext()){
+            e = (Ejercicio)this.next();
+            if (idEjercicio == e.getIdEjercicio()) break;
+            e = null;
+        }
+            
+        return e;
     }
     
     

@@ -33,7 +33,7 @@
                             <button class="btn btn-primary" id="createRutina" type="button" onclick="crearRutina()">Crear Rutina</button>
                         </form>
                         <h2>Adicionar Ejercicios</h2>
-                        <form class="form-inline" role="form-ejercicio">
+                        <form class="form-inline" role="form-ejercicio" action="AdicionarRutina" method="post">
                             <div class="form-group">
                                 <select class="form-control" id="dia" name="dia">
                                     <option value="">Dia</option>
@@ -109,9 +109,8 @@
                                 function addEjercicioDia() {
                                     var numDia = $('#dia').val();
                                     var ejercicioId = $('#ejercicioId').val();
-                                    
                                     if(numDia != '' && ejercicioId != ''){
-                                        var input = '<input type="hidden" value="' + ejercicioId + '" name="ejerciciosDia[' + numDia + ']"/>';
+                                        var input = '<input type="hidden" value="' + ejercicioId + '" name="ejerciciosDia_' + numDia + '"/>';
                                         $('#hiddenInputs').html($('#hiddenInputs').html() + input);
                                         switch(numDia){
                                             case '1':

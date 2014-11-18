@@ -44,6 +44,10 @@
         <servlet-name>CrearRutina</servlet-name>
         <servlet-class>Servlets.CrearRutina</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdicionarRutina</servlet-name>
+        <servlet-class>Servlets.AdicionarRutina</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>User</servlet-name>
         <url-pattern>/User</url-pattern>
@@ -87,6 +91,10 @@
     <servlet-mapping>
         <servlet-name>CrearRutina</servlet-name>
         <url-pattern>/CrearRutina</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdicionarRutina</servlet-name>
+        <url-pattern>/AdicionarRutina</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
