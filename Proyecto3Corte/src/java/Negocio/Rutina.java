@@ -18,7 +18,7 @@ public class Rutina {
     private String nombreRutina;
     private Entrenador entrenador;
     private ArrayList<RutinaDia> rutinasDia = new ArrayList();
-    private Objetivo objetivo;
+    
 
     public Rutina() {
         this.rutinasDia = this.crearRutinasDias();
@@ -76,13 +76,6 @@ public class Rutina {
     
     public RutinaDia getRutinaDia(int dia){
         return rutinasDia.get(dia - 1);
-    }
-    public Objetivo getObjetivo() {
-        return objetivo;
-    }
-
-    public void setObjetivo(Objetivo objetivo) {
-        this.objetivo = objetivo;
     }
 
     @Override

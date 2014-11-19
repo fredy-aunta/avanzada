@@ -55,7 +55,10 @@
                                 </select>
                             </div>
                             <button onclick="addEjercicioDia()" id="adicionarEjercicio" type="button" class="btn btn-primary">Adicionar Ejercicio</button>
-                            <h2>Ejercicios - Dia</h2>
+                            <h4>Ejercicios Rutina</h4>
+                            <div class="form-group">
+                                <input class="form-control" name="nombre" type="text"/>
+                            </div>
                             <table class="table">
                                 <thead>
                                     <tr>
