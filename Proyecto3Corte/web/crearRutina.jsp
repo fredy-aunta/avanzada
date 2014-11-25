@@ -50,7 +50,7 @@
                                 <select class="form-control" id="ejercicioId" name="ejercicioId">
                                     <option value="">Ejercicio</option>
                                     <c:forEach var="ejercicio" items="${ejercicios}">
-                                        <option value="${ejercicio.idEjercicio}"><c:out value="${ejercicio.nombreEjercicio}"></c:out></option>
+                                        <option value="${ejercicio}"><c:out value="${ejercicio.nombreEjercicio}"></c:out></option>
                                     </c:forEach>
                                 </select>
                             </div>
