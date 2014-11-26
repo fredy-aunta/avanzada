@@ -52,6 +52,10 @@ public class AdicionarRutina extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
+            String rutinaName = request.getParameter("nombre");
+            String clienteIdStr = request.getParameter("clienteId");
+            int clienteId = Integer.parseInt(clienteIdStr);
+            
             rutina = new Rutina();
             this.cargarTodosEjercicios();
             todosEjercicios = new Ejercicios(es);
@@ -69,7 +73,7 @@ public class AdicionarRutina extends HttpServlet {
                 rutinaDia.setEjerciciosDia(ejercicios);
                 rutina.setRutinaDIa(i, rutinaDia);
             }
-            out.println(rutina);
+            this.grabarRutina(clienteId, rutinaName, 0);
         } finally {
             out.close();
         }
@@ -79,7 +83,7 @@ public class AdicionarRutina extends HttpServlet {
         es = ejercicioDB.select();
     }
     
-    private void grabarRutina(Cliente cliente, int idEntrenador){
+    private void grabarRutina(int clienteId, String rutinaName, int idEntrenador){
         int idRutina = rutinaDB.insert("rutina-" + idEntrenador, idEntrenador);
         ArrayList<RutinaDia> rutinasDias = this.rutina.getRutinasDia();
         Ejercicios ejercicios;
@@ -90,7 +94,7 @@ public class AdicionarRutina extends HttpServlet {
                 rutinaDiaDB.insert(idRutina, rutinasDia.getDiaRutina(), ejercicios11.getIdEjercicio());
             }
         }
-        clienteDB.UpdateRutinaId(cliente.getIdCliente(), idRutina);
+        clienteDB.UpdateRutinaId(clienteId, idRutina);
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

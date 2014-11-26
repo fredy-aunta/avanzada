@@ -21,7 +21,7 @@
                     <div class="col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8">
                         <h1>Rutina</h1>
                         <h2>Crear Rutina</h2>
-                        <form class="form-inline" role="form-cliente">
+                        <form class="form-inline" role="form-ejercicio" action="AdicionarRutina" method="post">
                             <div class="form-group">
                                 <select name="clienteId" id="clienteId" class="form-control">
                                     <option value="">Cliente</option>
@@ -31,9 +31,7 @@
                                 </select>
                             </div>
                             <button class="btn btn-primary" id="createRutina" type="button" onclick="crearRutina()">Crear Rutina</button>
-                        </form>
-                        <h2>Adicionar Ejercicios</h2>
-                        <form class="form-inline" role="form-ejercicio" action="AdicionarRutina" method="post">
+                            <h2>Adicionar Ejercicios</h2>
                             <div class="form-group">
                                 <select class="form-control" id="dia" name="dia">
                                     <option value="">Dia</option>
@@ -54,11 +52,16 @@
                                     </c:forEach>
                                 </select>
                             </div>
-                            <button onclick="addEjercicioDia()" id="adicionarEjercicio" type="button" class="btn btn-primary">Adicionar Ejercicio</button>
-                            <h4>Ejercicios Rutina</h4>
                             <div class="form-group">
-                                <input class="form-control" name="nombre" type="text"/>
+                                <button onclick="addEjercicioDia()" id="adicionarEjercicio" type="button" class="btn btn-primary">Adicionar Ejercicio</button>
                             </div>
+                            <br/>
+                            <br/>
+                            <div class="form-group">
+                                <label class="control-label">Nombre Rutina</label>
+                                <input class="form-control" name="nombre" id="nombreRutina" type="text"/>
+                            </div>
+                            <h4>Ejercicios Rutina</h4>
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -111,31 +114,34 @@
                                 }
                                 function addEjercicioDia() {
                                     var numDia = $('#dia').val();
-                                    var ejercicioId = $('#ejercicioId').val();
+                                    var ejercicioData = $('#ejercicioId').val();
+                                    var ejercicioDataArray = ejercicioData.split(";");
+                                    var ejercicioId = ejercicioDataArray[0];
+                                    var ejercicioName = ejercicioDataArray[1];
                                     if(numDia != '' && ejercicioId != ''){
                                         var input = '<input type="hidden" value="' + ejercicioId + '" name="ejerciciosDia_' + numDia + '"/>';
                                         $('#hiddenInputs').html($('#hiddenInputs').html() + input);
                                         switch(numDia){
                                             case '1':
-                                                $('#dia_1').html($('#dia_1').html() + '<li>' + ejercicioId + '</li>');
+                                                $('#dia_1').html($('#dia_1').html() + '<li>' + ejercicioName + '</li>');
                                                 break;
                                             case '2':
-                                                $('#dia_2').html($('#dia_2').html() + '<li>' + ejercicioId + '</li>');
+                                                $('#dia_2').html($('#dia_2').html() + '<li>' + ejercicioName + '</li>');
                                                 break;
                                             case '3':
-                                                $('#dia_3').html($('#dia_3').html() + '<li>' + ejercicioId + '</li>');
+                                                $('#dia_3').html($('#dia_3').html() + '<li>' + ejercicioName + '</li>');
                                                 break;
                                             case '4':
-                                                $('#dia_4').html($('#dia_4').html() + '<li>' + ejercicioId + '</li>');
+                                                $('#dia_4').html($('#dia_4').html() + '<li>' + ejercicioName + '</li>');
                                                 break;
                                             case '5':
-                                                $('#dia_5').html($('#dia_5').html() + '<li>' + ejercicioId + '</li>');
+                                                $('#dia_5').html($('#dia_5').html() + '<li>' + ejercicioName + '</li>');
                                                 break;
                                             case '6':
-                                                $('#dia_6').html($('#dia_6').html() + '<li>' + ejercicioId + '</li>');
+                                                $('#dia_6').html($('#dia_6').html() + '<li>' + ejercicioName + '</li>');
                                                 break;
                                             case '7':
-                                                $('#dia_7').html($('#dia_7').html() + '<li>' + ejercicioId + '</li>');
+                                                $('#dia_7').html($('#dia_7').html() + '<li>' + ejercicioName + '</li>');
                                                 break;
                                         }
                                     }else{
