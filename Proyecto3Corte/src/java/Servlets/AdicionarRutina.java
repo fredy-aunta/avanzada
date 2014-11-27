@@ -73,7 +73,7 @@ public class AdicionarRutina extends HttpServlet {
                 rutinaDia.setEjerciciosDia(ejercicios);
                 rutina.setRutinaDIa(i, rutinaDia);
             }
-            this.grabarRutina(clienteId, rutinaName, 0);
+            this.grabarRutina(0, rutinaName, 0);
         } finally {
             out.close();
         }
