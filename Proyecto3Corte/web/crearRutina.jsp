@@ -21,7 +21,7 @@
                     <div class="col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8">
                         <h1>Rutina</h1>
                         <h2>Crear Rutina</h2>
-                        <form class="form-inline" role="form-ejercicio" action="AdicionarRutina" method="post">
+                        <form class="form-inline" role="form-ejercicio" action="AdicionarRutina" method="post" id="form_ejercicios">
                             <div class="form-group">
                                 <select name="clienteId" id="clienteId" class="form-control">
                                     <option value="">Cliente</option>
@@ -87,7 +87,7 @@
                                 </tbody>
                             </table>
                             <div id="hiddenInputs"></div>
-                            <input class="btn btn-success" type="submit" value="Adicionar Rutina" id="adicionarRutina"/>
+                            <input class="btn btn-success" type="button" value="Adicionar Rutina" id="adicionarRutina"/>
                         </form>
                     </div>
                 </div>
@@ -101,13 +101,16 @@
                                     $('#adicionarRutina').attr("disabled", "disabled");
                                 });
                                 function crearRutina() {
-                                    if ($('#clienteId').val() != '') {
+                                    var clienteId = $('#clienteId').val();
+                                    if (clienteId != '') {
                                         $('#dia').removeAttr("disabled");
                                         $('#ejercicioId').removeAttr("disabled");
                                         $('#adicionarEjercicio').removeAttr("disabled");
                                         $('#adicionarRutina').removeAttr("disabled");
                                         $('#clienteId').attr("disabled", "disabled");
                                         $('#createRutina').attr("disabled", "disabled");
+                                        var input = '<input type="hidden" value="' + clienteId + '" name="cliente"/>';
+                                        $('#hiddenInputs').html($('#hiddenInputs').html() + input);
                                     }else{
                                         alert("error cliente");
                                     }
@@ -148,6 +151,13 @@
                                         alert('datos erroneos');
                                     }
                                 }
+                                $('#adicionarRutina').click(function (){
+                                    if($('#nombreRutina').val() != ''){
+                                        $('#form_ejercicios').submit();
+                                    }else{
+                                        alert('El nombre no puede ir vacio');
+                                    }
+                                });
         </script>
     </body>
 </html>

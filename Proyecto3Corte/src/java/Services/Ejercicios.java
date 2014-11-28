@@ -6,6 +6,7 @@
 
 package Services;
 
+import DB.EjercicioDB;
 import Negocio.Ejercicio;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -86,12 +87,9 @@ public class Ejercicios implements Iterator{
     }
     
     public Ejercicio searchById(int idEjercicio){
+        EjercicioDB edb = new EjercicioDB();
         Ejercicio e = null;
-        while(this.hasNext()){
-            e = (Ejercicio)this.next();
-            if (idEjercicio == e.getIdEjercicio()) break;
-            e = null;
-        }
+        e = edb.selectById(idEjercicio);
             
         return e;
     }

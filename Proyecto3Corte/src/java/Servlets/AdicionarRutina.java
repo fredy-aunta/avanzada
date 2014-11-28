@@ -53,7 +53,7 @@ public class AdicionarRutina extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             String rutinaName = request.getParameter("nombre");
-            String clienteIdStr = request.getParameter("clienteId");
+            String clienteIdStr = request.getParameter("cliente");
             int clienteId = Integer.parseInt(clienteIdStr);
             
             rutina = new Rutina();
@@ -72,8 +72,10 @@ public class AdicionarRutina extends HttpServlet {
                 }
                 rutinaDia.setEjerciciosDia(ejercicios);
                 rutina.setRutinaDIa(i, rutinaDia);
+                rutina.setNombreRutina(rutinaName);
             }
-            this.grabarRutina(0, rutinaName, 0);
+            this.grabarRutina(clienteId, 1);
+            request.getRequestDispatcher("principalEntrenador.jsp").forward(request, response);
         } finally {
             out.close();
         }
@@ -83,8 +85,8 @@ public class AdicionarRutina extends HttpServlet {
         es = ejercicioDB.select();
     }
     
-    private void grabarRutina(int clienteId, String rutinaName, int idEntrenador){
-        int idRutina = rutinaDB.insert("rutina-" + idEntrenador, idEntrenador);
+    private void grabarRutina(int clienteId, int idEntrenador){
+        int idRutina = rutinaDB.insert(this.rutina.getNombreRutina(), idEntrenador);
         ArrayList<RutinaDia> rutinasDias = this.rutina.getRutinasDia();
         Ejercicios ejercicios;
         for (RutinaDia rutinasDia : rutinasDias) {
