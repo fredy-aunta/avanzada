@@ -75,7 +75,7 @@ public class Ejercicio {
     public void setTipoEjercicio(String tipoEjercicio) {
         this.tipoEjercicio = tipoEjercicio;
     }
-
+    
     @Override
     public String toString() {
         return idEjercicio + ";" + nombreEjercicio;
