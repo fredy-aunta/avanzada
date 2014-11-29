@@ -4,6 +4,8 @@
     Author     : Fredy
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -21,25 +23,25 @@
                             <div class="col-md-12 col-sm-12">
                                 <h1>Consultar Rutina</h1>
                             </div>
-                            <div class="col-md-3">
-                                <select name="dia">
-                                    <option vale="1">Lunes</option>
-                                    <option value="2">Martes</option>
-                                    <option value="3">Miercoles</option>
-                                    <option value="4">Jueves</option>
-                                    <option value="5">Viernes</option>
-                                    <option value="6">Sabado</option>
-                                    <option value="7">Domingo</option>
-                                </select>
-                            </div>
                             <div class="col-md-9">
                                 <table class="table">
-                                    <tr>
+                                    <thead><tr>
                                         <td>Nombre Ejercicio</td>
                                         <td>Tipo Ejercicio</td>
                                         <td>Repeticiones</td>
                                         <td>Serie</td>
-                                    </tr>
+                                    </tr></thead>
+                                    <tbody>
+                                    <c:forEach var="ejercicio" items="${ejercicios}">
+                                        <tr>
+                                            <td><c:out value="${ejercicio.nombreEjercicio}"</td>
+                                            <td><c:out value="${ejercicio.tipoEjercicio}"</td>
+                                            <td><c:out value="${ejercicio.repeticionesEjercicio}"</td>
+                                            <td><c:out value="${ejercicio.serieEjercicio}"</td>
+                                        </tr>
+                                    </c:forEach>
+                                        
+                                    </tbody>
                                 </table>
                             </div>
                         </div>

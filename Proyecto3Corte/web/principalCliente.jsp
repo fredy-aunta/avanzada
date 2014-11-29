@@ -24,7 +24,7 @@
                                     <div class="caption">
                                         <h3>Consultar</h3>
                                         <p>...</p>
-                                        <p><a href="consultarRutina.jsp" class="btn btn-primary btn-block" role="button">Rutina</a></p>
+                                        <p><a href="ConsultarRutina" class="btn btn-primary btn-block" role="button">Rutina</a></p>
                                     </div>
                                 </div>
                             </div>
