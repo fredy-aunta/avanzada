@@ -6,10 +6,12 @@ package Servlets;
 
 import DB.ClienteDB;
 import DB.EjercicioDB;
+import DB.EntrenadorDB;
 import DB.RutinaDB;
 import DB.RutinaDiaDB;
 import Negocio.Cliente;
 import Negocio.Ejercicio;
+import Negocio.Entrenador;
 import Negocio.Rutina;
 import Negocio.RutinaDia;
 import Services.Ejercicios;
@@ -21,6 +23,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -33,10 +36,13 @@ public class AdicionarRutina extends HttpServlet {
     RutinaDia rutinaDia = null;
     Ejercicios ejercicios = null;
     Ejercicios todosEjercicios = null;
+    Entrenador entrenador = null;
     ArrayList<Ejercicio> es = new ArrayList<Ejercicio>();
     EjercicioDB ejercicioDB = new EjercicioDB();
-    RutinaDiaDB rutinaDiaDB =  new RutinaDiaDB();
+    RutinaDiaDB rutinaDiaDB = new RutinaDiaDB();
     ClienteDB clienteDB = new ClienteDB();
+    EntrenadorDB entrenadorDB = new EntrenadorDB();
+
     /**
      * Processes requests for both HTTP
      * <code>GET</code> and
@@ -50,42 +56,41 @@ public class AdicionarRutina extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        try {
-            String rutinaName = request.getParameter("nombre");
-            String clienteIdStr = request.getParameter("cliente");
-            int clienteId = Integer.parseInt(clienteIdStr);
-            
-            rutina = new Rutina();
-            this.cargarTodosEjercicios();
-            todosEjercicios = new Ejercicios(es);
-            for (int i = 1; i <= 7; i++) {
-                rutinaDia = new RutinaDia();
-                rutinaDia.setDiaRutina(i);
-                ejercicios = new Ejercicios();
-                
-                String[] ejerciciosDias = request.getParameterValues("ejerciciosDia_" + i);
-                if (ejerciciosDias != null && ejerciciosDias.length > 0) {
-                    for (int j = 0; j < ejerciciosDias.length; j++) {
-                        ejercicios.add(todosEjercicios.searchById(Integer.parseInt(ejerciciosDias[j])));
-                    }
+        HttpSession session = request.getSession();
+        String userIdStr = session.getAttribute("auth_user_id").toString();
+        int userId = Integer.parseInt(userIdStr);
+        entrenador = entrenadorDB.selectByUserId(userId);
+        String rutinaName = request.getParameter("nombre");
+        String clienteIdStr = request.getParameter("cliente");
+        int clienteId = Integer.parseInt(clienteIdStr);
+
+        rutina = new Rutina();
+        this.cargarTodosEjercicios();
+        todosEjercicios = new Ejercicios(es);
+        for (int i = 1; i <= 7; i++) {
+            rutinaDia = new RutinaDia();
+            rutinaDia.setDiaRutina(i);
+            ejercicios = new Ejercicios();
+
+            String[] ejerciciosDias = request.getParameterValues("ejerciciosDia_" + i);
+            if (ejerciciosDias != null && ejerciciosDias.length > 0) {
+                for (int j = 0; j < ejerciciosDias.length; j++) {
+                    ejercicios.add(todosEjercicios.searchById(Integer.parseInt(ejerciciosDias[j])));
                 }
-                rutinaDia.setEjerciciosDia(ejercicios);
-                rutina.setRutinaDIa(i, rutinaDia);
-                rutina.setNombreRutina(rutinaName);
             }
-            this.grabarRutina(clienteId, 1);
-            request.getRequestDispatcher("principalEntrenador.jsp").forward(request, response);
-        } finally {
-            out.close();
+            rutinaDia.setEjerciciosDia(ejercicios);
+            rutina.setRutinaDIa(i, rutinaDia);
+            rutina.setNombreRutina(rutinaName);
         }
+        this.grabarRutina(clienteId, entrenador.getIdEntrenador());
+        request.getRequestDispatcher("principalEntrenador.jsp").forward(request, response);
     }
-    
-    private void cargarTodosEjercicios(){
+
+    private void cargarTodosEjercicios() {
         es = ejercicioDB.select();
     }
-    
-    private void grabarRutina(int clienteId, int idEntrenador){
+
+    private void grabarRutina(int clienteId, int idEntrenador) {
         int idRutina = rutinaDB.insert(this.rutina.getNombreRutina(), idEntrenador);
         ArrayList<RutinaDia> rutinasDias = this.rutina.getRutinasDia();
         Ejercicios ejercicios;
@@ -99,6 +104,7 @@ public class AdicionarRutina extends HttpServlet {
         clienteDB.UpdateRutinaId(clienteId, idRutina);
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+
     /**
      * Handles the HTTP
      * <code>GET</code> method.
